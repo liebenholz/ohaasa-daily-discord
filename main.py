@@ -33,7 +33,7 @@ def get_ohaasa_ranking():
             return "❌ 데이터를 찾지 못했습니다. 사이트 구조가 변경되었을 수 있습니다."
 
         items = horoscope_ul.select('li')
-        msg_lines = ["✨ **오늘의 오하아사 별자리 순위** ✨\n"]
+        msg_lines = ["@everyone ✨ **오늘의 오하아사 별자리 순위** ✨\n"]
         
         for index, item in enumerate(items, start=1):
             classes = item.get('class', [])
