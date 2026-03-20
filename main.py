@@ -97,7 +97,7 @@ if __name__ == "__main__":
         page = context.new_page()
         
         try:
-            if weekday < 5: # 월~금 (평일)
+            if weekday < 7: # 월~금 (평일)
                 title, results = get_weekday_ranking(page)
             else: # 토~일 (주말)
                 title, results = get_weekend_ranking(page)
