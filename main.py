@@ -40,54 +40,47 @@ def get_weekday_ranking(page):
     return "✨ **[평일] 오늘의 오하아사 별자리 순위** ✨", results
 
 def get_weekend_ranking(page):
-    """[주말] 굿모닝 우라나이(tv-asahi.co.jp) 크롤링"""
+    """[주말] 굿모닝 우라나이(tv-asahi.co.jp) 크롤링 - 추출 로직 강화"""
     url = "https://www.tv-asahi.co.jp/goodmorning/uranai/"
+    
+    # 1. 접속 및 대기
     page.goto(url, wait_until="networkidle")
-    page.wait_for_selector('.seiza-area', timeout=15000)
+    # seiza-area가 나타나거나, 최소한 seiza-box가 보일 때까지 대기
+    page.wait_for_selector('.seiza-box', timeout=15000)
     
     soup = BeautifulSoup(page.content(), 'html.parser')
     boxes = soup.select('.seiza-box')
     
     results = []
     for box in boxes:
+        # ID로 별자리 판별
         box_id = box.get('id', '')
         korean_sign = SIGN_MAP.get(box_id, box_id)
         
-        # 순위 텍스트(예: 1位)에서 숫자만 추출
-        rank_text = box.get_text(separator=' ', strip=True)
-        rank_match = re.search(r'(\d+)位', rank_text)
+        # [핵심 수정] 박스 내부의 모든 텍스트를 합쳐서 순위(숫자+位)를 찾음
+        full_text = box.get_text(separator=' ', strip=True)
+        # 정규표현식으로 '1位', '12位' 등을 찾음
+        rank_match = re.search(r'(\d+)位', full_text)
         
         if rank_match:
             rank_val = int(rank_match.group(1))
             results.append({"rank": rank_val, "sign": korean_sign})
-            
-    results.sort(key=lambda x: x['rank'])
-    return "☀️ **[주말] 고고 호로스코프 순위** ☀️", results
+        else:
+            # 만약 위 방법으로도 실패하면, 차선책으로 이미지 파일명이나 클래스를 뒤져봄
+            # (일부 사이트는 숫자를 이미지로 넣기도 함)
+            img_tag = box.select_one('img')
+            if img_tag and 'src' in img_tag.attrs:
+                img_src = img_tag['src']
+                # 파일명에 숫자가 포함되어 있는지 확인 (예: rank01.png)
+                img_rank = re.search(r'rank(?:_)?(\d+)', img_src)
+                if img_rank:
+                    results.append({"rank": int(img_rank.group(1)), "sign": korean_sign})
 
-def send_discord(title, results):
-    webhook_url = os.environ.get('DISCORD_WEBHOOK')
+    # 중복 제거 및 정렬
+    unique_results = {res['sign']: res for res in results}.values()
+    final_results = sorted(unique_results, key=lambda x: x['rank'])
     
-    if not results:
-        message_body = "⚠️ 데이터를 가져오는 데 실패했습니다."
-    else:
-        msg_lines = []
-        for res in results:
-            emoji = "🥇" if res['rank'] == 1 else "🥈" if res['rank'] == 2 else "🥉" if res['rank'] == 3 else "🔹"
-            msg_lines.append(f"{emoji} **{res['rank']}위**: {res['sign']}")
-        message_body = "\n".join(msg_lines)
-    
-    full_message = f"{title}\n\n{message_body}"
-    
-    if not webhook_url:
-        print(full_message)
-        return
-
-    payload = {
-        "username": "아침별점 요정",
-        "avatar_url": "https://www.asahi.co.jp/common/images/abc_logo.png",
-        "content": full_message
-    }
-    requests.post(webhook_url, json=payload)
+    return "☀️ **[주말] 고고 호로스코프 순위** ☀️", final_results
 
 if __name__ == "__main__":
     # 한국 시간(KST) 기준 요일 계산
