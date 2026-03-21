@@ -2,8 +2,8 @@ name: Ohaasa Daily Bot
 
 on:
   schedule:
-    # 한국 시간 기준 평일 오전 5시 57분 실행 (UTC 기준 20시 57분)
-    - cron: '57 20 * * 0-4'
+    # 한국 시간 기준 평일 오전 6시 1분 실행 (UTC 기준 21시 01분)
+    - cron: '01 21 * * *'
   workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼
 
 jobs:
