@@ -102,30 +102,32 @@ def send_discord(message):
         print(message)
         return
     
-    # payload = {
-    #     "username": "아침별점 요정",
-    #     "avatar_url": "https://pbs.twimg.com/card_img/2031288293040525312/XqIwveUV?format=jpg&name=360x360",
-    #     "content": message
-    # }
-    # requests.post(webhook_url, json=payload)
+    avatar_url = os.environ.get('AVATAR_URL')
     
-    avatar_path = os.path.join("src", "ohaasa-profile.png")
-
     payload = {
         "username": "아침별점 요정",
+        "avatar_url": avatar_url,
         "content": message
     }
+    requests.post(webhook_url, json=payload)
+    
+    # avatar_path = os.path.join("src", "ohaasa-profile.png")
 
-    try:
-        with open(avatar_path, "rb") as f:
-            files = {
-                "avatar": (os.path.basename(avatar_path), f, "image/png")
-            }
-            requests.post(webhook_url, data=payload, files=files)
-    except FileNotFoundError:
-        requests.post(webhook_url, json=payload)
-    except requests.exceptions.RequestException as e:
-        print(f"❌ 메세지 전송 중 에러 발생: {e}")
+    # payload = {
+    #     "username": "아침별점 요정",
+    #     "content": message
+    # }
+
+    # try:
+    #     with open(avatar_path, "rb") as f:
+    #         files = {
+    #             "avatar": (os.path.basename(avatar_path), f, "image/png")
+    #         }
+    #         requests.post(webhook_url, data=payload, files=files)
+    # except FileNotFoundError:
+    #     requests.post(webhook_url, json=payload)
+    # except requests.exceptions.RequestException as e:
+    #     print(f"❌ 메세지 전송 중 에러 발생: {e}")
     
 if __name__ == "__main__":
     weekday = datetime.now().weekday()
