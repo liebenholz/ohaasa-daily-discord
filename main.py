@@ -101,12 +101,10 @@ def send_discord(message):
     if not webhook_url:
         print(message)
         return
-    
-    avatar_url = os.environ.get('AVATAR_URL')
-    
+        
     payload = {
         "username": "아침별점 요정",
-        "avatar_url": avatar_url,
+        "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
         "content": message
     }
     requests.post(webhook_url, json=payload)
