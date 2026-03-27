@@ -129,7 +129,7 @@ def send_discord(message):
     
 if __name__ == "__main__":
     weekday = datetime.now().weekday()
-    mode = "weekday" if weekday % 6 ==0 else "weekend"
+    mode = "weekend" if weekday in [4, 5] else "weekday"
     
     result_message = get_horoscope_ranking(mode)
     send_discord(result_message)
