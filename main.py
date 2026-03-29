@@ -2,7 +2,7 @@ from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
 import requests
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # 매핑 데이터 관리 (별도의 데이터 구조로 분리)
 SIGN_CONFIG = {
@@ -72,7 +72,7 @@ def format_message(sign_keys, mode):
         return "❌ 데이터를 찾지 못했습니다. 사이트 구조가 변경되었을 수 있습니다."
 
     config = SIGN_CONFIG[mode]
-    msg_lines = ["✨ **오늘의 오하아사 별자리 순위** ✨\n"]
+    msg_lines = []
     
     for rank, key in enumerate(sign_keys, start=1):
         korean_sign = config["map"].get(key, f"알 수 없음({key})")
@@ -95,41 +95,45 @@ def get_horoscope_ranking(mode):
         return format_message(sign_keys, mode)
     except Exception as e:
         return f"❌ 크롤링 중 에러 발생 ({mode}): {e}"
+    
+def get_date():
+    kst_now = datetime.utcnow() + timedelta(hours=9)
+    
+    weekdays = ['월', '화', '수', '목', '금', '토', '일']
+    weekday_str = weekdays[kst_now.weekday()]
+    
+    formatted_date = kst_now.strftime(f"%Y-%m-%d ({weekday_str})")
+    
+    return formatted_date
 
 def send_discord(message):
     webhook_url = os.environ.get('DISCORD_WEBHOOK')
+    
     if not webhook_url:
         print(message)
         return
+    
+    embed = {
+        "title": "✨ **오늘의 오하아사 별자리 순위** ✨\n",
+        "description" : message,
+        "color" : 0x9B59B6, # 보라색 (Hex 코드를 10진수로 변환)
+        "url" : "https://x.com/Hi_Ohaasa", # config['url'],
+        "footer": {
+            "text": f"{get_date()}"
+        }
+    }
         
     payload = {
         "username": "아침별점 요정",
         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-        "content": message
+        "embeds": [embed]
     }
     requests.post(webhook_url, json=payload)
-    
-    # avatar_path = os.path.join("src", "ohaasa-profile.png")
 
-    # payload = {
-    #     "username": "아침별점 요정",
-    #     "content": message
-    # }
-
-    # try:
-    #     with open(avatar_path, "rb") as f:
-    #         files = {
-    #             "avatar": (os.path.basename(avatar_path), f, "image/png")
-    #         }
-    #         requests.post(webhook_url, data=payload, files=files)
-    # except FileNotFoundError:
-    #     requests.post(webhook_url, json=payload)
-    # except requests.exceptions.RequestException as e:
-    #     print(f"❌ 메세지 전송 중 에러 발생: {e}")
     
 if __name__ == "__main__":
     weekday = datetime.now().weekday()
     mode = "weekend" if weekday in [4, 5] else "weekday"
     
     result_message = get_horoscope_ranking(mode)
-    send_discord(result_message)
+    send_discord(result_message, mode)
