@@ -108,7 +108,7 @@ def get_date():
 
 def send_discord(message, mode):
     webhook_url = os.environ.get('DISCORD_WEBHOOK')
-    config = SIGN_CONFIG[mode]
+    # config = SIGN_CONFIG[mode]
     
     if not webhook_url:
         print(message)
@@ -133,8 +133,9 @@ def send_discord(message, mode):
 
 
 if __name__ == "__main__":
-    weekday = datetime.now().weekday()
-    mode = "weekend" if weekday in [4, 5] else "weekday"
+    today = datetime.utcnow() + timedelta(hours=3) # KST 오전 6시 기준 
+    weekday = today.weekday()
+    mode = "weekday" if weekday < 5 else "weekend"
     
     result_message = get_horoscope_ranking(mode)
     send_discord(result_message, mode)
