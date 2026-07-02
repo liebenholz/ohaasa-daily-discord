@@ -20,8 +20,8 @@
 │   └── workflows
 │       ├── daily_bot.yml          # 매일 크롤 + 커밋&푸시 (GitHub Actions)
 │       └── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
-├── api
-│   └── interactions.py            # Discord Interactions 엔드포인트 (Vercel)
+├── interactions
+│   └── handler.py            # Discord Interactions 엔드포인트 (Vercel)
 ├── data
 │   ├── horoscope_YYYY-MM-DD.json  # 날짜별 운세 데이터 (자동 생성)
 │   └── latest.json                # 가장 최신 운세 (봇이 조회)
