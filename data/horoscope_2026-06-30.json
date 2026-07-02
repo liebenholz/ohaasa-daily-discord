@@ -1,0 +1,79 @@
+{
+  "date": "2026-06-30",
+  "mode": "weekday",
+  "updated_at": "2026-06-30T07:56:44",
+  "signs": {
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_key": "cancer",
+      "content": ""
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_key": "scorpio",
+      "content": ""
+    },
+    "처녀자리": {
+      "rank": 3,
+      "sign_kr": "처녀자리",
+      "sign_key": "virgo",
+      "content": ""
+    },
+    "황소자리": {
+      "rank": 4,
+      "sign_kr": "황소자리",
+      "sign_key": "taurus",
+      "content": ""
+    },
+    "염소자리": {
+      "rank": 5,
+      "sign_kr": "염소자리",
+      "sign_key": "capricorn",
+      "content": ""
+    },
+    "물병자리": {
+      "rank": 6,
+      "sign_kr": "물병자리",
+      "sign_key": "aquarius",
+      "content": ""
+    },
+    "물고기자리": {
+      "rank": 7,
+      "sign_kr": "물고기자리",
+      "sign_key": "pisces",
+      "content": ""
+    },
+    "양자리": {
+      "rank": 8,
+      "sign_kr": "양자리",
+      "sign_key": "aries",
+      "content": ""
+    },
+    "쌍둥이자리": {
+      "rank": 9,
+      "sign_kr": "쌍둥이자리",
+      "sign_key": "gemini",
+      "content": ""
+    },
+    "천칭자리": {
+      "rank": 10,
+      "sign_kr": "천칭자리",
+      "sign_key": "libra",
+      "content": ""
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_key": "leo",
+      "content": ""
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_key": "sagittarius",
+      "content": ""
+    }
+  }
+}
