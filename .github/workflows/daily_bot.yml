@@ -6,27 +6,38 @@ on:
     - cron: '01 21 * * *'
   workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼
 
+permissions:
+  contents: write   # 자동 커밋&푸시에 필요
+
 jobs:
-  run-bot:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install playwright beautifulsoup4 requests pytz
-          
-      - name: Install Playwright Browsers
-        run: |
-          playwright install chromium
+          pip install playwright beautifulsoup4 requests
+          playwright install --with-deps chromium
 
-      - name: Execute Script
+      - name: Run crawler & post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DEEPL_API_KEY:   ${{ secrets.DEEPL_API_KEY }}
         run: python main.py
+
+      - name: Commit & push horoscope JSON
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(data): update horoscope ($(TZ=Asia/Seoul date +'%Y-%m-%d'))"
+            git push
+          fi
