@@ -216,6 +216,43 @@ def first_text(item, selectors):
                 return txt
     return ""
 
+def split_lucky_item(content_ja: str, max_item_len: int = 20) -> tuple[str, str]:
+    """마지막 공백 뒤의 짧은 토큰을 행운의 아이템으로 분리.
+
+    오하아사 평일 데이터는 항상 다음 패턴을 따름:
+      '문장1 문장2 아이템'
+      → 마지막 공백 뒤가 아이템.
+
+    문장 종결 방식(종결어미/특수문자/동사 활용)에 관계없이
+    공백 위치만으로 안정적으로 분리 가능.
+
+    Returns: (본문, 행운의_아이템)
+    """
+    if not content_ja:
+        return "", ""
+
+    # 전각 공백을 반각으로 통일 후 좌우 공백 제거
+    text = content_ja.replace("\u3000", " ").strip()
+
+    # 마지막 공백 위치
+    last_space = text.rfind(" ")
+
+    if last_space == -1:
+        # 공백이 없음 → 아이템이 없는 형태로 간주
+        return text, ""
+
+    candidate_main = text[:last_space].strip()
+    candidate_item = text[last_space + 1:].strip()
+
+    # 방어 필터
+    #  1) 아이템 후보가 비었거나 너무 길면 분리 실패 처리
+    #  2) 본문이 비어있으면 (전체가 단일 토큰) 분리 실패 처리
+    if not candidate_item or len(candidate_item) > max_item_len:
+        return text, ""
+    if not candidate_main:
+        return text, ""
+
+    return candidate_main, candidate_item
 
 # ─────────────────────────────────────────────
 # 파싱 (이전과 동일)
@@ -233,12 +270,18 @@ def parse_weekday(soup, config):
         if not sign_key:
             continue
         meta = config["signs"][sign_key]
+
+        # ⭐ 원본 텍스트에서 본문과 행운의 아이템 분리
+        raw_content = first_text(item, config["content_selectors"])
+        content_ja, lucky_item_ja = split_lucky_item(raw_content)
+
         detail[meta["kr"]] = {
             "rank": rank,
             "sign_kr": meta["kr"],
             "sign_ja": meta["ja"],
             "sign_key": sign_key,
-            "content_ja": first_text(item, config["content_selectors"]),
+            "content_ja": content_ja,
+            "lucky_item_ja": lucky_item_ja,   # ← 새 필드
         }
     return detail
 
@@ -278,18 +321,18 @@ def parse_horoscope_detail(html, mode):
 # ⭐ 번역 보강 — 평일/주말 모드별 다른 필드 처리
 # ─────────────────────────────────────────────
 def enrich_with_translation(detail: dict, mode: str, translator: Translator) -> dict:
-    """detail의 일본어 필드들을 번역해서 한국어 필드를 추가"""
     if not detail:
         return detail
 
-    # 번역할 텍스트들을 (별자리키, 필드명, 텍스트)의 평탄한 리스트로 모음
-    items_to_translate = []  # [(sign_kr, field_name, text)]
+    items_to_translate = []
 
     for sign_kr, entry in detail.items():
         items_to_translate.append((sign_kr, "content", entry.get("content_ja", "")))
+        # ⭐ 평일/주말 공통: lucky_item 번역
+        items_to_translate.append((sign_kr, "lucky_item", entry.get("lucky_item_ja", "")))
+        # 주말만: lucky_color 추가
         if mode == "weekend":
             items_to_translate.append((sign_kr, "lucky_color", entry.get("lucky_color_ja", "")))
-            items_to_translate.append((sign_kr, "lucky_item",  entry.get("lucky_item_ja",  "")))
 
     texts = [t for _, _, t in items_to_translate]
     print(f"📝 번역 요청: {sum(1 for t in texts if t)}건 (빈 텍스트 제외)")
@@ -298,10 +341,8 @@ def enrich_with_translation(detail: dict, mode: str, translator: Translator) -> 
         translated = translator.translate_batch(texts)
     except Exception as e:
         print(f"⚠️  번역 실패 ({e}). 원문만 저장합니다.")
-        # 번역 실패해도 ko 필드는 비워서 저장 (출력 시 fallback)
         translated = ["" for _ in texts]
 
-    # 결과를 detail에 다시 매핑
     for (sign_kr, field, _), ko_text in zip(items_to_translate, translated):
         detail[sign_kr][f"{field}_ko"] = ko_text
 

@@ -47,41 +47,32 @@ def build_embed(sign_kr, data):
 
     rank = sign.get("rank", 0)
     emoji = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, "🔹")
-    sign_ja = sign.get("sign_ja", "")
 
-    # 한국어 번역이 있으면 우선, 없으면 일본어 원문 fallback
-    content_ko = sign.get("content_ko") or ""
-    content_ja = sign.get("content_ja") or ""
-    description = content_ko if content_ko else content_ja
-    if not description:
-        description = "(데이터가 비어 있습니다)"
+    # 본문 (한국어만; 번역 실패 시 안내 문구)
+    content_ko = sign.get("content_ko") or "(번역 데이터가 준비되지 않았습니다)"
+    lines = [content_ko]
 
-    fields = [{"name": "순위", "value": f"{emoji} {rank}위", "inline": True}]
+    # 럭키 정보 (한국어만 표시)
+    lucky_color_ko = sign.get("lucky_color_ko")
+    lucky_item_ko  = sign.get("lucky_item_ko")
 
-    if mode == "weekend":
-        lc_ko, lc_ja = sign.get("lucky_color_ko"), sign.get("lucky_color_ja")
-        li_ko, li_ja = sign.get("lucky_item_ko"),  sign.get("lucky_item_ja")
-        if lc_ko or lc_ja:
-            value = lc_ko or lc_ja
-            if lc_ko and lc_ja and lc_ko != lc_ja:
-                value = f"{lc_ko}\n*({lc_ja})*"
-            fields.append({"name": "🎨 행운의 색", "value": value, "inline": True})
-        if li_ko or li_ja:
-            value = li_ko or li_ja
-            if li_ko and li_ja and li_ko != li_ja:
-                value = f"{li_ko}\n*({li_ja})*"
-            fields.append({"name": "🎁 행운의 아이템", "value": value, "inline": True})
-
-    # 일본어 원문은 본문 아래에 작게 첨부
-    if content_ko and content_ja and content_ko != content_ja:
-        description = f"{content_ko}\n\n*🇯🇵 {content_ja}*"
+    if lucky_color_ko or lucky_item_ko:
+        lines.append("")  # 본문과 럭키 정보 사이 빈 줄
+        if lucky_color_ko:
+            lines.append(f"🎨 {lucky_color_ko}")
+        if lucky_item_ko:
+            lines.append(f"🍀 {lucky_item_ko}")
 
     return {
-        "title": f"✨ 오늘의 {sign_kr} 운세 ({sign_ja}) ✨",
-        "description": description,
+        "title": f"✨ 오늘의 {sign_kr} 운세 ✨",
+        "description": "\n".join(lines),
         "color": 0x9B59B6,
-        "fields": fields,
-        "footer": {"text": f"{data.get('date', '')} · {'평일' if mode == 'weekday' else '주말'} 기준"},
+        "fields": [
+            {"name": "순위", "value": f"{emoji} {rank}위", "inline": True},
+        ],
+        "footer": {
+            "text": f"{data.get('date', '')} · {'평일' if mode == 'weekday' else '주말'} 기준"
+        },
     }
 
 
