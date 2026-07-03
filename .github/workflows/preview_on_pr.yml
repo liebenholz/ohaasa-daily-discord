@@ -1,0 +1,31 @@
+name: Preview on Code Change
+
+on:
+  pull_request:
+    paths:
+      - 'main.py'
+      - 'interactions/handler.py'
+      - 'tests/preview_webhook.py'
+  workflow_dispatch:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install playwright beautifulsoup4 requests pynacl
+          playwright install --with-deps chromium
+
+      - name: Send live preview
+        env:
+          TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
+          DEEPL_API_KEY:       ${{ secrets.DEEPL_API_KEY }}
+        run: python tests/preview_webhook.py --live

@@ -41,3 +41,10 @@ jobs:
             git commit -m "chore(data): update horoscope ($(TZ=Asia/Seoul date +'%Y-%m-%d'))"
             git push
           fi
+          
+      - name: Send preview to test channel
+        if: success()
+        env:
+          TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
+        run: python tests/preview_webhook.py
+        continue-on-error: true   # 프리뷰 실패해도 워크플로우는 성공 처리
