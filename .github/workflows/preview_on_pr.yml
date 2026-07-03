@@ -5,7 +5,7 @@ on:
     paths:
       - 'main.py'
       - 'interactions/handler.py'
-      - 'tests/preview_webhook.py'
+      - 'test/preview_webhook.py'
   workflow_dispatch:
 
 jobs:
