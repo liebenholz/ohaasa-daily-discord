@@ -1,21 +1,7 @@
-name: Preview Only
+name: Preview Horoscope
 
 on:
   workflow_dispatch:
-    inputs:
-      mode:
-        description: '데이터 소스'
-        required: true
-        default: 'stored'
-        type: choice
-        options:
-          - stored    # 저장된 latest.json 사용
-          - live      # 지금 즉시 크롤+번역
-      signs:
-        description: '특정 별자리만 (쉼표 구분, 비우면 전체)'
-        required: false
-        default: ''
-        type: string
 
 jobs:
   preview:
@@ -27,29 +13,9 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install playwright beautifulsoup4 requests pynacl
-          if [ "${{ inputs.mode }}" = "live" ]; then
-            playwright install --with-deps chromium
-          fi
+        run: pip install requests pynacl
 
-      - name: Build command args
-        id: args
-        run: |
-          ARGS=""
-          if [ "${{ inputs.mode }}" = "live" ]; then
-            ARGS="$ARGS --live"
-          fi
-          if [ -n "${{ inputs.signs }}" ]; then
-            IFS=',' read -ra SIGNS <<< "${{ inputs.signs }}"
-            for s in "${SIGNS[@]}"; do
-              ARGS="$ARGS --sign $(echo $s | xargs)"
-            done
-          fi
-          echo "args=$ARGS" >> $GITHUB_OUTPUT
-
-      - name: Send preview
+      - name: Send ranked preview
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
-          DEEPL_API_KEY:       ${{ secrets.DEEPL_API_KEY }}
-        run: python tests/preview_webhook.py ${{ steps.args.outputs.args }}
+        run: python tests/preview_webhook.py
