@@ -1,0 +1,128 @@
+{
+  "date": "2026-07-02",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-07-02T19:11:17",
+  "signs": {
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "交友関係が広がる予感 お誘いがあればＯＫして ポジティブ思考が幸運のカギ",
+      "lucky_item_ja": "音楽ホール",
+      "content_ko": "사교 관계가 넓어질 것 같은 예감이 듭니다. 초대받으면 기꺼이 수락하세요. 긍정적인 사고방식이 행운의 열쇠입니다.",
+      "lucky_item_ko": "음악홀"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "目標達成に近づけそう 攻めの姿勢で突き進んでね",
+      "lucky_item_ja": "美容室",
+      "content_ko": "목표 달성에 한 걸음 더 가까워질 것 같네요. 적극적인 자세로 힘차게 나아가세요.",
+      "lucky_item_ko": "미용실"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "良いアイデアがひらめくかも 思いついたら即行動を！",
+      "lucky_item_ja": "鮮魚店",
+      "content_ko": "좋은 아이디어가 떠오를지도 몰라요. 생각이 나면 바로 행동으로 옮기세요!",
+      "lucky_item_ko": "생선가게"
+    },
+    "황소자리": {
+      "rank": 4,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "ステップアップのチャンス 仲間との雑談にヒントがあるよ",
+      "lucky_item_ja": "遊園地",
+      "content_ko": "한 단계 더 발전할 기회, 동료들과의 수다에서 힌트를 얻을 수 있어",
+      "lucky_item_ko": "놀이공원"
+    },
+    "처녀자리": {
+      "rank": 5,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "ずっと欲しかった物をＧＥＴ インターネットの活用がオススメ",
+      "lucky_item_ja": "コーヒー専門店",
+      "content_ko": "오랫동안 갖고 싶었던 물건을 드디어 손에 넣었다. 인터넷을 활용하는 것을 추천한다.",
+      "lucky_item_ko": "커피 전문점"
+    },
+    "물병자리": {
+      "rank": 6,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "エネルギッシュに過ごせる時 難しい問題も楽々クリア♪",
+      "lucky_item_ja": "デパート",
+      "content_ko": "활기차게 지낼 수 있을 때, 어려운 문제도 가뿐히 해결♪",
+      "lucky_item_ko": "백화점"
+    },
+    "물고기자리": {
+      "rank": 7,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "やるべき事が多く忙しい日 あまり無理をしないでね",
+      "lucky_item_ja": "ドラッグストア",
+      "content_ko": "할 일이 많아서 바쁜 날이니, 너무 무리하지 마세요",
+      "lucky_item_ko": "드럭스토어"
+    },
+    "양자리": {
+      "rank": 8,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "身近な人とケンカになるかも 誤解を招く発言は控えて",
+      "lucky_item_ja": "スイーツ店",
+      "content_ko": "가까운 사람과 다툼이 생길 수도 있으니, 오해를 불러일으킬 수 있는 발언은 삼가세요",
+      "lucky_item_ko": "디저트 가게"
+    },
+    "쌍둥이자리": {
+      "rank": 9,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "衝動買いに注意が必要 高額商品の購入は見送ろう",
+      "lucky_item_ja": "大通り",
+      "content_ko": "충동 구매에 주의해야 한다. 고가 상품 구매는 보류하자.",
+      "lucky_item_ko": "큰길"
+    },
+    "천칭자리": {
+      "rank": 10,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "一つの考えにとらわれ頑固に 気分転換の時間を作ると◎",
+      "lucky_item_ja": "書店",
+      "content_ko": "한 가지 생각에 얽매여 고집을 부리지 말고, 기분 전환할 시간을 갖는 것이 좋습니다◎",
+      "lucky_item_ko": "서점"
+    },
+    "사수자리": {
+      "rank": 11,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "トラブルに巻き込まれアタフタ 冷静に対応すれば大丈夫",
+      "lucky_item_ja": "麺類の店",
+      "content_ko": "문제에 휘말려 허둥지둥하지만, 침착하게 대처하면 괜찮을 거예요",
+      "lucky_item_ko": "면 요리 전문점"
+    },
+    "사자자리": {
+      "rank": 12,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "感情的になり運気ダウン 誰かを傷つけてしまうかも 思った事をすぐ口に出すのはＮＧ",
+      "lucky_item_ja": "コンビニ",
+      "content_ko": "감정에 휩쓸려 운이 떨어질 수 있습니다. 누군가를 상처 입힐 수도 있으니, 생각나는 대로 바로 말하는 것은 금물입니다.",
+      "lucky_item_ko": "편의점"
+    }
+  }
+}
