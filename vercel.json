@@ -1,0 +1,8 @@
+{
+  "regions": ["icn1"],
+  "functions": {
+    "api/interactions.py": {
+      "maxDuration": 10
+    }
+  }
+}
