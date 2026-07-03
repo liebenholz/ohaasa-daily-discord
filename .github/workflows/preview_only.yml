@@ -18,4 +18,4 @@ jobs:
       - name: Send ranked preview
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
-        run: python tests/preview_webhook.py
+        run: python test/preview_webhook.py
