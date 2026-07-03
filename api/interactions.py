@@ -4,7 +4,6 @@ import urllib.request
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
-PUBLIC_KEY = os.environ["DISCORD_PUBLIC_KEY"]
 GH_USER    = os.environ.get("GH_USER", "liebenholz")
 GH_REPO    = os.environ.get("GH_REPO", "ohaasa-daily-discord")
 GH_BRANCH  = os.environ.get("GH_BRANCH", "main")
@@ -17,10 +16,16 @@ TYPE_PONG               = 1
 TYPE_CHANNEL_MESSAGE    = 4
 FLAG_EPHEMERAL          = 64
 
+def _get_public_key():
+    return os.environ["DISCORD_PUBLIC_KEY"]
 
-def verify_signature(signature_hex: str, timestamp: str, body: str) -> bool:
+def _get_app_id():
+    return os.environ["DISCORD_APP_ID"]
+
+
+def verify_signature(signature_hex, timestamp, body):
     try:
-        VerifyKey(bytes.fromhex(PUBLIC_KEY)).verify(
+        VerifyKey(bytes.fromhex(_get_public_key())).verify(
             f"{timestamp}{body}".encode(), bytes.fromhex(signature_hex)
         )
         return True
