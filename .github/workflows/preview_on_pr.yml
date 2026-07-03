@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'main.py'
-      - 'interactions/handler.py'
+      - 'api/interactions.py'
       - 'test/preview_webhook.py'
   workflow_dispatch:
 
