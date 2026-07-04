@@ -16,6 +16,13 @@ TYPE_PONG               = 1
 TYPE_CHANNEL_MESSAGE    = 4
 FLAG_EPHEMERAL          = 64
 
+RATING_LABELS = {
+    "money":  "💰 금전운",
+    "love":   "💕 애정운",
+    "work":   "💼 일운",
+    "health": "🍎 건강운",
+}
+
 def _get_public_key():
     return os.environ["DISCORD_PUBLIC_KEY"]
 
@@ -68,13 +75,23 @@ def build_embed(sign_kr, data):
         if lucky_item_ko:
             lines.append(f"🍀 {lucky_item_ko}")
 
+    fields = [
+        {"name": "순위", "value": f"{emoji} {rank}위", "inline": False},  # ⭐ inline 해제 → 아래 별점과 줄바꿈 분리
+    ]
+
+    # ⭐ 주말 별점 (평일엔 ratings 필드 자체가 없으므로 자동 스킵)
+    ratings = sign.get("ratings") or {}
+    for key, label in RATING_LABELS.items():
+        if key in ratings:
+            count = ratings[key]
+            stars = "⭐" * count if count > 0 else "—"
+            fields.append({"name": label, "value": stars, "inline": False})  # ⭐ 세로 배치
+
     return {
         "title": f"✨ 오늘의 {sign_kr} 운세 ✨",
         "description": "\n".join(lines),
         "color": 0x9B59B6,
-        "fields": [
-            {"name": "순위", "value": f"{emoji} {rank}위", "inline": True},
-        ],
+        "fields": fields,
         "footer": {
             "text": f"{data.get('date', '')} · {'평일' if mode == 'weekday' else '주말'} 기준"
         },

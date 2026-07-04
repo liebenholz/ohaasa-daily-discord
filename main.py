@@ -36,20 +36,10 @@ SIGN_CONFIG = {
     },
     "weekend": {
         "url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
-        "selector": ".rank-box li",
-        "content_selectors": [
-            ".comment", "p.text", "p.txt", ".description", "dd", "p"
-        ],
-        "lucky_color_selectors": [
-            ".color", ".lucky-color", ".lucky_color",
-            "dt:-soup-contains('ラッキーカラー') + dd",
-            "th:-soup-contains('ラッキーカラー') + td",
-        ],
-        "lucky_item_selectors": [
-            ".item", ".lucky-item", ".lucky_item",
-            "dt:-soup-contains('ラッキーアイテム') + dd",
-            "th:-soup-contains('ラッキーアイテム') + td",
-        ],
+        "rank_selector": "ul.rank-box li a",      # 순위 (문서 순서 = 순위)
+        "detail_selector": "div.seiza-box",       # 별자리별 상세 박스 (id로 매칭)
+        # 대기용 셀렉터 (fetch_html에 전달)
+        "selector": "div.seiza-box .read-area p.read",
         "signs": {
             "ohitsuji": {"kr": "양자리",     "ja": "おひつじ座"},
             "ousi":     {"kr": "황소자리",   "ja": "おうし座"},
@@ -286,28 +276,91 @@ def parse_weekday(soup, config):
     return detail
 
 
+def _extract_labeled_text(read_area, label_class):
+    """<span class="...">라벨</span>"：값" 패턴에서 값 추출
+
+    예: <span class="lucky-color-txt">ラッキーカラー</span>"：黄色" → "黄色"
+    """
+    span = read_area.select_one(f"span.{label_class}")
+    if not span:
+        return ""
+    # span 바로 뒤의 텍스트 노드
+    sibling = span.next_sibling
+    while sibling is not None:
+        if isinstance(sibling, str):
+            text = sibling.strip()
+            if text:
+                # 전각/반각 콜론 제거
+                return text.lstrip("：:").strip()
+        elif getattr(sibling, "name", None) == "br":
+            break  # 줄바꿈 넘어가면 다음 항목이므로 중단
+        sibling = sibling.next_sibling
+    return ""
+
+
+# 별점 카테고리: li 클래스 → (JSON 키, 한글명)
+WEEKEND_RATING_CATEGORIES = {
+    "lucky-money":  ("money",  "금전운"),
+    "lucky-love":   ("love",   "애정운"),
+    "lucky-work":   ("work",   "일운"),
+    "lucky-health": ("health", "건강운"),
+}
+
+
 def parse_weekend(soup, config):
     detail = {}
-    items = soup.select(config["selector"])
-    if DEBUG and items:
-        print(f"[DEBUG] weekend: {len(items)}개 li 발견")
-        print(f"[DEBUG] 첫 li 원본:\n{items[0].prettify()[:1500]}")
 
-    for rank, item in enumerate(items, start=1):
-        anchor = item.select_one("a")
-        sign_key = (anchor.get("data-label") or "").strip().lower() if anchor else ""
+    # ① 순위: rank-box 안 a 태그의 문서 순서 = 순위
+    rank_map = {}
+    for rank, a in enumerate(soup.select(config["rank_selector"]), start=1):
+        key = (a.get("data-label") or "").strip().lower()
+        if key:
+            rank_map[key] = rank
+
+    if DEBUG:
+        print(f"[DEBUG] weekend 순위: {rank_map}")
+
+    # ② 상세: seiza-box를 id로 순회
+    for box in soup.select(config["detail_selector"]):
+        sign_key = (box.get("id") or "").strip().lower()
         if sign_key not in config["signs"]:
             continue
         meta = config["signs"][sign_key]
+
+        # 본문
+        read_area = box.select_one(".read-area")
+        content_ja = ""
+        lucky_color_ja = ""
+        lucky_item_ja = ""
+        if read_area:
+            read_p = read_area.select_one("p.read")
+            content_ja = normalize_text(read_p.get_text(strip=True)) if read_p else ""
+            lucky_color_ja = _extract_labeled_text(read_area, "lucky-color-txt")
+            lucky_item_ja  = _extract_labeled_text(read_area, "key-txt")
+
+        # 별점: li.lucky-* 안의 p.lucky-box img 개수
+        ratings = {}
+        for li_class, (json_key, _) in WEEKEND_RATING_CATEGORIES.items():
+            li = box.select_one(f"li.{li_class}")
+            if li:
+                icons = li.select("p.lucky-box img")
+                ratings[json_key] = len(icons)
+
         detail[meta["kr"]] = {
-            "rank": rank,
+            "rank": rank_map.get(sign_key, 0),
             "sign_kr": meta["kr"],
             "sign_ja": meta["ja"],
             "sign_key": sign_key,
-            "content_ja":     first_text(item, config["content_selectors"]),
-            "lucky_color_ja": first_text(item, config["lucky_color_selectors"]),
-            "lucky_item_ja":  first_text(item, config["lucky_item_selectors"]),
+            "content_ja": content_ja,
+            "lucky_color_ja": lucky_color_ja,
+            "lucky_item_ja": lucky_item_ja,
+            "ratings": ratings,   # ⭐ 새 필드: {"money": 5, "love": 5, "work": 4, "health": 5}
         }
+
+        if DEBUG and sign_key == "ohitsuji":
+            print(f"[DEBUG] ohitsuji: content={content_ja[:50]}, "
+                  f"color={lucky_color_ja}, item={lucky_item_ja}, ratings={ratings}")
+
     return detail
 
 
@@ -424,6 +477,12 @@ if __name__ == "__main__":
     try:
         config = SIGN_CONFIG[mode]
         html = fetch_html(config["url"], config["selector"])
+
+        # 디버그 덤프 (유지 권장)
+        os.makedirs("debug", exist_ok=True)
+        with open(f"debug/raw_{mode}_{date_iso}.html", "w", encoding="utf-8") as f:
+            f.write(html)
+            
         detail = parse_horoscope_detail(html, mode)
 
         if not detail:
