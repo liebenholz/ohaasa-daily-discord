@@ -1,0 +1,10 @@
+main.py
+register_commands.py
+.github/
+data/
+debug/
+test/
+*.md
+LICENSE
+__pycache__/
+*.pyc
