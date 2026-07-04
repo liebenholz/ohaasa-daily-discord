@@ -1,7 +1,7 @@
 {
   "regions": ["icn1"],
   "functions": {
-    "api/interactions.py": {
+    "api/index.py": {
       "maxDuration": 10
     }
   }
