@@ -97,7 +97,7 @@ def build_embed(sign_kr, data):
         "title": f"✨ 오늘의 {sign_kr} 운세 ✨",
         "description": "\n".join(lines),
         "color": 0x9B59B6,
-        "fields": fields,
+        # "fields": fields,
         "footer": {
             "text": f"{data.get('date', '')} · {'평일' if mode == 'weekday' else '주말'} 기준"
         },
