@@ -17,10 +17,10 @@ TYPE_CHANNEL_MESSAGE    = 4
 FLAG_EPHEMERAL          = 64
 
 RATING_LABELS = {
-    "money":  "💰 금전운",
-    "love":   "💕 애정운",
-    "work":   "💼 일운",
-    "health": "🍎 건강운",
+    "money":  "💰 금전",
+    "love":   "💕 애정",
+    "work":   "💼 업무",
+    "health": "🍎 건강",
 }
 
 def _get_public_key():
@@ -75,9 +75,14 @@ def build_embed(sign_kr, data):
         if lucky_item_ko:
             lines.append(f"🍀 {lucky_item_ko}")
 
-    fields = [
-        {"name": "순위", "value": f"{emoji} {rank}위", "inline": False},  # ⭐ inline 해제 → 아래 별점과 줄바꿈 분리
-    ]
+    # fields = [
+    #     {"name": "순위", "value": f"{emoji} {rank}위", "inline": False},  # ⭐ inline 해제 → 아래 별점과 줄바꿈 분리
+    # ]
+
+    # description에 순위와 별점을 직접 구성
+    lines.append("")
+    lines.append(f"순위: {emoji} {rank}위")
+
 
     # ⭐ 주말 별점 (평일엔 ratings 필드 자체가 없으므로 자동 스킵)
     ratings = sign.get("ratings") or {}
@@ -85,7 +90,8 @@ def build_embed(sign_kr, data):
         if key in ratings:
             count = ratings[key]
             stars = "⭐" * count if count > 0 else "—"
-            fields.append({"name": label, "value": stars, "inline": False})  # ⭐ 세로 배치
+            lines.append(f"{label}: {stars}")
+            # fields.append({"name": label, "value": stars, "inline": False})  # ⭐ 세로 배치
 
     return {
         "title": f"✨ 오늘의 {sign_kr} 운세 ✨",
