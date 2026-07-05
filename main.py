@@ -5,6 +5,7 @@ import os
 import json
 import re
 import time
+import glob
 from datetime import datetime, timedelta
 
 DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
@@ -421,18 +422,66 @@ def save_json(detail, mode, date_iso):
     print(f"✅ 저장 완료: data/horoscope_{date_iso}.json, data/latest.json")
     return payload
 
+def load_previous_ranks(today_iso: str) -> dict:
+    """오늘 이전의 가장 최근 데이터에서 {별자리: 순위} 맵을 로드.
+
+    파일이 없으면(첫 실행 등) 빈 dict 반환 → 변동 표시 없이 동작.
+    """
+    candidates = sorted(glob.glob("data/horoscope_*.json"))
+    prev_path = None
+    for path in reversed(candidates):
+        date_part = os.path.basename(path)[10:20]  # horoscope_YYYY-MM-DD.json
+        if date_part < today_iso:
+            prev_path = path
+            break
+
+    if not prev_path:
+        print("ℹ️  이전 데이터 없음 — 순위 변동 표시 생략")
+        return {}
+
+    try:
+        with open(prev_path, encoding="utf-8") as f:
+            prev = json.load(f)
+        prev_ranks = {
+            sign_kr: entry.get("rank", 0)
+            for sign_kr, entry in prev.get("signs", {}).items()
+            if entry.get("rank")
+        }
+        print(f"📊 순위 비교 기준: {os.path.basename(prev_path)}")
+        return prev_ranks
+    except Exception as e:
+        print(f"⚠️  이전 데이터 로드 실패 ({e}) — 변동 표시 생략")
+        return {}
 
 # ─────────────────────────────────────────────
 # 디스코드 알림 (생략 — 이전과 동일)
 # ─────────────────────────────────────────────
-def format_ranking_message(detail):
+def format_ranking_message(detail, prev_ranks=None):
     if not detail:
         return "❌ 데이터를 찾지 못했습니다."
+
+    prev_ranks = prev_ranks or {}
     sorted_signs = sorted(detail.values(), key=lambda x: x["rank"])
     lines = []
+
     for s in sorted_signs:
-        emoji = {1: "🥇", 2: "🥈", 3: "🥉"}.get(s["rank"], "🔹")
-        lines.append(f"{emoji} **{s['rank']}위**: {s['sign_kr']}")
+        rank = s["rank"]
+        sign_kr = s["sign_kr"]
+        emoji = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, "🔹")
+
+        # 순위 변동 계산 (숫자가 작아지면 상승)
+        change = ""
+        if sign_kr in prev_ranks:
+            diff = prev_ranks[sign_kr] - rank
+            if diff > 0:
+                change = f" (▲{diff})"
+            elif diff < 0:
+                change = f" (▼{abs(diff)})"
+            else:
+                change = " (-)"
+
+        lines.append(f"{emoji} **{rank}위**: {sign_kr}{change}")
+
     return "\n".join(lines)
 
 
@@ -493,7 +542,11 @@ if __name__ == "__main__":
         detail = enrich_with_translation(detail, mode, translator)
 
         save_json(detail, mode, date_iso)
-        send_discord(format_ranking_message(detail), mode)
+#       send_discord(format_ranking_message(detail), mode)
+        
+        # ⭐ 오늘 이전의 가장 최근 순위와 비교
+        prev_ranks = load_previous_ranks(date_iso)
+        send_discord(format_ranking_message(detail, prev_ranks), mode)
 
     except Exception as e:
         send_discord(f"❌ 크롤링 중 에러 발생 ({mode}): {e}", mode)
