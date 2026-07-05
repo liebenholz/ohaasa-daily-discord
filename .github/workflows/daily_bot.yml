@@ -30,6 +30,31 @@ jobs:
           DEEPL_API_KEY:   ${{ secrets.DEEPL_API_KEY }}
         run: python main.py
 
+      # ⭐ 이메일 테스트 리포트
+      - name: Build email report
+        if: always()
+        run: python test/build_email_report.py
+        continue-on-error: true
+
+      - name: Get date for subject
+        if: always()
+        id: dt
+        run: echo "today=$(TZ=Asia/Seoul date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Send email report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "[오하아사] 일일 테스트 리포트 ${{ steps.dt.outputs.today }}"
+          to: ${{ secrets.MAIL_TO }}
+          from: Ohaasa Bot <${{ secrets.MAIL_USERNAME }}>
+          html_body: file://test/email_report.html
+        continue-on-error: true
+
       - name: Commit & push horoscope JSON
         run: |
           git config user.name  "github-actions[bot]"
