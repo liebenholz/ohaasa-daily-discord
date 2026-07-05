@@ -21,7 +21,7 @@
 │       ├── daily_bot.yml          # 매일 크롤 + 커밋&푸시 (GitHub Actions)
 │       └── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
 ├── api
-│   └── interactions.py            # Discord Interactions 엔드포인트 (Vercel)
+│   └── index.py                   # Discord Interactions 엔드포인트 (Vercel)
 ├── data
 │   ├── horoscope_YYYY-MM-DD.json  # 날짜별 운세 데이터 (자동 생성)
 │   └── latest.json                # 가장 최신 운세 (봇이 조회)
@@ -77,6 +77,7 @@
 └─────────────────────────────────────────────────────────┘
 │ - GitHub Secrets의 DISCORD_WEBHOOK URL 호출
 │ - 디스코드 서버로 HTTP POST 요청 발송
+│ - 어제 파일(data/horoscope_YYYY-MM-DD.json)과 순위 비교
 ▼
 ┌─────────────────────────────────────────────────────────┐
   7. 최종 목적지 (Discord App)
@@ -98,14 +99,14 @@
 │ - 3초 응답 데드라인
 ▼
 ┌─────────────────────────────────────────────────────────┐
-  3. 서명 검증 & 데이터 조회 (Vercel - api/interactions.py)
+  3. 서명 검증 & 데이터 조회 (Vercel - api/index.py)
 └─────────────────────────────────────────────────────────┘
 │ - X-Signature-Ed25519 헤더 검증 (PyNaCl)
 │ - PING(type=1) 응답 처리
 │ - raw.githubusercontent.com에서 latest.json fetch (CDN 캐싱)
 ▼
 ┌─────────────────────────────────────────────────────────┐
-  4. 임베드 응답 (Vercel - api/interactions.py)
+  4. 임베드 응답 (Vercel - api/index.py)
 └─────────────────────────────────────────────────────────┘
 │ - 순위, 한국어 본문, 행운의 색/아이템으로 임베드 구성
 │ - 평일/주말 모드에 따라 필드 자동 분기
@@ -197,12 +198,13 @@
 
 ## 버전
 
-- 1.2.0(260703)
+- 1.2.0(260704)
   - 세부 운세 조회 슬래시 커맨드 추가 (`/오하아사 별자리:...`)
   - 일본어 원문 + DeepL 한국어 번역 병행 저장
   - 평일/주말 스키마 분기 (평일은 행운 아이템만, 주말은 행운 색/아이템 모두)
   - Vercel Interactions 엔드포인트 구축
   - 날짜별 JSON 아카이빙 (data/horoscope_YYYY-MM-DD.json)
+  - 전날과 순위 비교 후 등락 표기
 - 1.1.0(260402)
   - 평일/주말 기준 사이트 판별
   - 당일 별자리 순위 불러오기
