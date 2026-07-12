@@ -1,5 +1,7 @@
 # 아침별점 일일 알림 & 세부 운세 봇
 
+![](/src/ohaasa-bot-01.png)
+
 ![](/src/ohaasa-bot-02.png)
 
 ## 설명
