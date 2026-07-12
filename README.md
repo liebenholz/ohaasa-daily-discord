@@ -79,6 +79,7 @@
   6. 순위 메시지 전송 (main.py - Requests)
 └─────────────────────────────────────────────────────────┘
 │ - GitHub Secrets의 DISCORD_WEBHOOK URL 호출
+│ - E-mail로 순위 및 번역 정보가 포함된 테스트 리포트 전달
 │ - 디스코드 서버로 HTTP POST 요청 발송
 │ - 어제 파일(data/horoscope_YYYY-MM-DD.json)과 순위 비교
 ▼
