@@ -1,9 +1,5 @@
 # 아침별점 일일 알림 & 세부 운세 봇
 
-![](/src/ohaasa-discord-bot-01.png)
-
-![](/src/ohaasa-discord-bot-02.png)
-
 ## 설명
 
 오하아사 순위와 세부 운세를 매일 아침 알려주는 디스코드 봇입니다.
@@ -18,8 +14,10 @@
   일본어 원문을 한국어로 번역한 세부 운세와 행운의 아이템/색깔을 응답합니다.
 
 - **[디스코드 서버에 봇 설정 링크](https://discord.com/oauth2/authorize?client_id=1485396590519910473&permissions=2147502080&integration_type=0&scope=bot+applications.commands)**
-  
 
+![](/src/ohaasa-discord-bot-01.png)
+
+![](/src/ohaasa-discord-bot-02.png)
 
 ## 파일 구조
 ```
