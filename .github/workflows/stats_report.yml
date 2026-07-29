@@ -1,0 +1,39 @@
+name: Monthly & Quarterly Stats Report
+
+on:
+  schedule:
+    # 매월 28~31일 KST 18:00 (UTC 09:00) — 말일 판정은 stats.py가 수행
+    - cron: '0 9 28-31 * *'
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: '리포트 종류 (수동 실행 시)'
+        type: choice
+        options: [month, quarter]
+        default: month
+      target:
+        description: '대상 기간 (예: 2026-07 또는 2026-Q3)'
+        type: string
+        required: true
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+
+      - name: Run stats report (auto — 말일 판정)
+        if: github.event_name == 'schedule'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python stats.py
+
+      - name: Run stats report (manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python stats.py ${{ inputs.kind }} ${{ inputs.target }}
