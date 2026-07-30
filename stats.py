@@ -137,6 +137,7 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
     webhook = os.environ.get("TEST_DISCORD_WEBHOOK")
     payload = {
         "username": "아침별점 요정",
+        "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
         "embeds": [{
             "title": title,
             "description": description,
