@@ -29,11 +29,13 @@ jobs:
       - name: Run stats report (auto — 말일 판정)
         if: github.event_name == 'schedule'
         env:
+          TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python stats.py
 
       - name: Run stats report (manual)
         if: github.event_name == 'workflow_dispatch'
         env:
+          TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: python stats.py ${{ inputs.kind }} ${{ inputs.target }}
