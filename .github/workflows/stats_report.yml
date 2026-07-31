@@ -2,9 +2,9 @@ name: Monthly & Quarterly Stats Report
 
 on:
   schedule:
-    # 매월 28~31일 KST 15:00 (UTC 6:00) — 말일 판정은 stats.py가 수행
-    # test 진행: KST 09:01
-    - cron: '1 0 28-31 * *'
+    # 매월 28~31일 KST 12:23 (UTC 03:23) — 말일 판정은 stats.py가 수행
+  
+    - cron: '23 03 28-31 * *'
   workflow_dispatch:
     inputs:
       kind:
