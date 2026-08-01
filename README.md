@@ -25,6 +25,7 @@
 │   └── workflows
 │       ├── daily_bot.yml          # 매일 크롤 + 커밋&푸시 (GitHub Actions)
 │       └── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
+│       └── stats_report.yml       # 월간 리포트
 ├── api
 │   └── index.py                   # Discord Interactions 엔드포인트 (Vercel)
 ├── data
@@ -33,6 +34,7 @@
 ├── main.py                        # 크롤링 + 번역 + JSON 저장 + Webhook 전송
 ├── register_commands.py           # 슬래시 커맨드 1회성 등록 스크립트
 ├── requirements.txt
+├── stats.py                       # 월간/연간 리포트 생성 + Webhook 전송
 └── vercel.json                    # Vercel 배포 리전 설정
 ```
 
