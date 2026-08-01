@@ -1,4 +1,4 @@
-name: Monthly & Quarterly Stats Report
+name: Monthly Stats Report
 
 on:
   schedule:
@@ -7,11 +7,6 @@ on:
     - cron: '23 03 28-31 * *'
   workflow_dispatch:
     inputs:
-      kind:
-        description: '리포트 종류 (수동 실행 시)'
-        type: choice
-        options: [month, quarter]
-        default: month
       target:
         description: '대상 기간 (예: 2026-07 또는 2026-Q3)'
         type: string
@@ -39,4 +34,4 @@ jobs:
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: python stats.py ${{ inputs.kind }} ${{ inputs.target }}
+        run: python stats.py ${{ inputs.target }}

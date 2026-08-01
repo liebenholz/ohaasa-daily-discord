@@ -28,11 +28,11 @@ def month_range(y: int, m: int) -> tuple[str, str]:
     return f"{y:04d}-{m:02d}-01", f"{y:04d}-{m:02d}-{last_day:02d}"
 
 
-def quarter_range(y: int, q: int) -> tuple[str, str]:
-    start_m = 3 * (q - 1) + 1
-    end_m = start_m + 2
-    last_day = calendar.monthrange(y, end_m)[1]
-    return f"{y:04d}-{start_m:02d}-01", f"{y:04d}-{end_m:02d}-{last_day:02d}"
+# def quarter_range(y: int, q: int) -> tuple[str, str]:
+#     start_m = 3 * (q - 1) + 1
+#     end_m = start_m + 2
+#     last_day = calendar.monthrange(y, end_m)[1]
+#     return f"{y:04d}-{start_m:02d}-01", f"{y:04d}-{end_m:02d}-{last_day:02d}"
 
 
 # ─────────────────────────────────────────────
@@ -107,7 +107,7 @@ def pick_awards(stats: dict) -> dict:
 # ─────────────────────────────────────────────
 # 메시지 조립 및 전송
 # ─────────────────────────────────────────────
-def build_description(stats: dict, awards: dict, kind: str) -> str:
+def build_description(stats: dict, awards: dict) -> str: # , kind: str
     lines = ["**📈 평균 순위**"]
     ranked = sorted(stats.items(), key=lambda kv: kv[1]["avg"])
     for i, (sign, s) in enumerate(ranked, start=1):
@@ -115,7 +115,7 @@ def build_description(stats: dict, awards: dict, kind: str) -> str:
         lines.append(f"{medal} {i}위 {sign} (평균 {s['avg']}위)")
 
     lines.append("")
-    lines.append("**🏆 이달의 수상**" if kind == "month" else "**🏆 분기의 수상**")
+    lines.append("**🏆 이달의 수상**") # if kind == "month" else "**🏆 분기의 수상**")
 
     mf_sign, mf = awards["most_first"]
     lines.append(f"👑 최다 1위: {mf_sign} ({mf['first']}회)")
@@ -152,7 +152,7 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
     print(f"📤 전송: {r.status_code}")
 
 
-def run_report(kind: str, start_iso: str, end_iso: str, label: str):
+def run_report(start_iso: str, end_iso: str, label: str): # kind: str, 
     days = load_period(start_iso, end_iso)
     if not days:
         print(f"❌ {label} 기간에 데이터가 없습니다 ({start_iso} ~ {end_iso})")
@@ -160,44 +160,33 @@ def run_report(kind: str, start_iso: str, end_iso: str, label: str):
 
     stats = aggregate(days)
     awards = pick_awards(stats)
-    title = f"📊 {label} 오하아사 {'월간' if kind == 'month' else '분기'} 리포트"
+    # title = f"📊 {label} 오하아사 {'월간' if kind == 'month' else '분기'} 리포트"
+    title = f"📊 {label} 오하아사 월간 리포트"
+
     send_report(title, build_description(stats, awards, kind),
                 len(days), f"{start_iso} ~ {end_iso}")
-
 
 def main():
     args = sys.argv[1:]
 
-    # ── 수동 모드
-    if len(args) == 2:
-        kind, target = args
-        if kind == "month":
-            y, m = map(int, target.split("-"))
-            s, e = month_range(y, m)
-            run_report("month", s, e, f"{y}년 {m}월")
-        elif kind == "quarter":
-            y, q = target.split("-Q")
-            y, q = int(y), int(q)
-            s, e = quarter_range(y, q)
-            run_report("quarter", s, e, f"{y}년 {q}분기")
-        else:
-            print("사용법: python stats.py [month 2026-07 | quarter 2026-Q3]")
-            sys.exit(1)
+    # ── 수동 모드: python stats.py 2026-07
+    if len(args) == 1:
+        y, m = map(int, args[0].split("-"))
+        s, e = month_range(y, m)
+        run_report(s, e, f"{y}년 {m}월")
         return
+    if args:
+        print("사용법: python stats.py [2026-07]")
+        sys.exit(1)
 
-    # ── 자동 모드: 오늘(KST)이 말일인지 검사
+    # ── 자동 모드: 오늘(KST)이 말일이면 이번 달 리포트
     today = kst_today()
     if (today + timedelta(days=1)).day != 1:
         print(f"오늘({today})은 말일이 아님 — 리포트 생략")
         return
 
     s, e = month_range(today.year, today.month)
-    run_report("month", s, e, f"{today.year}년 {today.month}월")
-
-    if today.month in (3, 6, 9, 12):
-        q = today.month // 3
-        s, e = quarter_range(today.year, q)
-        run_report("quarter", s, e, f"{today.year}년 {q}분기")
+    run_report(s, e, f"{today.year}년 {today.month}월")
 
 
 if __name__ == "__main__":
