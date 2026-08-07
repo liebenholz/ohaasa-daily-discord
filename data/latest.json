@@ -2,7 +2,7 @@
   "date": "2026-08-07",
   "mode": "weekday",
   "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
-  "updated_at_kst": "2026-08-07T07:41:20",
+  "updated_at_kst": "2026-08-07T09:59:50",
   "signs": {
     "물고기자리": {
       "rank": 1,
@@ -51,7 +51,7 @@
       "sign_key": "virgo",
       "content_ja": "役に立つ情報が手に入る時 気になった事はとことん調べて",
       "lucky_item_ja": "水色",
-      "content_ko": "유용한 정보를 얻을 때, 궁금한 점은 끝까지 파헤쳐서 알아보고",
+      "content_ko": "유용한 정보를 얻을 때 궁금한 점은 끝까지 파헤쳐서 알아보고",
       "lucky_item_ko": "하늘색"
     },
     "염소자리": {
@@ -71,7 +71,7 @@
       "sign_key": "aquarius",
       "content_ja": "物事が良い方向に進む日 早め早めの行動を心掛けて",
       "lucky_item_ja": "アンクレット",
-      "content_ko": "일이 좋은 방향으로 흘러가는 날, 한발 앞서 행동하도록 유의하세요",
+      "content_ko": "일이 좋은 방향으로 흘러가는 날, 가능한 한 빨리 행동하도록 노력하세요.",
       "lucky_item_ko": "발찌"
     },
     "황소자리": {
