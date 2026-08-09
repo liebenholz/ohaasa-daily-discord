@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
+import sys
 import requests
 import os
 import json
@@ -9,6 +10,10 @@ import glob
 from datetime import datetime, timedelta
 
 DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
+
+# 데이터 신선도 폴링
+MAX_RETRIES = 12          # 최대 12회
+RETRY_INTERVAL = 300      # 5분 간격 → 최대 약 1시간 대기
 
 # ─────────────────────────────────────────────
 # 사이트별 매핑 설정 (이전 코드 동일, 생략 없이 유지)
@@ -34,6 +39,8 @@ SIGN_CONFIG = {
             "aquarius":    {"kr": "물병자리",   "ja": "みずがめ座"},
             "pisces":      {"kr": "물고기자리", "ja": "うお座"},
         },
+        # <div class="oa_horoscope_date"><h4><span>8</span>月<span>7</span>日（金）の運勢
+        "date_selectors": ["div.oa_horoscope_date h4", "div.oa_horoscope_date"],
     },
     "weekend": {
         "url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
@@ -55,6 +62,8 @@ SIGN_CONFIG = {
             "mizugame": {"kr": "물병자리",   "ja": "みずがめ座"},
             "uo":       {"kr": "물고기자리", "ja": "うお座"},
         },
+        # <p class="ttl-area">7月4日（Sat）の占い</p>
+        "date_selectors": ["div.rank-area p.ttl-area", "p.ttl-area"],
     },
 }
 
@@ -186,6 +195,84 @@ def fetch_html(url, selector, timeout=20000):
         finally:
             browser.close()
 
+def _normalize_digits(text: str) -> str:
+    """전각 숫자 → 반각"""
+    return text.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
+
+def extract_page_date(html: str, mode: str):
+    """모드별 날짜 영역에서 (월, 일) 추출. 못 찾으면 None
+
+    평일은 숫자가 <span>으로 분리되어 텍스트 추출 시 공백이 끼므로
+    (예: '8 月 7 日') 정규식에 \\s* 를 허용한다.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    for sel in SIGN_CONFIG[mode].get("date_selectors", []):
+        el = soup.select_one(sel)
+        if not el:
+            continue
+        text = _normalize_digits(el.get_text(" ", strip=True))
+        m = re.search(r"(\d{1,2})\s*月\s*(\d{1,2})\s*日", text)
+        if m:
+            return int(m.group(1)), int(m.group(2))
+    return None
+
+def is_fresh(html: str, mode: str, prev_contents: dict) -> bool:
+    """1차: 모드별 날짜 영역 검사 / 2차: 어제 본문 비교 / 판별 불가 시 통과"""
+    jst = datetime.utcnow() + timedelta(hours=9)
+
+    # ── 1차: 날짜 영역 (평일·주말 모두 확인된 셀렉터로 여기서 판별됨)
+    page_date = extract_page_date(html, mode)
+    if page_date is not None:
+        fresh = page_date == (jst.month, jst.day)
+        print(f"🔎 날짜 영역 검사: 페이지={page_date[0]}月{page_date[1]}日 "
+              f"→ {'오늘' if fresh else '갱신 전'}")
+        return fresh
+
+    # ── 2차: 내용 비교 폴백 (사이트 개편 대비 보험)
+    if not prev_contents:
+        print("🔎 판별 불가 (날짜 영역·이전 데이터 없음) — 검사 생략, 통과")
+        return True
+    detail = parse_horoscope_detail(html, mode)
+    if not detail:
+        return False  # 파싱 실패 → 재시도
+    same = sum(1 for k, v in detail.items()
+               if v.get("content_ja") and v.get("content_ja") == prev_contents.get(k))
+    fresh = same < max(1, len(detail) // 2)
+    print(f"🔎 내용 비교: 어제와 동일 {same}/{len(detail)}건 "
+          f"→ {'오늘' if fresh else '갱신 전'}")
+    return fresh
+
+
+def fetch_with_wait(url: str, selector: str, mode: str, today_iso: str) -> str:
+    """오늘 데이터가 올라올 때까지 폴링하며 크롤"""
+    prev_contents = load_previous_contents(today_iso)
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        html = fetch_html(url, selector)
+        if is_fresh(html, mode, prev_contents):
+            print(f"✅ 오늘 데이터 확인 (시도 {attempt}회)")
+            return html
+        print(f"⏳ 아직 갱신 전 (시도 {attempt}/{MAX_RETRIES}) — {RETRY_INTERVAL}초 대기")
+        if attempt < MAX_RETRIES:
+            time.sleep(RETRY_INTERVAL)
+
+    raise RuntimeError(
+        f"제한 시간({MAX_RETRIES * RETRY_INTERVAL // 60}분) 내에 오늘 데이터가 갱신되지 않음"
+    )
+
+def load_previous_contents(today_iso: str) -> dict:
+    """오늘 이전 가장 최근 파일의 {별자리: content_ja} (2차 폴백용)"""
+    for path in sorted(glob.glob("data/horoscope_*.json"), reverse=True):
+        d = os.path.basename(path)[10:20]
+        if d < today_iso:
+            try:
+                with open(path, encoding="utf-8") as f:
+                    prev = json.load(f)
+                return {k: v.get("content_ja", "")
+                        for k, v in prev.get("signs", {}).items()}
+            except Exception:
+                return {}
+    return {}
 
 def normalize_text(text):
     if not text:
@@ -193,7 +280,6 @@ def normalize_text(text):
     text = re.sub(r"\s+", " ", text)
     text = text.replace("\u3000", " ")
     return text.strip()
-
 
 def first_text(item, selectors):
     for sel in selectors:
@@ -523,9 +609,14 @@ if __name__ == "__main__":
     mode = "weekday" if today.weekday() < 5 else "weekend"
     date_iso = get_date_iso()
 
+    # 멱등성 가드 — 오늘 이미 처리됐으면 조용히 종료
+    if os.path.exists(f"data/horoscope_{date_iso}.json"):
+        print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
+        sys.exit(0)
+
     try:
         config = SIGN_CONFIG[mode]
-        html = fetch_html(config["url"], config["selector"])
+        html = fetch_html(config["url"], config["selector"], mode, date_iso)
 
         # 디버그 덤프 (유지 권장)
         os.makedirs("debug", exist_ok=True)
