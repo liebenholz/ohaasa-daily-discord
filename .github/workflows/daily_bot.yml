@@ -2,9 +2,17 @@ name: Ohaasa Daily Bot
 
 on:
   schedule:
-    # 한국 시간 기준 평일 오전 6시 1분 실행 (UTC 기준 21시 01분)
-    - cron: '01 21 * * *'
+    # 다중 cron (방법 A) — 가장 먼저 잡히는 실행이 처리, 나머지는 가드로 즉시 종료
+    - cron: '41 20 * * *'   # KST 05:40 (조기 시작 — 폴링이 갱신 대기)
+    - cron: '01 21 * * *'   # KST 06:01 (예비 1)
+    - cron: '21 21 * * *'   # KST 06:21 (예비 2)
+    - cron: '41 21 * * *'   # KST 06:41 (예비 3)
+    - cron: '01 22 * * *'   # KST 07:01 (예비 4)
   workflow_dispatch: # 수동으로 실행해볼 수 있는 버튼
+
+concurrency:
+  group: daily-bot
+  cancel-in-progress: false   # 동시 실행 방지 — 앞선 실행 종료까지 대기
 
 permissions:
   contents: write   # 자동 커밋&푸시에 필요
@@ -12,6 +20,7 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 90        # 폴링 최대 1시간 + 여유
     steps:
       - uses: actions/checkout@v4
 

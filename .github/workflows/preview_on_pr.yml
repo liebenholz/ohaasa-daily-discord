@@ -28,4 +28,4 @@ jobs:
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DEEPL_API_KEY:       ${{ secrets.DEEPL_API_KEY }}
-        run: python tests/preview_webhook.py --live
+        run: python test/preview_webhook.py --live
