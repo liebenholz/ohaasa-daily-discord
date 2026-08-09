@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-07",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-08-07T09:59:50",
+  "signs": {
+    "물고기자리": {
+      "rank": 1,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "恋に全力投球できそう♥ 好きな人に話しかけてみては？ 楽しい時間を過ごせるよ",
+      "lucky_item_ja": "ラム肉",
+      "content_ko": "사랑에 전력을 다할 수 있을 것 같아♥ 마음에 드는 사람에게 말을 걸어보는 건 어때? 즐거운 시간을 보낼 수 있을 거야",
+      "lucky_item_ko": "양고기"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "豊かな発想力で注目度ＵＰ 遠慮せずにどんどん発表を",
+      "lucky_item_ja": "マリネ",
+      "content_ko": "풍부한 창의력으로 주목도 UP, 주저하지 말고 적극적으로 발표하세요",
+      "lucky_item_ko": "마리네"
+    },
+    "게자리": {
+      "rank": 3,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "あなたの努力が報われるよ 支えてくれた人達に感謝しよう",
+      "lucky_item_ja": "キーホルダー",
+      "content_ko": "당신의 노력이 결실을 맺을 거예요. 도와준 분들께 감사합시다.",
+      "lucky_item_ko": "열쇠고리"
+    },
+    "양자리": {
+      "rank": 4,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "掘り出し物を大発見♪ 誰かと一緒に出かけるとＧＯＯＤ",
+      "lucky_item_ja": "ソーセージ",
+      "content_ko": "보물 같은 물건을 대발견♪ 누군가와 함께 나가면 GOOD",
+      "lucky_item_ko": "소시지"
+    },
+    "처녀자리": {
+      "rank": 5,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "役に立つ情報が手に入る時 気になった事はとことん調べて",
+      "lucky_item_ja": "水色",
+      "content_ko": "유용한 정보를 얻을 때 궁금한 점은 끝까지 파헤쳐서 알아보고",
+      "lucky_item_ko": "하늘색"
+    },
+    "염소자리": {
+      "rank": 6,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "新しい趣味が見つかる予感 インターネットを活用しよう",
+      "lucky_item_ja": "靴下",
+      "content_ko": "새로운 취미를 발견할 것 같은 예감, 인터넷을 활용해 보자",
+      "lucky_item_ko": "양말"
+    },
+    "물병자리": {
+      "rank": 7,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "物事が良い方向に進む日 早め早めの行動を心掛けて",
+      "lucky_item_ja": "アンクレット",
+      "content_ko": "일이 좋은 방향으로 흘러가는 날, 가능한 한 빨리 행동하도록 노력하세요.",
+      "lucky_item_ko": "발찌"
+    },
+    "황소자리": {
+      "rank": 8,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "片想いの恋が一歩前進 積極的なアプローチが◎",
+      "lucky_item_ja": "財布",
+      "content_ko": "짝사랑이 한 걸음 진전, 적극적인 구애가 ◎",
+      "lucky_item_ko": "지갑"
+    },
+    "천칭자리": {
+      "rank": 9,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "周囲を振り回してしまいそう 相手の気持ちを考えて動いてね",
+      "lucky_item_ja": "とろろそば",
+      "content_ko": "주변 사람들을 곤란하게 만들 것 같아. 상대방의 마음을 생각하며 행동해 줘.",
+      "lucky_item_ko": "토로로 소바"
+    },
+    "사수자리": {
+      "rank": 10,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "買い物で失敗するかも 選ぶときは品質を重視しよう",
+      "lucky_item_ja": "すき焼き",
+      "content_ko": "쇼핑에서 실수할 수도 있으니, 고를 때는 품질을 중시하자",
+      "lucky_item_ko": "스키야키"
+    },
+    "쌍둥이자리": {
+      "rank": 11,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "ハメを外して悪目立ち 気を引き締めて過ごすように",
+      "lucky_item_ja": "しゃぶしゃぶ",
+      "content_ko": "도를 넘어서 눈에 띄지 않도록, 마음을 다잡고 지내도록 하자",
+      "lucky_item_ko": "샤브샤브"
+    },
+    "사자자리": {
+      "rank": 12,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "ルーズになってしまうかも… 決められた事はしっかり守って 手を抜かずに取り組んで",
+      "lucky_item_ja": "ポロシャツ",
+      "content_ko": "대충 해버릴지도 몰라… 정해진 일은 꼼꼼히 지키고, 소홀히 하지 말고 임해",
+      "lucky_item_ko": "폴로 셔츠"
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-05",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-08-05T07:06:04",
+  "signs": {
+    "전갈자리": {
+      "rank": 1,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "あなたのアイデアが実現しそう 周りがフォローしてくれるよ 積極的な姿勢がＧＯＯＤ",
+      "lucky_item_ja": "文庫本",
+      "content_ko": "당신의 아이디어가 실현될 것 같아요. 주변 사람들이 도와줄 거예요. 적극적인 자세가 GOOD",
+      "lucky_item_ko": "문고판"
+    },
+    "게자리": {
+      "rank": 2,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "将来に役立つ情報をＧＥＴ 仲間の話に耳を傾けて",
+      "lucky_item_ja": "タン塩",
+      "content_ko": "미래에 도움이 될 정보를 얻자. 동료들의 이야기에 귀를 기울이자.",
+      "lucky_item_ko": "소금에 절인 혀"
+    },
+    "양자리": {
+      "rank": 3,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "良い買い物ができてハッピー！ きょうは衝動買いをしてもＯＫ",
+      "lucky_item_ja": "白色",
+      "content_ko": "만족스러운 쇼핑을 해서 기분이 좋아요! 오늘은 충동구매를 해도 괜찮아요",
+      "lucky_item_ko": "흰색"
+    },
+    "물고기자리": {
+      "rank": 4,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "勝負事に強くなりそう アクティブに突き進んでね",
+      "lucky_item_ja": "カメラ",
+      "content_ko": "경쟁에서 강해질 것 같아. 적극적으로 나아가렴.",
+      "lucky_item_ko": "카메라"
+    },
+    "황소자리": {
+      "rank": 5,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "レジャーの計画にツキあり 海外旅行も検討してみて",
+      "lucky_item_ja": "緑色",
+      "content_ko": "여가 계획에 행운이 따를 것, 해외 여행도 고려해 보세요",
+      "lucky_item_ko": "초록색"
+    },
+    "염소자리": {
+      "rank": 6,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "皆からの評価がＵＰ♪ 丁寧な取り組みが好印象",
+      "lucky_item_ja": "ポスター",
+      "content_ko": "모두의 평가가 올라갔어요♪ 꼼꼼한 태도가 좋은 인상을 남겼습니다",
+      "lucky_item_ko": "포스터"
+    },
+    "처녀자리": {
+      "rank": 7,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "作業が順調に進む予感 メリハリのある行動が◎",
+      "lucky_item_ja": "ラザニア",
+      "content_ko": "일이 순조롭게 진행될 것 같은 예감. 절제된 행동이 ◎",
+      "lucky_item_ko": "라자냐"
+    },
+    "천칭자리": {
+      "rank": 8,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "周囲から指摘を受けクヨクヨ アドバイスは素直に聞いて",
+      "lucky_item_ja": "便せん",
+      "content_ko": "주변에서 지적을 받고 속상해하지 말고, 조언은 겸허히 받아들여라",
+      "lucky_item_ko": "편지지"
+    },
+    "쌍둥이자리": {
+      "rank": 9,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "人の意見に左右されそう 自分の意思をしっかり持ってね",
+      "lucky_item_ja": "オレンジ色",
+      "content_ko": "다른 사람의 의견에 휘둘릴 것 같으니, 자신의 의지를 확고히 가져야 해",
+      "lucky_item_ko": "주황색"
+    },
+    "사자자리": {
+      "rank": 10,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "友達との間でトラブル発生 お金の貸し借りはＮＧ",
+      "lucky_item_ja": "スマートフォン",
+      "content_ko": "친구 사이에서 문제가 발생했다. 돈을 빌려주거나 빌리는 것은 금물이다.",
+      "lucky_item_ko": "스마트폰"
+    },
+    "사수자리": {
+      "rank": 11,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "困難にぶつかってしまうかも… 慎重に対応すれば大丈夫",
+      "lucky_item_ja": "ジーンズ",
+      "content_ko": "어려움에 부딪힐지도 모르겠네요… 신중하게 대처하면 괜찮을 거예요",
+      "lucky_item_ko": "청바지"
+    },
+    "물병자리": {
+      "rank": 12,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "物事がうまく進まない日 一人で解決しようとせず 信頼できる人に頼ってね",
+      "lucky_item_ja": "ちらし寿司",
+      "content_ko": "일이 잘 풀리지 않는 날, 혼자서 해결하려고 하지 말고 믿을 수 있는 사람에게 의지해 봐",
+      "lucky_item_ko": "치라시즈시"
+    }
+  }
+}

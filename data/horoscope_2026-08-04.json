@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-04",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-08-04T07:01:35",
+  "signs": {
+    "양자리": {
+      "rank": 1,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "目標達成に近づける予感 これまでの努力も報われるよ 前向きな気持ちが幸運のカギ",
+      "lucky_item_ja": "雑誌",
+      "content_ko": "목표 달성에 한 걸음 더 가까워질 것 같은 예감. 그동안의 노력도 결실을 맺을 거야. 긍정적인 마음가짐이 행운의 열쇠야.",
+      "lucky_item_ko": "잡지"
+    },
+    "물고기자리": {
+      "rank": 2,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "恋愛運が高まりそう♥ お誘いがあれば参加してね",
+      "lucky_item_ja": "サラダ",
+      "content_ko": "연애 운이 좋아질 것 같아♥ 초대받으면 꼭 참여해 줘",
+      "lucky_item_ko": "샐러드"
+    },
+    "게자리": {
+      "rank": 3,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "想像以上の成果をＧＥＴ 直感を信じて動いてみて",
+      "lucky_item_ja": "電卓",
+      "content_ko": "상상 이상의 성과를 얻었다. 직감을 믿고 행동해 보자.",
+      "lucky_item_ko": "계산기"
+    },
+    "전갈자리": {
+      "rank": 4,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "作業がスムーズに進むよ リーダー役を引き受けると◎",
+      "lucky_item_ja": "ピザ",
+      "content_ko": "작업이 순조롭게 진행될 거야. 리더 역할을 맡으면 ◎",
+      "lucky_item_ko": "피자"
+    },
+    "처녀자리": {
+      "rank": 5,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "ステキな出会いがあるかも 連絡先の交換を忘れずに",
+      "lucky_item_ja": "白色",
+      "content_ko": "멋진 만남이 있을지도 몰라요. 연락처를 교환하는 것을 잊지 마세요.",
+      "lucky_item_ko": "흰색"
+    },
+    "황소자리": {
+      "rank": 6,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "レベルアップのチャンス到来 発想の転換にツキあり",
+      "lucky_item_ja": "ダンベル",
+      "content_ko": "레벨업의 기회가 찾아왔다. 사고방식의 전환에 행운이 따른다.",
+      "lucky_item_ko": "덤벨"
+    },
+    "염소자리": {
+      "rank": 7,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "ちょっとした工夫で節約に 昼食をお弁当にすると良いかも",
+      "lucky_item_ja": "大根",
+      "content_ko": "약간의 요령만으로도 절약할 수 있어요. 점심을 도시락으로 챙겨 먹는 게 좋을지도 몰라요.",
+      "lucky_item_ko": "무"
+    },
+    "쌍둥이자리": {
+      "rank": 8,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "あなたらしさを大切にしたい日 背伸びせずありのままでいよう",
+      "lucky_item_ja": "切手",
+      "content_ko": "나다움을 소중히 여기고 싶은 날, 무리하지 말고 있는 그대로 지내자",
+      "lucky_item_ko": "우표"
+    },
+    "물병자리": {
+      "rank": 9,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "集中力が足りずミスが増加 きょうは慎重に動くように",
+      "lucky_item_ja": "自転車",
+      "content_ko": "집중력이 부족해 실수가 늘어났다. 오늘은 신중하게 행동하도록 하자.",
+      "lucky_item_ko": "자전거"
+    },
+    "천칭자리": {
+      "rank": 10,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "自己主張が激しくなりそう 今は我慢して過ごして",
+      "lucky_item_ja": "卵",
+      "content_ko": "자기주장이 강해질 것 같으니, 당분간은 참으며 지내자",
+      "lucky_item_ko": "달걀"
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "予期せぬアクシデントにアタフタ 焦らず冷静な対応を心掛けてね",
+      "lucky_item_ja": "鉢植え",
+      "content_ko": "예기치 못한 사고에 당황하지 말고, 침착하게 대처하도록 노력해 주세요",
+      "lucky_item_ko": "화분"
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "トラブルを起こしてしまうかも 隠し事をするのはＮＧ 誠意を持った行動を",
+      "lucky_item_ja": "納豆",
+      "content_ko": "문제가 생길 수도 있습니다. 비밀을 숨기는 것은 금물입니다. 성의를 다해 행동하십시오.",
+      "lucky_item_ko": "낫토"
+    }
+  }
+}

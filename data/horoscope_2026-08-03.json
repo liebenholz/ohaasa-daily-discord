@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-03",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-08-03T06:48:48",
+  "signs": {
+    "천칭자리": {
+      "rank": 1,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "幸運を引き寄せられる時 不可能な事も可能になりそう 何にでもチャレンジしてみてね",
+      "lucky_item_ja": "白玉あずき",
+      "content_ko": "행운이 찾아올 때, 불가능해 보이던 일도 가능해 보일 것 같아. 무엇이든 한번 도전해 봐.",
+      "lucky_item_ko": "찹쌀 경단 팥"
+    },
+    "사자자리": {
+      "rank": 2,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "モテモテな１日になる予感♥ デートに誘われるかも！？",
+      "lucky_item_ja": "マグカップ",
+      "content_ko": "오늘은 인기 만점인 하루가 될 것 같은 예감♥ 데이트 신청이 들어올지도 몰라!?",
+      "lucky_item_ko": "머그컵"
+    },
+    "양자리": {
+      "rank": 3,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "エネルギーがみなぎり活発に どんな状況も乗り越えられるよ",
+      "lucky_item_ja": "こげ茶色",
+      "content_ko": "에너지가 넘쳐나고 활기차게, 어떤 상황도 이겨낼 수 있어",
+      "lucky_item_ko": "짙은 갈색"
+    },
+    "사수자리": {
+      "rank": 4,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "夢に向かって一歩前進！ やりたい事を周囲に話すと◎",
+      "lucky_item_ja": "あんパン",
+      "content_ko": "꿈을 향해 한 걸음 나아가자! 하고 싶은 일을 주변 사람들에게 이야기하면 ◎",
+      "lucky_item_ko": "팥빵"
+    },
+    "쌍둥이자리": {
+      "rank": 5,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "今後に役立つ情報をＧＥＴ たくさんの人と関わると良いかも",
+      "lucky_item_ja": "赤色",
+      "content_ko": "앞으로 도움이 될 정보를 얻으세요. 많은 사람들과 교류하는 것도 좋을 것 같아요.",
+      "lucky_item_ko": "빨간색"
+    },
+    "물병자리": {
+      "rank": 6,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "周りに好印象を残せるよ 何事にも一生懸命に取り組んで",
+      "lucky_item_ja": "抹茶アイス",
+      "content_ko": "주변 사람들에게 좋은 인상을 남길 수 있어. 어떤 일이든 열심히 임하면",
+      "lucky_item_ko": "말차 아이스크림"
+    },
+    "전갈자리": {
+      "rank": 7,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "良いスタートを切れる日 新しい事に挑戦しよう",
+      "lucky_item_ja": "ペンケース",
+      "content_ko": "좋은 시작을 할 수 있는 날, 새로운 일에 도전해 보자",
+      "lucky_item_ko": "필통"
+    },
+    "게자리": {
+      "rank": 8,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "うれしいハプニングに期待大 流れに身を任せてみてね",
+      "lucky_item_ja": "ハンバーグ",
+      "content_ko": "기쁜 뜻밖의 일이 일어날지 기대가 커요. 흐름에 몸을 맡겨 보세요.",
+      "lucky_item_ko": "함박스테이크"
+    },
+    "물고기자리": {
+      "rank": 9,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "あやしいお誘いに注意が必要 いつも以上に慎重になって",
+      "lucky_item_ja": "チーズ",
+      "content_ko": "수상한 권유에 주의가 필요합니다. 평소보다 더 신중하게 행동하세요.",
+      "lucky_item_ko": "치즈"
+    },
+    "처녀자리": {
+      "rank": 10,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "衝動買いで後悔するかも 必要な物だけを買うようにしてね",
+      "lucky_item_ja": "フォトフレーム",
+      "content_ko": "충동구매로 후회할 수도 있으니, 꼭 필요한 것만 사도록 해",
+      "lucky_item_ko": "사진 액자"
+    },
+    "염소자리": {
+      "rank": 11,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "消極的になり恋愛運ダウン… 今は現状維持でも大丈夫",
+      "lucky_item_ja": "ナポリタン",
+      "content_ko": "소극적으로 변해 연애운이 떨어진다… 지금은 현상 유지를 해도 괜찮다",
+      "lucky_item_ko": "나폴리탄"
+    },
+    "황소자리": {
+      "rank": 12,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "やるべき事が増えアタフタ 焦らず落ち着いて動いて あまり無理をしないように",
+      "lucky_item_ja": "リュックサック",
+      "content_ko": "해야 할 일이 늘어나 허둥지둥하지만, 서두르지 말고 침착하게 행동하며 너무 무리하지 않도록 하자",
+      "lucky_item_ko": "배낭"
+    }
+  }
+}

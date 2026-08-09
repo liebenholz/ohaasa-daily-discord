@@ -1,0 +1,128 @@
+{
+  "date": "2026-08-06",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-08-06T07:07:16",
+  "signs": {
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "特技をいかして大活躍 良い結果が得られるかも 謙虚な姿勢が幸運のカギ",
+      "lucky_item_ja": "アクセサリー",
+      "content_ko": "특기를 살려 대활약, 좋은 결과를 얻을 수도 있다. 겸손한 태도가 행운의 열쇠다.",
+      "lucky_item_ko": "액세서리"
+    },
+    "물고기자리": {
+      "rank": 2,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "うれしいハプニングに期待大 集まりには積極的に参加を",
+      "lucky_item_ja": "リゾット",
+      "content_ko": "기쁜 뜻밖의 일이 일어날지 기대가 크다. 모임에는 적극적으로 참여하자.",
+      "lucky_item_ko": "리조또"
+    },
+    "전갈자리": {
+      "rank": 3,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "くじ運が好調で当たりやすい時 懸賞に応募するとＧＯＯＤ",
+      "lucky_item_ja": "ペンケース",
+      "content_ko": "행운이 따르고 당첨될 가능성이 높은 시기, 경품 행사에 응모하면 GOOD",
+      "lucky_item_ko": "필통"
+    },
+    "처녀자리": {
+      "rank": 4,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "バツグンの集中力を発揮！ 予想以上の成果を残せるよ",
+      "lucky_item_ja": "エビ",
+      "content_ko": "탁월한 집중력을 발휘해 보자! 예상 이상의 성과를 거둘 수 있을 거야",
+      "lucky_item_ko": "새우"
+    },
+    "염소자리": {
+      "rank": 5,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "買い物を楽しめる日♪ 友達を誘って出かけよう",
+      "lucky_item_ja": "バインダー",
+      "content_ko": "쇼핑을 즐길 수 있는 날♪ 친구를 불러서 함께 나가보자",
+      "lucky_item_ko": "바인더"
+    },
+    "양자리": {
+      "rank": 6,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "耳寄りな情報をＧＥＴ アンテナを張り巡らせてね",
+      "lucky_item_ja": "きしめん",
+      "content_ko": "유익한 정보를 놓치지 말고, 항상 주위를 잘 살피세요",
+      "lucky_item_ko": "키시멘"
+    },
+    "황소자리": {
+      "rank": 7,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "悩みを抱えてモヤモヤ あまり深刻にならないように",
+      "lucky_item_ja": "干し貝柱",
+      "content_ko": "고민 때문에 마음이 답답하지만, 너무 심각하게 생각하지 않도록",
+      "lucky_item_ko": "말린 가리비"
+    },
+    "쌍둥이자리": {
+      "rank": 8,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "魅力が輝き注目度ＵＰ♥ 好きな人にアプローチしてね",
+      "lucky_item_ja": "自転車",
+      "content_ko": "매력이 빛나며 주목도 UP♥ 마음에 드는 사람에게 다가가 보세요",
+      "lucky_item_ko": "자전거"
+    },
+    "사자자리": {
+      "rank": 9,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "感情の起伏が激しくなりそう 体を動かして気分転換を",
+      "lucky_item_ja": "天ぷら",
+      "content_ko": "감정의 기복이 심해질 것 같으니, 몸을 움직여 기분 전환을 해보세요.",
+      "lucky_item_ko": "튀김"
+    },
+    "천칭자리": {
+      "rank": 10,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "不満をため込んでイライラ 人の悪口を言うのはＮＧ",
+      "lucky_item_ja": "紫色",
+      "content_ko": "불만을 쌓아두면 짜증이 나고, 남을 험담하는 것은 금물입니다.",
+      "lucky_item_ko": "보라색"
+    },
+    "물병자리": {
+      "rank": 11,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "約束の時間に遅刻するかも スケジュール確認はしっかりと",
+      "lucky_item_ja": "のどあめ",
+      "content_ko": "약속 시간에 늦을 수도 있으니 일정을 꼼꼼히 확인하세요",
+      "lucky_item_ko": "목캔디"
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "周りからの評価ダウン 何でも人任せになっていない？ できる限り自力で取り組んで",
+      "lucky_item_ja": "赤色",
+      "content_ko": "주변의 평가가 떨어지고 있다. 모든 일을 남에게 떠넘기고 있지는 않은가? 가능한 한 스스로 해결해 나가자.",
+      "lucky_item_ko": "빨간색"
+    }
+  }
+}

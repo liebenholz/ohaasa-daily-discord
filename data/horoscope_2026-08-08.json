@@ -1,0 +1,224 @@
+{
+  "date": "2026-08-08",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-08-08T06:32:24",
+  "signs": {
+    "양자리": {
+      "rank": 4,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "待ちに待ったうれしい知らせが届きそう。体質に合った健康法も見つかる時。長年悩んでいた症状が改善しそう。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "冷やし中華",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "오랫동안 기다려온 기쁜 소식이 들려올 것 같습니다. 자신의 체질에 맞는 건강법도 찾을 수 있는 시기입니다. 오랫동안 고민해 온 증상이 호전될 것 같습니다.",
+      "lucky_item_ko": "차가운 중화면",
+      "lucky_color_ko": "베이지"
+    },
+    "황소자리": {
+      "rank": 6,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "仕事に没頭するあまり、周囲の流れを無視しがち。孤立する懸念が。定期的に「今がどういう状況か」をチェックすること。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "集合写真",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 2,
+        "health": 4
+      },
+      "content_ko": "일에 너무 몰두하다 보니 주변 상황을 간과하기 쉽다. 고립될 우려가 있다. 정기적으로 ‘현재 상황이 어떤지’를 확인해야 한다.",
+      "lucky_item_ko": "단체 사진",
+      "lucky_color_ko": "주황색"
+    },
+    "쌍둥이자리": {
+      "rank": 3,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "未経験の作業で高評価を得られる暗示。臆せず全力投球で挑むように。恋愛はファーストコンタクトが重要です。",
+      "lucky_color_ja": "青",
+      "lucky_item_ja": "招待券",
+      "ratings": {
+        "money": 3,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "경험이 없는 일에서도 좋은 평가를 받을 수 있다는 징조입니다. 주저하지 말고 전력을 다해 도전하세요. 연애에서는 첫 만남이 중요합니다.",
+      "lucky_item_ko": "초대권",
+      "lucky_color_ko": "파랑"
+    },
+    "게자리": {
+      "rank": 8,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "勢いで物事を進めても失敗するだけ。事前の根回しが大事。行動はしっかりと足元を固めてからスタート。",
+      "lucky_color_ja": "茶色",
+      "lucky_item_ja": "ドライブスルー",
+      "ratings": {
+        "money": 2,
+        "love": 4,
+        "work": 2,
+        "health": 4
+      },
+      "content_ko": "기세에 휩쓸려 일을 진행하면 실패할 뿐이다. 사전 준비가 중요하다. 행동은 발판을 탄탄히 다진 뒤에 시작해야 한다.",
+      "lucky_item_ko": "드라이브스루",
+      "lucky_color_ko": "갈색"
+    },
+    "사자자리": {
+      "rank": 5,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "クチコミで得た美容情報はかなり有益。ピンときたら試してみて。予想以上の効果で、満足のいく結果を得られそう。",
+      "lucky_color_ja": "グレー",
+      "lucky_item_ja": "チケット",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "입소문을 통해 얻은 뷰티 정보는 꽤 유용해요. 마음에 든다면 한번 시도해 보세요. 예상 이상의 효과를 볼 수 있어 만족스러운 결과를 얻을 수 있을 것 같아요.",
+      "lucky_item_ko": "티켓",
+      "lucky_color_ko": "회색"
+    },
+    "처녀자리": {
+      "rank": 11,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "ケンカしてもプライドが邪魔して素直になれない時。いつまでも関係を修復できません。あなたから先に折れて。",
+      "lucky_color_ja": "ネイビー",
+      "lucky_item_ja": "ミュージカル",
+      "ratings": {
+        "money": 1,
+        "love": 2,
+        "work": 3,
+        "health": 3
+      },
+      "content_ko": "다퉜을 때 자존심 때문에 솔직해지지 못할 때. 그러면 언제까지나 관계를 회복할 수 없습니다. 당신이 먼저 양보하세요.",
+      "lucky_item_ko": "뮤지컬",
+      "lucky_color_ko": "네이비"
+    },
+    "천칭자리": {
+      "rank": 2,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "ホームセンターでの買い物にツキあり。レアな品や欲しかったモノをお得にゲット。笑顔あふれる一日に。",
+      "lucky_color_ja": "紫",
+      "lucky_item_ja": "ビーチサンダル",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 4,
+        "health": 5
+      },
+      "content_ko": "홈센터에서 쇼핑할 때 행운이 따릅니다. 희귀한 상품이나 갖고 싶었던 물건을 알뜰하게 구매하세요. 미소가 넘치는 하루가 되길 바랍니다.",
+      "lucky_item_ko": "비치 샌들",
+      "lucky_color_ko": "보라색"
+    },
+    "전갈자리": {
+      "rank": 10,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "隠していたことが発覚する恐れ。それによって最後に大きな代償を払うことに。秘密は作らないように。",
+      "lucky_color_ja": "黒",
+      "lucky_item_ja": "美術館",
+      "ratings": {
+        "money": 3,
+        "love": 2,
+        "work": 3,
+        "health": 2
+      },
+      "content_ko": "숨겨왔던 사실이 드러날 우려가 있습니다. 그로 인해 결국 큰 대가를 치르게 될 것입니다. 비밀을 만들지 않도록 하십시오.",
+      "lucky_item_ko": "미술관",
+      "lucky_color_ko": "검정"
+    },
+    "사수자리": {
+      "rank": 7,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "暑さから肌の露出が増えそう。日焼けで炎症を起こすなど肌トラブルの可能性大。お出かけ前と後のケアをしっかりと。",
+      "lucky_color_ja": "ピンク",
+      "lucky_item_ja": "ドライフルーツ",
+      "ratings": {
+        "money": 3,
+        "love": 4,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "더위로 인해 피부를 드러내는 옷차림이 늘어날 것 같습니다. 햇볕에 타서 염증이 생기는 등 피부 트러블이 발생할 가능성이 큽니다. 외출 전후로 꼼꼼히 관리해 주세요.",
+      "lucky_item_ko": "말린 과일",
+      "lucky_color_ko": "분홍색"
+    },
+    "염소자리": {
+      "rank": 9,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "毒舌になりがち。相手を追い詰めるだけでなく、逆恨みされる心配も。正しい指摘でも言葉遣いには気を付けて。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "スニーカー",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 2,
+        "health": 2
+      },
+      "content_ko": "독설을 내뱉기 쉽다. 상대를 궁지로 몰아넣을 뿐만 아니라, 오히려 원망을 살 우려도 있다. 올바른 지적이라 해도 말투에는 주의해야 한다.",
+      "lucky_item_ko": "운동화",
+      "lucky_color_ko": "하늘색"
+    },
+    "물병자리": {
+      "rank": 1,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "心惹かれるイベントに参加すると良さそう。ドキドキワクワクの体験ができて、充実した時間に。おひとり様は運命の出会いあり。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "ソフトクリーム",
+      "ratings": {
+        "money": 5,
+        "love": 5,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "마음을 사로잡는 이벤트에 참가해 보는 게 좋을 것 같아요. 두근두근 설레는 경험을 하며 알찬 시간을 보낼 수 있을 거예요. 혼자 오신 분께는 운명적인 만남이 기다리고 있을지도 몰라요.",
+      "lucky_item_ko": "소프트 아이스크림",
+      "lucky_color_ko": "노란색"
+    },
+    "물고기자리": {
+      "rank": 12,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "高額商品の即買いはＮＧ。購入後に安く売っている店が見つかり後悔しそう。きょうはリサーチだけにとどめて。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "イベント",
+      "ratings": {
+        "money": 1,
+        "love": 3,
+        "work": 2,
+        "health": 2
+      },
+      "content_ko": "고가 상품을 바로 구매하는 건 금물이다. 구매한 후에 더 싸게 파는 가게를 발견하면 후회할 것 같다. 오늘은 조사만 해두자.",
+      "lucky_item_ko": "행사",
+      "lucky_color_ko": "실버"
+    }
+  }
+}
