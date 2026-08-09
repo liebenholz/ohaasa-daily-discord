@@ -616,7 +616,7 @@ if __name__ == "__main__":
 
     try:
         config = SIGN_CONFIG[mode]
-        html = fetch_html(config["url"], config["selector"], mode, date_iso)
+        html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
 
         # 디버그 덤프 (유지 권장)
         os.makedirs("debug", exist_ok=True)
