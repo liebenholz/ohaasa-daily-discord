@@ -134,7 +134,7 @@ def build_description(stats: dict, awards: dict) -> str: # , kind: str
 
 
 def send_report(title: str, description: str, day_count: int, period_label: str):
-    webhook = os.environ.get("DISCORD_WEBHOOK")
+    webhook = os.environ.get("TEST_DISCORD_WEBHOOK")
     payload = {
         "username": "아침별점 요정",
         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
@@ -163,7 +163,7 @@ def run_report(start_iso: str, end_iso: str, label: str): # kind: str,
     # title = f"📊 {label} 오하아사 {'월간' if kind == 'month' else '분기'} 리포트"
     title = f"📊 {label} 오하아사 월간 리포트"
 
-    send_report(title, build_description(stats, awards, kind),
+    send_report(title, build_description(stats, awards), # ,kind
                 len(days), f"{start_iso} ~ {end_iso}")
 
 def main():
