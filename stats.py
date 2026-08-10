@@ -134,7 +134,7 @@ def build_description(stats: dict, awards: dict) -> str: # , kind: str
 
 
 def send_report(title: str, description: str, day_count: int, period_label: str):
-    webhook = os.environ.get("TEST_DISCORD_WEBHOOK")
+    webhook = os.environ.get("DISCORD_WEBHOOK")
     payload = {
         "username": "아침별점 요정",
         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
