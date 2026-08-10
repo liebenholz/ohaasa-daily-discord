@@ -1,28 +1,20 @@
 {
-  "date": "2026-06-30",
-  "mode": "weekday",
-  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "date": "2026-03-14",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
   "updated_at_kst": "2026-08-11T06:21:38",
   "backfilled": true,
   "signs": {
-    "게자리": {
+    "물고기자리": {
       "rank": 1,
-      "sign_kr": "게자리",
-      "sign_ja": "かに座",
-      "sign_key": "cancer",
-      "content_ja": "",
-      "content_ko": ""
-    },
-    "전갈자리": {
-      "rank": 2,
-      "sign_kr": "전갈자리",
-      "sign_ja": "さそり座",
-      "sign_key": "scorpio",
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
       "content_ja": "",
       "content_ko": ""
     },
     "처녀자리": {
-      "rank": 3,
+      "rank": 2,
       "sign_kr": "처녀자리",
       "sign_ja": "おとめ座",
       "sign_key": "virgo",
@@ -30,7 +22,7 @@
       "content_ko": ""
     },
     "황소자리": {
-      "rank": 4,
+      "rank": 3,
       "sign_kr": "황소자리",
       "sign_ja": "おうし座",
       "sign_key": "taurus",
@@ -38,10 +30,18 @@
       "content_ko": ""
     },
     "염소자리": {
-      "rank": 5,
+      "rank": 4,
       "sign_kr": "염소자리",
       "sign_ja": "やぎ座",
       "sign_key": "capricorn",
+      "content_ja": "",
+      "content_ko": ""
+    },
+    "전갈자리": {
+      "rank": 5,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
       "content_ja": "",
       "content_ko": ""
     },
@@ -53,19 +53,19 @@
       "content_ja": "",
       "content_ko": ""
     },
-    "물고기자리": {
+    "사수자리": {
       "rank": 7,
-      "sign_kr": "물고기자리",
-      "sign_ja": "うお座",
-      "sign_key": "pisces",
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
       "content_ja": "",
       "content_ko": ""
     },
-    "양자리": {
+    "게자리": {
       "rank": 8,
-      "sign_kr": "양자리",
-      "sign_ja": "おひつじ座",
-      "sign_key": "aries",
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
       "content_ja": "",
       "content_ko": ""
     },
@@ -77,27 +77,27 @@
       "content_ja": "",
       "content_ko": ""
     },
-    "천칭자리": {
-      "rank": 10,
-      "sign_kr": "천칭자리",
-      "sign_ja": "てんびん座",
-      "sign_key": "libra",
-      "content_ja": "",
-      "content_ko": ""
-    },
     "사자자리": {
-      "rank": 11,
+      "rank": 10,
       "sign_kr": "사자자리",
       "sign_ja": "しし座",
       "sign_key": "leo",
       "content_ja": "",
       "content_ko": ""
     },
-    "사수자리": {
+    "양자리": {
+      "rank": 11,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "",
+      "content_ko": ""
+    },
+    "천칭자리": {
       "rank": 12,
-      "sign_kr": "사수자리",
-      "sign_ja": "いて座",
-      "sign_key": "sagittarius",
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
       "content_ja": "",
       "content_ko": ""
     }
