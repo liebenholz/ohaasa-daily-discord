@@ -1,28 +1,12 @@
 {
-  "date": "2026-06-29",
-  "mode": "weekday",
-  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "date": "2026-01-04",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
   "updated_at_kst": "2026-08-11T06:21:38",
   "backfilled": true,
   "signs": {
-    "물병자리": {
-      "rank": 1,
-      "sign_kr": "물병자리",
-      "sign_ja": "みずがめ座",
-      "sign_key": "aquarius",
-      "content_ja": "",
-      "content_ko": ""
-    },
-    "게자리": {
-      "rank": 2,
-      "sign_kr": "게자리",
-      "sign_ja": "かに座",
-      "sign_key": "cancer",
-      "content_ja": "",
-      "content_ko": ""
-    },
     "전갈자리": {
-      "rank": 3,
+      "rank": 1,
       "sign_kr": "전갈자리",
       "sign_ja": "さそり座",
       "sign_key": "scorpio",
@@ -30,34 +14,50 @@
       "content_ko": ""
     },
     "처녀자리": {
-      "rank": 4,
+      "rank": 2,
       "sign_kr": "처녀자리",
       "sign_ja": "おとめ座",
       "sign_key": "virgo",
       "content_ja": "",
       "content_ko": ""
     },
-    "황소자리": {
-      "rank": 5,
-      "sign_kr": "황소자리",
-      "sign_ja": "おうし座",
-      "sign_key": "taurus",
+    "물고기자리": {
+      "rank": 3,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "",
+      "content_ko": ""
+    },
+    "염소자리": {
+      "rank": 4,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
       "content_ja": "",
       "content_ko": ""
     },
     "쌍둥이자리": {
-      "rank": 6,
+      "rank": 5,
       "sign_kr": "쌍둥이자리",
       "sign_ja": "ふたご座",
       "sign_key": "gemini",
       "content_ja": "",
       "content_ko": ""
     },
-    "천칭자리": {
+    "황소자리": {
+      "rank": 6,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "",
+      "content_ko": ""
+    },
+    "게자리": {
       "rank": 7,
-      "sign_kr": "천칭자리",
-      "sign_ja": "てんびん座",
-      "sign_key": "libra",
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
       "content_ja": "",
       "content_ko": ""
     },
@@ -85,19 +85,19 @@
       "content_ja": "",
       "content_ko": ""
     },
-    "물고기자리": {
+    "물병자리": {
       "rank": 11,
-      "sign_kr": "물고기자리",
-      "sign_ja": "うお座",
-      "sign_key": "pisces",
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
       "content_ja": "",
       "content_ko": ""
     },
-    "염소자리": {
+    "천칭자리": {
       "rank": 12,
-      "sign_kr": "염소자리",
-      "sign_ja": "やぎ座",
-      "sign_key": "capricorn",
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
       "content_ja": "",
       "content_ko": ""
     }
