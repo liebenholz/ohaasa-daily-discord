@@ -593,7 +593,7 @@ def send_discord(message, mode):
     }
 
     # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
-    webhook_url = os.environ.get("DISCORD_WEBHOOK")
+    webhook_url = os.environ.get("TEST_DISCORD_WEBHOOK")
     if webhook_url:
         payload = {
             "username": "아침별점 요정",
