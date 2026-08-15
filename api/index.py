@@ -5,6 +5,8 @@ from http.server import BaseHTTPRequestHandler
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
+from channels import get_channel, set_channel, remove_channel
+
 # ─────────────────────────────────────────────
 # 환경변수 (lazy — import 시점에 읽지 않음)
 # ─────────────────────────────────────────────
@@ -22,6 +24,8 @@ LATEST_URL = (
 TYPE_PONG            = 1
 TYPE_CHANNEL_MESSAGE = 4
 FLAG_EPHEMERAL       = 64
+
+PERMISSION_MANAGE_GUILD = 0x20
 
 RATING_LABELS = {
     "money":  "💰 금전",
@@ -102,6 +106,58 @@ def build_embed(sign_kr, data):
     }
 
 
+def ephemeral(content):
+    return {
+        "type": TYPE_CHANNEL_MESSAGE,
+        "data": {"content": content, "flags": FLAG_EPHEMERAL},
+    }
+
+
+def has_manage_guild(member: dict) -> bool:
+    try:
+        return (int(member.get("permissions", "0")) & PERMISSION_MANAGE_GUILD) != 0
+    except (TypeError, ValueError):
+        return False
+
+
+# ─────────────────────────────────────────────
+# 알림 채널 설정 커맨드 (/오하아사설정)
+# ─────────────────────────────────────────────
+def handle_settings_command(interaction):
+    guild_id = interaction.get("guild_id")
+    if not guild_id:
+        return ephemeral("이 명령어는 서버 안에서만 사용할 수 있습니다.")
+
+    member = interaction.get("member") or {}
+    if not has_manage_guild(member):
+        return ephemeral("이 명령어는 '서버 관리' 권한이 있는 사용자만 사용할 수 있습니다.")
+
+    sub = ((interaction.get("data") or {}).get("options") or [{}])[0]
+    sub_name = sub.get("name")
+
+    if sub_name == "알림설정":
+        sub_opts = {o["name"]: o["value"] for o in sub.get("options", [])}
+        channel_id = sub_opts.get("채널")
+        if not channel_id:
+            return ephemeral("채널을 지정해주세요.")
+        set_channel(guild_id, channel_id)
+        return ephemeral(f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다.")
+
+    if sub_name == "알림확인":
+        channel_id = get_channel(guild_id)
+        if not channel_id:
+            return ephemeral("아직 알림 채널이 설정되지 않았습니다.")
+        return ephemeral(f"현재 알림 채널: <#{channel_id}>")
+
+    if sub_name == "알림해제":
+        if not get_channel(guild_id):
+            return ephemeral("설정된 알림 채널이 없습니다.")
+        remove_channel(guild_id)
+        return ephemeral("✅ 알림 채널 설정이 해제되었습니다.")
+
+    return ephemeral("지원하지 않는 하위 명령입니다.")
+
+
 # ─────────────────────────────────────────────
 # 인터랙션 처리
 # ─────────────────────────────────────────────
@@ -111,7 +167,9 @@ def handle_interaction(interaction):
 
     if interaction.get("type") == 2:
         data = interaction.get("data", {})
-        if data.get("name") == "오하아사":
+        name = data.get("name")
+
+        if name == "오하아사":
             opts = {o["name"]: o["value"] for o in data.get("options", [])}
             sign_kr = opts.get("별자리")
             try:
@@ -125,6 +183,12 @@ def handle_interaction(interaction):
                     "type": TYPE_CHANNEL_MESSAGE,
                     "data": {"content": f"❌ 운세 조회 실패: {e}", "flags": FLAG_EPHEMERAL},
                 }
+
+        if name == "오하아사설정":
+            try:
+                return handle_settings_command(interaction)
+            except Exception as e:
+                return ephemeral(f"❌ 설정 처리 실패: {e}")
 
     return {
         "type": TYPE_CHANNEL_MESSAGE,
