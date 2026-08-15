@@ -615,17 +615,17 @@ if __name__ == "__main__":
     mode = "weekday" if today.weekday() < 5 else "weekend"
     date_iso = get_date_iso()
 
-    # 멱등성 가드 — 오늘 이미 처리됐으면 조용히 종료
-    if os.path.exists(f"data/horoscope_{date_iso}.json"):
-        print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
-        sys.exit(0)
-
     # 수동 실행(workflow_dispatch)이면 가드 우회
     is_manual = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 
     if not is_manual and os.path.exists(f"data/horoscope_{date_iso}.json"):
         print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
         sys.exit(0)
+
+    # # 멱등성 가드 — 오늘 이미 처리됐으면 조용히 종료
+    # if os.path.exists(f"data/horoscope_{date_iso}.json"):
+    #     print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
+    #     sys.exit(0)
 
     try:
         config = SIGN_CONFIG[mode]
