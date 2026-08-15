@@ -27,6 +27,9 @@ jobs:
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
         run: python stats.py
 
       - name: Run stats report (manual)
@@ -34,4 +37,7 @@ jobs:
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
         run: python stats.py ${{ inputs.target }}

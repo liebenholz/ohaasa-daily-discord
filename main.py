@@ -9,6 +9,8 @@ import time
 import glob
 from datetime import datetime, timedelta
 
+from notifier import send_embed_to_channels
+
 DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
 
 # 데이터 신선도 폴링
@@ -582,10 +584,6 @@ def get_date_iso():
 
 
 def send_discord(message, mode):
-    webhook_url = os.environ.get("DISCORD_WEBHOOK")
-    if not webhook_url:
-        print(message)
-        return
     embed = {
         "title": "✨ **오늘의 오하아사 별자리 순위** ✨\n",
         "description": message,
@@ -593,12 +591,20 @@ def send_discord(message, mode):
         "url": "https://x.com/Hi_Ohaasa",
         "footer": {"text": f"{get_date_display()} · {'평일' if mode == 'weekday' else '주말'} 기준"},
     }
-    payload = {
-        "username": "아침별점 요정",
-        "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-        "embeds": [embed],
-    }
-    requests.post(webhook_url, json=payload, timeout=10)
+
+    # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
+    webhook_url = os.environ.get("DISCORD_WEBHOOK")
+    if webhook_url:
+        payload = {
+            "username": "아침별점 요정",
+            "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
+            "embeds": [embed],
+        }
+        requests.post(webhook_url, json=payload, timeout=10)
+    else:
+        print(message)
+
+    send_embed_to_channels(embed)
 
 
 # ─────────────────────────────────────────────

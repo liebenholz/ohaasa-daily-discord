@@ -35,8 +35,11 @@ jobs:
 
       - name: Run crawler & post to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          DEEPL_API_KEY:   ${{ secrets.DEEPL_API_KEY }}
+          DISCORD_WEBHOOK:  ${{ secrets.DISCORD_WEBHOOK }}
+          DEEPL_API_KEY:    ${{ secrets.DEEPL_API_KEY }}
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
         run: python main.py
 
       # ⭐ 이메일 테스트 리포트

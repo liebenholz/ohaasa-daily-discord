@@ -15,6 +15,8 @@ import requests
 from collections import defaultdict
 from datetime import datetime, timedelta, date
 
+from notifier import send_embed_to_channels
+
 
 # ─────────────────────────────────────────────
 # 기간 계산
@@ -134,22 +136,27 @@ def build_description(stats: dict, awards: dict) -> str: # , kind: str
 
 
 def send_report(title: str, description: str, day_count: int, period_label: str):
-    webhook = os.environ.get("DISCORD_WEBHOOK")
-    payload = {
-        "username": "아침별점 요정",
-        "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-        "embeds": [{
-            "title": title,
-            "description": description,
-            "color": 0xF1C40F,
-            "footer": {"text": f"{period_label} · 집계 {day_count}일"},
-        }],
+    embed = {
+        "title": title,
+        "description": description,
+        "color": 0xF1C40F,
+        "footer": {"text": f"{period_label} · 집계 {day_count}일"},
     }
-    if not webhook:
-        print(json.dumps(payload, ensure_ascii=False, indent=2))
-        return
-    r = requests.post(webhook, json=payload, timeout=10)
-    print(f"📤 전송: {r.status_code}")
+
+    # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
+    webhook = os.environ.get("DISCORD_WEBHOOK")
+    if webhook:
+        payload = {
+            "username": "아침별점 요정",
+            "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
+            "embeds": [embed],
+        }
+        r = requests.post(webhook, json=payload, timeout=10)
+        print(f"📤 웹훅 전송: {r.status_code}")
+    else:
+        print(json.dumps(embed, ensure_ascii=False, indent=2))
+
+    send_embed_to_channels(embed)
 
 
 def run_report(start_iso: str, end_iso: str, label: str): # kind: str, 

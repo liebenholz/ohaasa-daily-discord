@@ -51,12 +51,15 @@ def remove_channel(guild_id) -> None:
     _upstash("srem", INDEX_KEY, guild_id)
 
 
-def list_channels() -> list[str]:
-    """등록된 모든 채널 id 목록 (발송 모듈용)."""
+def list_channel_entries() -> list[tuple[str, str]]:
+    """등록된 [(guild_id, channel_id), ...] 전체 목록 (발송 모듈용).
+
+    발송 실패 시 guild_id로 등록을 해제해야 하므로 guild_id를 함께 반환한다.
+    """
     guild_ids = _upstash("smembers", INDEX_KEY) or []
-    channels = []
+    entries = []
     for guild_id in guild_ids:
         channel_id = get_channel(guild_id)
         if channel_id:
-            channels.append(channel_id)
-    return channels
+            entries.append((guild_id, channel_id))
+    return entries
