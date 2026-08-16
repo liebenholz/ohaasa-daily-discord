@@ -2,12 +2,17 @@
 
 main.py / stats.py가 공용으로 사용한다. 채널 하나가 실패해도 나머지는 계속
 발송하며, 등록된 채널이 없거나 필요한 환경변수가 없으면 조용히 종료한다.
+
+⚠️ 발송 경로는 읽기 전용(SMEMBERS + GET)만 수행한다. 등록 해제는 오직
+/오하아사설정 알림해제 커맨드(api/index.py)를 통해서만 일어나야 하며,
+발송 실패(403/429/timeout 등)를 이유로 이 모듈이 스스로 등록을 지우지
+않는다 — 일시적 실패로 정상 등록이 사라지는 사고를 막기 위함.
 """
 import os
 import time
 import requests
 
-from channels import list_channel_entries, remove_channel
+from channels import list_channel_entries
 
 DISCORD_API = "https://discord.com/api/v10"
 SEND_DELAY = 0.5  # 채널 간 순차 발송 간격 (rate limit 대비)
@@ -41,8 +46,8 @@ def send_embed_to_channels(embed: dict, entries: list[tuple[str, str]] | None = 
                 timeout=10,
             )
             if r.status_code == 403:
-                print(f"⚠️  채널 {channel_id} 권한 없음(403) — 등록 해제")
-                remove_channel(guild_id)
+                print(f"⚠️  채널 {channel_id} 권한 없음(403) — 로그만 남기고 등록은 유지 "
+                      f"(해제는 /오하아사설정 알림해제로만)")
             elif r.status_code >= 400:
                 print(f"⚠️  채널 {channel_id} 발송 실패: {r.status_code} {r.text[:200]}")
             else:
