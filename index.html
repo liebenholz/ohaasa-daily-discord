@@ -275,6 +275,9 @@
   .sec-head{ max-width:52ch; margin-bottom:3rem; }
   .sec-head h2{ font-size:clamp(1.85rem,3.4vw,2.6rem); margin:.4rem 0 .8rem; }
   .sec-head p{ color:var(--ink-soft); font-size:1.08rem; }
+  @media (min-width:900px){
+    .sec-head p.fit-line{ white-space:nowrap; }
+  }
 
   .features{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; }
   .card{
@@ -455,7 +458,7 @@
     <div class="sec-head reveal">
       <span class="eyebrow">무엇을 해주나요?</span>
       <h2>아침 루틴이 하나 늘어요</h2>
-      <p>커피 내리며 오늘의 순위를 확인하고, 한 달이 지나면 나만의 별자리 결산을 받아보세요.</p>
+      <p class="fit-line">커피 내리며 오늘의 순위를 확인하고, 한 달이 지나면 나만의 별자리 결산을 받아보세요.</p>
     </div>
     <div class="features">
       <div class="card reveal">
