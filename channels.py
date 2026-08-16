@@ -21,15 +21,27 @@ def _upstash_token():
     return os.environ["UPSTASH_REDIS_REST_TOKEN"]
 
 
-def _upstash(*parts) -> object:
-    url = "/".join([_upstash_url(), *[str(p) for p in parts]])
-    r = requests.get(
-        url,
-        headers={"Authorization": f"Bearer {_upstash_token()}"},
+def _upstash(*command) -> object:
+    """단일 명령을 POST 본문(JSON 배열)으로 전송한다.
+
+    URL 경로에 명령을 실어 보내는 방식(GET /sadd/key/member)은 콜론 등
+    특수문자가 낀 키에서 게이트웨이/프록시 단에서 오동작할 여지가 있어,
+    Upstash가 권장하는 POST + JSON 배열 방식으로 우회한다.
+    """
+    r = requests.post(
+        _upstash_url(),
+        headers={
+            "Authorization": f"Bearer {_upstash_token()}",
+            "Content-Type": "application/json",
+        },
+        json=[str(p) for p in command],
         timeout=5,
     )
     r.raise_for_status()
-    return r.json().get("result")
+    body = r.json()
+    if isinstance(body, dict) and body.get("error"):
+        raise RuntimeError(f"Upstash 오류: {body['error']} (명령: {command})")
+    return body.get("result")
 
 
 def _channel_key(guild_id) -> str:

@@ -141,13 +141,16 @@ def handle_settings_command(interaction):
         if not channel_id:
             return ephemeral("채널을 지정해주세요.")
         set_channel(guild_id, channel_id)
-        return ephemeral(f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다.")
+        return ephemeral(
+            f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다.\n"
+            f"-# 서버 ID: {guild_id}"
+        )
 
     if sub_name == "알림확인":
         channel_id = get_channel(guild_id)
         if not channel_id:
-            return ephemeral("아직 알림 채널이 설정되지 않았습니다.")
-        return ephemeral(f"현재 알림 채널: <#{channel_id}>")
+            return ephemeral(f"아직 알림 채널이 설정되지 않았습니다.\n-# 서버 ID: {guild_id}")
+        return ephemeral(f"현재 알림 채널: <#{channel_id}>\n-# 서버 ID: {guild_id}")
 
     if sub_name == "알림해제":
         if not get_channel(guild_id):
