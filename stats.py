@@ -130,7 +130,7 @@ def build_description(stats: dict, awards: dict) -> str: # , kind: str
         lines.append(f"🧘 안정형 상: {st_sign} (표준편차 {st['stdev']})")
     if awards["chaotic"]:
         ch_sign, ch = awards["chaotic"]
-        lines.append(f"🎢 멘헤라 상: {ch_sign} (표준편차 {ch['stdev']})")
+        lines.append(f"🎢 기복형 상: {ch_sign} (표준편차 {ch['stdev']})")
 
     return "\n".join(lines)
 
