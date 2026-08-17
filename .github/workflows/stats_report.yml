@@ -26,7 +26,8 @@ jobs:
         if: github.event_name == 'schedule'
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          # ⭐ 3단계: 웹훅 제거 — 주석 처리 (삭제 아님, 복원 가능)
+          # DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
@@ -36,7 +37,8 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         env:
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          # ⭐ 3단계: 웹훅 제거 — 주석 처리 (삭제 아님, 복원 가능)
+          # DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}

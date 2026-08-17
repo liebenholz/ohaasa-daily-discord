@@ -9,9 +9,10 @@ import glob
 from datetime import datetime, timedelta
 
 from notifier import send_embed_to_channels
-from channels import get_sent_guild_ids, mark_sent
+# ⭐ 3단계: 웹훅 제거 — 아래 import/상수는 웹훅 중복 발송 방지용이라 함께 주석 처리
+# from channels import get_sent_guild_ids, mark_sent
 
-WEBHOOK_SENT_MARKER = "__webhook__"
+# WEBHOOK_SENT_MARKER = "__webhook__"
 
 DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
 
@@ -594,33 +595,33 @@ def send_discord(message, mode, run_key=None):
         "footer": {"text": f"{get_date_display()} · {'평일' if mode == 'weekday' else '주말'} 기준"},
     }
 
-    # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
-    # 예비 cron 재시도 패스에서 크롤 데이터를 재사용해도, 웹훅은 하루 1번만
-    # 나가도록 run_key(오늘 날짜) 기준 발송 이력을 확인한다.
-    webhook_url = os.environ.get("DISCORD_WEBHOOK")
-    webhook_already_sent = False
-    if webhook_url and run_key:
-        try:
-            webhook_already_sent = WEBHOOK_SENT_MARKER in get_sent_guild_ids(run_key)
-        except Exception as e:
-            print(f"⚠️  웹훅 발송 이력 조회 실패 — 발송 진행: {e}")
-
-    if webhook_url and not webhook_already_sent:
-        payload = {
-            "username": "아침별점 요정",
-            "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-            "embeds": [embed],
-        }
-        requests.post(webhook_url, json=payload, timeout=10)
-        if run_key:
-            try:
-                mark_sent(run_key, WEBHOOK_SENT_MARKER)
-            except Exception as e:
-                print(f"⚠️  웹훅 발송 이력 기록 실패: {e}")
-    elif webhook_already_sent:
-        print("ℹ️  오늘 웹훅은 이미 발송됨 — 스킵")
-    else:
-        print(message)
+    # ⭐ 3단계: 웹훅 제거 — 아래 블록 전체 주석 처리 (삭제 아님, 복원 가능)
+    # # 예비 cron 재시도 패스에서 크롤 데이터를 재사용해도, 웹훅은 하루 1번만
+    # # 나가도록 run_key(오늘 날짜) 기준 발송 이력을 확인한다.
+    # webhook_url = os.environ.get("DISCORD_WEBHOOK")
+    # webhook_already_sent = False
+    # if webhook_url and run_key:
+    #     try:
+    #         webhook_already_sent = WEBHOOK_SENT_MARKER in get_sent_guild_ids(run_key)
+    #     except Exception as e:
+    #         print(f"⚠️  웹훅 발송 이력 조회 실패 — 발송 진행: {e}")
+    #
+    # if webhook_url and not webhook_already_sent:
+    #     payload = {
+    #         "username": "아침별점 요정",
+    #         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
+    #         "embeds": [embed],
+    #     }
+    #     requests.post(webhook_url, json=payload, timeout=10)
+    #     if run_key:
+    #         try:
+    #             mark_sent(run_key, WEBHOOK_SENT_MARKER)
+    #         except Exception as e:
+    #             print(f"⚠️  웹훅 발송 이력 기록 실패: {e}")
+    # elif webhook_already_sent:
+    #     print("ℹ️  오늘 웹훅은 이미 발송됨 — 스킵")
+    # else:
+    #     print(message)
 
     send_embed_to_channels(embed, run_key=run_key)
 

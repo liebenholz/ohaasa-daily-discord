@@ -11,7 +11,8 @@ import glob
 import json
 import calendar
 import statistics
-import requests
+# ⭐ 3단계: 웹훅 제거로 미사용 — 삭제 대신 주석 처리 (복원 가능)
+# import requests
 from collections import defaultdict
 from datetime import datetime, timedelta, date
 
@@ -143,18 +144,18 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
         "footer": {"text": f"{period_label} · 집계 {day_count}일"},
     }
 
-    # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
-    webhook = os.environ.get("DISCORD_WEBHOOK")
-    if webhook:
-        payload = {
-            "username": "아침별점 요정",
-            "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-            "embeds": [embed],
-        }
-        r = requests.post(webhook, json=payload, timeout=10)
-        print(f"📤 웹훅 전송: {r.status_code}")
-    else:
-        print(json.dumps(embed, ensure_ascii=False, indent=2))
+    # ⭐ 3단계: 웹훅 제거 — 아래 블록 전체 주석 처리 (삭제 아님, 복원 가능)
+    # webhook = os.environ.get("DISCORD_WEBHOOK")
+    # if webhook:
+    #     payload = {
+    #         "username": "아침별점 요정",
+    #         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
+    #         "embeds": [embed],
+    #     }
+    #     r = requests.post(webhook, json=payload, timeout=10)
+    #     print(f"📤 웹훅 전송: {r.status_code}")
+    # else:
+    #     print(json.dumps(embed, ensure_ascii=False, indent=2))
 
     send_embed_to_channels(embed)
 

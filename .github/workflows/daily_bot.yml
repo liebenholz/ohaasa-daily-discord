@@ -35,7 +35,8 @@ jobs:
 
       - name: Run crawler & post to Discord
         env:
-          DISCORD_WEBHOOK:      ${{ secrets.DISCORD_WEBHOOK }}
+          # ⭐ 3단계: 웹훅 제거 — 주석 처리 (삭제 아님, 복원 가능)
+          # DISCORD_WEBHOOK:      ${{ secrets.DISCORD_WEBHOOK }}
           TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
           DEEPL_API_KEY:    ${{ secrets.DEEPL_API_KEY }}
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
