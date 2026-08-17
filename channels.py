@@ -75,3 +75,25 @@ def list_channel_entries() -> list[tuple[str, str]]:
         if channel_id:
             entries.append((guild_id, channel_id))
     return entries
+
+
+# ─────────────────────────────────────────────
+# 실행 간 발송 이력 (같은 날짜의 예비 cron 재시도가 이미 성공한
+# guild를 건너뛸 수 있도록) — sent:{run_key} Set, 3일 TTL
+# ─────────────────────────────────────────────
+SENT_TTL_SECONDS = 3 * 24 * 3600
+
+
+def _sent_key(run_key: str) -> str:
+    return f"sent:{run_key}"
+
+
+def get_sent_guild_ids(run_key: str) -> set[str]:
+    result = _upstash("smembers", _sent_key(run_key)) or []
+    return set(result)
+
+
+def mark_sent(run_key: str, guild_id: str) -> None:
+    key = _sent_key(run_key)
+    _upstash("sadd", key, guild_id)
+    _upstash("expire", key, SENT_TTL_SECONDS)

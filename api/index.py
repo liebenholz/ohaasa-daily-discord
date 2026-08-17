@@ -6,6 +6,7 @@ from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
 from channels import get_channel, set_channel, remove_channel
+from notifier import send_test_message
 
 # ─────────────────────────────────────────────
 # 환경변수 (lazy — import 시점에 읽지 않음)
@@ -141,8 +142,24 @@ def handle_settings_command(interaction):
         if not channel_id:
             return ephemeral("채널을 지정해주세요.")
         set_channel(guild_id, channel_id)
+
+        test = send_test_message(channel_id)
+        if test["outcome"] == "success":
+            return ephemeral(
+                f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었고, 테스트 메시지 전송을 확인했습니다.\n"
+                f"-# 서버 ID: {guild_id}"
+            )
+        if test["outcome"] == "permanent" and test.get("status_code") in (403, 404):
+            return ephemeral(
+                f"⚠️ 채널은 등록되었지만 테스트 메시지 전송에 실패했습니다 — 봇에게 "
+                f"<#{channel_id}> 채널의 '채널 보기'/'메시지 보내기' 권한이 없는 것으로 보입니다.\n"
+                f"채널 권한에서 봇 역할에 권한을 허용해주시면, 다시 등록하지 않아도 다음 발송부터 "
+                f"자동으로 반영됩니다.\n"
+                f"-# 서버 ID: {guild_id}"
+            )
         return ephemeral(
-            f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다.\n"
+            f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다. "
+            f"(테스트 발송 확인은 실패: {test.get('message') or test['outcome']})\n"
             f"-# 서버 ID: {guild_id}"
         )
 

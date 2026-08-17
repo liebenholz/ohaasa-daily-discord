@@ -1,6 +1,5 @@
 from playwright.sync_api import sync_playwright
 from bs4 import BeautifulSoup
-import sys
 import requests
 import os
 import json
@@ -10,6 +9,9 @@ import glob
 from datetime import datetime, timedelta
 
 from notifier import send_embed_to_channels
+from channels import get_sent_guild_ids, mark_sent
+
+WEBHOOK_SENT_MARKER = "__webhook__"
 
 DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
 
@@ -583,7 +585,7 @@ def get_date_iso():
     return (datetime.utcnow() + timedelta(hours=9)).strftime("%Y-%m-%d")
 
 
-def send_discord(message, mode):
+def send_discord(message, mode, run_key=None):
     embed = {
         "title": "✨ **오늘의 오하아사 별자리 순위** ✨\n",
         "description": message,
@@ -593,18 +595,34 @@ def send_discord(message, mode):
     }
 
     # ⭐ 2단계: 웹훅 + Bot API 이중 발송 (웹훅 제거 전까지 유지)
+    # 예비 cron 재시도 패스에서 크롤 데이터를 재사용해도, 웹훅은 하루 1번만
+    # 나가도록 run_key(오늘 날짜) 기준 발송 이력을 확인한다.
     webhook_url = os.environ.get("DISCORD_WEBHOOK")
-    if webhook_url:
+    webhook_already_sent = False
+    if webhook_url and run_key:
+        try:
+            webhook_already_sent = WEBHOOK_SENT_MARKER in get_sent_guild_ids(run_key)
+        except Exception as e:
+            print(f"⚠️  웹훅 발송 이력 조회 실패 — 발송 진행: {e}")
+
+    if webhook_url and not webhook_already_sent:
         payload = {
             "username": "아침별점 요정",
             "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
             "embeds": [embed],
         }
         requests.post(webhook_url, json=payload, timeout=10)
+        if run_key:
+            try:
+                mark_sent(run_key, WEBHOOK_SENT_MARKER)
+            except Exception as e:
+                print(f"⚠️  웹훅 발송 이력 기록 실패: {e}")
+    elif webhook_already_sent:
+        print("ℹ️  오늘 웹훅은 이미 발송됨 — 스킵")
     else:
         print(message)
 
-    send_embed_to_channels(embed)
+    send_embed_to_channels(embed, run_key=run_key)
 
 
 # ─────────────────────────────────────────────
@@ -615,43 +633,42 @@ if __name__ == "__main__":
     mode = "weekday" if today.weekday() < 5 else "weekend"
     date_iso = get_date_iso()
 
-    # 수동 실행(workflow_dispatch)이면 가드 우회
+    # 수동 실행(workflow_dispatch)이면 항상 새로 크롤링
     is_manual = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
-
-    if not is_manual and os.path.exists(f"data/horoscope_{date_iso}.json"):
-        print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
-        sys.exit(0)
-
-    # # 멱등성 가드 — 오늘 이미 처리됐으면 조용히 종료
-    # if os.path.exists(f"data/horoscope_{date_iso}.json"):
-    #     print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 중복 실행 종료")
-    #     sys.exit(0)
+    existing_path = f"data/horoscope_{date_iso}.json"
+    reuse_existing = (not is_manual) and os.path.exists(existing_path)
 
     try:
-        config = SIGN_CONFIG[mode]
-        html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
+        if reuse_existing:
+            # ⭐ 예비 cron 재시도 패스 — 오늘 데이터는 이미 있으니 크롤링은
+            # 건너뛰고, 아직 발송 성공하지 못한 채널에만 재발송을 시도한다.
+            print(f"✅ 오늘({date_iso}) 데이터 이미 존재 — 크롤링 생략, 미발송 채널만 재시도")
+            with open(existing_path, encoding="utf-8") as f:
+                detail = json.load(f).get("signs", {})
+        else:
+            config = SIGN_CONFIG[mode]
+            html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
 
-        # 디버그 덤프 (유지 권장)
-        os.makedirs("debug", exist_ok=True)
-        with open(f"debug/raw_{mode}_{date_iso}.html", "w", encoding="utf-8") as f:
-            f.write(html)
-            
-        detail = parse_horoscope_detail(html, mode)
+            # 디버그 덤프 (유지 권장)
+            os.makedirs("debug", exist_ok=True)
+            with open(f"debug/raw_{mode}_{date_iso}.html", "w", encoding="utf-8") as f:
+                f.write(html)
 
-        if not detail:
-            raise RuntimeError("파싱 결과가 비어 있음 (셀렉터 확인 필요)")
+            detail = parse_horoscope_detail(html, mode)
 
-        # ⭐ 번역 보강
-        translator = build_translator()
-        detail = enrich_with_translation(detail, mode, translator)
+            if not detail:
+                raise RuntimeError("파싱 결과가 비어 있음 (셀렉터 확인 필요)")
 
-        save_json(detail, mode, date_iso)
-#       send_discord(format_ranking_message(detail), mode)
-        
+            # ⭐ 번역 보강
+            translator = build_translator()
+            detail = enrich_with_translation(detail, mode, translator)
+
+            save_json(detail, mode, date_iso)
+
         # ⭐ 오늘 이전의 가장 최근 순위와 비교
         prev_ranks = load_previous_ranks(date_iso)
-        send_discord(format_ranking_message(detail, prev_ranks), mode)
+        send_discord(format_ranking_message(detail, prev_ranks), mode, run_key=date_iso)
 
     except Exception as e:
-        send_discord(f"❌ 크롤링 중 에러 발생 ({mode}): {e}", mode)
+        send_discord(f"❌ 크롤링 중 에러 발생 ({mode}): {e}", mode, run_key=date_iso)
         raise
