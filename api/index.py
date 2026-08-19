@@ -158,8 +158,8 @@ def handle_settings_command(interaction):
                 f"-# 서버 ID: {guild_id}"
             )
         return ephemeral(
-            f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다. "
-            f"(테스트 발송 확인은 실패: {test.get('message') or test['outcome']})\n"
+            f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다. \n"
+            # f"(테스트 발송 확인은 실패: {test.get('message') or test['outcome']})\n"
             f"-# 서버 ID: {guild_id}"
         )
 
