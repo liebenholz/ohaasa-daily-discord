@@ -6,7 +6,7 @@ from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
 from channels import get_channel, set_channel, remove_channel
-from notifier import send_test_message
+from notifier import send_test_message, notify_new_registration
 
 # ─────────────────────────────────────────────
 # 환경변수 (lazy — import 시점에 읽지 않음)
@@ -141,9 +141,17 @@ def handle_settings_command(interaction):
         channel_id = sub_opts.get("채널")
         if not channel_id:
             return ephemeral("채널을 지정해주세요.")
+
+        is_new = get_channel(guild_id) is None
         set_channel(guild_id, channel_id)
 
         test = send_test_message(channel_id)
+
+        if is_new:
+            user = (member.get("user") or {})
+            registered_by = user.get("username") or user.get("id") or "알 수 없음"
+            notify_new_registration(guild_id, channel_id, registered_by, test)
+
         if test["outcome"] == "success":
             return ephemeral(
                 f"✅ 알림 채널이 <#{channel_id}>(으)로 설정되었습니다. 테스트 메시지 전송 확인.\n"

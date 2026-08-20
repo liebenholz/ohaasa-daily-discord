@@ -104,9 +104,19 @@ def send_test_message(channel_id: str) -> dict:
     return send_once(channel_id, TEST_EMBED, headers)
 
 
-def _send_failure_summary(failures: list[dict], registered_count: int, success_count: int) -> None:
+def _post_to_test_webhook(payload: dict) -> None:
+    """TEST_DISCORD_WEBHOOK으로 운영 알림을 보낸다. 미설정/실패는 조용히 무시한다."""
     webhook = os.environ.get("TEST_DISCORD_WEBHOOK")
-    if not webhook or not failures:
+    if not webhook:
+        return
+    try:
+        requests.post(webhook, json=payload, timeout=10)
+    except requests.RequestException as e:
+        print(f"⚠️  TEST_DISCORD_WEBHOOK 전송 실패: {e}")
+
+
+def _send_failure_summary(failures: list[dict], registered_count: int, success_count: int) -> None:
+    if not failures:
         return
 
     lines = [f"등록 {registered_count}건 · 성공 {success_count}건 · 실패 {len(failures)}건", ""]
@@ -124,10 +134,38 @@ def _send_failure_summary(failures: list[dict], registered_count: int, success_c
             "color": 0xE74C3C,
         }],
     }
-    try:
-        requests.post(webhook, json=payload, timeout=10)
-    except requests.RequestException as e:
-        print(f"⚠️  실패 요약 알림 전송 실패: {e}")
+    _post_to_test_webhook(payload)
+
+
+def notify_new_registration(guild_id: str, channel_id: str, registered_by: str, test_result: dict) -> None:
+    """신규 채널 등록 시 TEST_DISCORD_WEBHOOK으로 알린다 (성공/실패 모두).
+
+    채널 변경(기존 등록 덮어쓰기)에는 호출하지 않는다 — 신규 등록만 대상.
+    """
+    if test_result.get("outcome") == "success":
+        status_line = "✅ 테스트 발송 성공"
+        color = 0x2ECC71
+    else:
+        status_line = (
+            f"⚠️ 테스트 발송 실패 — {test_result.get('outcome')} "
+            f"status={test_result.get('status_code')} code={test_result.get('error_code')} "
+            f"{test_result.get('message') or ''}"
+        )
+        color = 0xE67E22
+
+    payload = {
+        "username": "오하아사 발송 모니터",
+        "embeds": [{
+            "title": "🆕 신규 알림 채널 등록",
+            "description": (
+                f"길드 `{guild_id}` · 채널 `{channel_id}`\n"
+                f"등록자: {registered_by}\n"
+                f"{status_line}"
+            ),
+            "color": color,
+        }],
+    }
+    _post_to_test_webhook(payload)
 
 
 def send_embed_to_channels(
