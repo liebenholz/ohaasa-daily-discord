@@ -216,12 +216,11 @@ SIGNS_RANKED = [
     ("전갈자리", "さそり座"),
 ]
 
-RANK_EMOJI = {1: "👑", 2: "🥈", 3: "🥉", 12: "🥲"}
+RANK_EMOJI = {1: "👑", 2: "🥈", 3: "🥉"}
 RANK_COLOR = {1: 0xF1C40F, 2: 0xBEC2CB, 3: 0xCD7F32}  # 1~3위 전용 색상 (금/은/동) — 유지 대상
 
 # 별자리(연간 순위 index)별 표준편차 더미값 — 전부 다른 값이어야 안정형/기복형 상이
-# 한쪽으로 쏠리지 않는다. index0(1위 처녀자리)=2.89·index11(12위 전갈자리)=3.87로
-# 시안 예시 숫자(전체 8위 안정형 / 전체 2위 기복형)를 그대로 재현하도록 값을 잡았다.
+# 한쪽으로 쏠리지 않는다.
 STDEV_POOL = [2.89, 4.50, 3.60, 3.35, 3.10, 2.95, 2.92, 2.40, 2.10, 1.75, 1.40, 3.87]
 
 
@@ -251,11 +250,6 @@ def build_dummy_yearly_stats():
             "monthly": monthly, "stdev": stdev,
             "mode_rank": mode_rank, "mode_days": mode_days,
         })
-
-    # 변동성(표준편차) 순위 — 큰 순으로 1위(가장 기복 심함)
-    for stdev_rank, s in enumerate(sorted(stats, key=lambda s: -s["stdev"]), start=1):
-        s["stdev_rank"] = stdev_rank
-        s["stdev_label"] = "기복형" if stdev_rank <= 6 else "안정형"
 
     return stats
 
@@ -305,14 +299,14 @@ def build_summary_embed(stats: list) -> dict:
         f"👑 최다 1위: {most_first['sign_kr']} ({most_first['first_count']}회)",
         f"🌧️ 최다 12위: {most_last['sign_kr']} ({most_last['last_count']}회)",
         f"🧘 안정형 상: {stable['sign_kr']} (표준편차 {stable['stdev']:.2f})",
-        f"🎢 멘헤라 상: {chaotic['sign_kr']} (표준편차 {chaotic['stdev']:.2f})",
+        f"🎢 기복형 상: {chaotic['sign_kr']} (표준편차 {chaotic['stdev']:.2f})",
     ]
 
     return {
         "title": "🧪 [TEST] 2026년 오하아사 연간 리포트",
         "description": "\n".join(lines),
         "color": 0xF1C40F,   # 골드
-        "footer": {"text": "2026-01-01 ~ 2026-12-31 · 집계 358일 · 쓰레드 생성 테스트용 더미 데이터"},
+        "footer": {"text": "2026-01-01 ~ 2026-12-31 · 집계 365일 · 쓰레드 생성 테스트용 더미 데이터"},
     }
 
 
@@ -327,14 +321,14 @@ def build_sign_embed(s: dict) -> dict:
         f"연간 평균 {s['avg']:.2f}위\n\n"
         f"👑 1위 {s['first_count']}회 · 🌧️ 12위 {s['last_count']}회\n"
         f"🎯 최다 등수: {s['mode_rank']}위 ({s['mode_days']}일)\n"
-        f"📊 변동성: 표준편차 {s['stdev']:.2f} (전체 {s['stdev_rank']}위 — {s['stdev_label']})\n"
+        f"📊 변동성: 표준편차 {s['stdev']:.2f}\n"
         f"🌸 최고의 달: {best_month}월 (평균 {min(s['monthly']):.2f}위)\n"
         f"🍂 최악의 달: {worst_month}월 (평균 {max(s['monthly']):.2f}위)\n\n"
         "_더미 데이터입니다._"
     )
 
     return {
-        "title": f"{emoji} 종합 {s['rank']}위 — {s['sign_kr']} ({s['sign_ja']})",
+        "title": f"{emoji} {s['rank']}위 — {s['sign_kr']}",
         "description": description,
         "color": color,
         "image": {"url": build_monthly_chart_url(s["monthly"])},
