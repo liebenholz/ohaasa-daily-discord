@@ -265,7 +265,7 @@ def post_to_thread(thread_id, count, delay):
                 "📊 변동성: 표준편차 3.21\n\n"
                 "_더미 데이터입니다._"
             ),
-            "color": 0xF1C40F if rank == 1 else 0x9B59B6,
+            "color": {1: 0xF1C40F, 2: 0xBEC2CB, 3: 0xCD7F32}.get(rank, 0x9B59B6),
         }
         status, body = call("POST", f"/channels/{thread_id}/messages", {"embeds": [embed]})
         if status in (200, 201):
