@@ -145,20 +145,20 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
     }
 
     # ⭐ 3단계: 웹훅 제거 — 아래 블록 전체 주석 처리 (삭제 아님, 복원 가능)
-    # webhook = os.environ.get("DISCORD_WEBHOOK")
-    # if webhook:
-    #     payload = {
-    #         "username": "아침별점 요정",
-    #         "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
-    #         "embeds": [embed],
-    #     }
-    #     r = requests.post(webhook, json=payload, timeout=10)
-    #     print(f"📤 웹훅 전송: {r.status_code}")
-    # else:
-    #     print(json.dumps(embed, ensure_ascii=False, indent=2))
+    webhook = os.environ.get("DISCORD_WEBHOOK")
+    if webhook:
+        payload = {
+            "username": "아침별점 요정",
+            "avatar_url": "https://drive.google.com/uc?export=view&id=1EdVoWwvz-GxAJ9ihau06RYILyIx_mrrY",
+            "embeds": [embed],
+        }
+        r = requests.post(webhook, json=payload, timeout=10)
+        print(f"📤 웹훅 전송: {r.status_code}")
+    else:
+        print(json.dumps(embed, ensure_ascii=False, indent=2))
 
-    send_embed_to_channels(embed)
-
+    # send_embed_to_channels(embed)
+ㄴ
 
 def run_report(start_iso: str, end_iso: str, label: str): # kind: str, 
     days = load_period(start_iso, end_iso)
