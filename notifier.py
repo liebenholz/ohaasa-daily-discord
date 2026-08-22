@@ -137,31 +137,54 @@ def _send_failure_summary(failures: list[dict], registered_count: int, success_c
     _post_to_test_webhook(payload)
 
 
-def notify_new_registration(guild_id: str, channel_id: str, registered_by: str, test_result: dict) -> None:
-    """신규 채널 등록 시 TEST_DISCORD_WEBHOOK으로 알린다 (성공/실패 모두).
+EVENT_TITLES = {
+    "register": "🆕 신규 알림 채널 등록",
+    "change":   "🔁 알림 채널 변경",
+    "remove":   "🗑️ 알림 채널 해제",
+}
 
-    채널 변경(기존 등록 덮어쓰기)에는 호출하지 않는다 — 신규 등록만 대상.
+
+def notify_channel_event(
+    event: str,
+    guild_id: str,
+    channel_id: str,
+    actor: str,
+    *,
+    previous_channel_id: str | None = None,
+    test_result: dict | None = None,
+) -> None:
+    """채널 등록/변경/해제 이벤트를 TEST_DISCORD_WEBHOOK으로 알린다.
+
+    event: "register" | "change" | "remove"
+    test_result가 있으면(register/change) 테스트 발송 성공/실패를 같이 표시한다.
+    remove는 테스트 발송이 없으므로 test_result 없이 호출한다.
     """
-    if test_result.get("outcome") == "success":
-        status_line = "✅ 테스트 발송 성공"
-        color = 0x2ECC71
+    if event == "change" and previous_channel_id:
+        target_line = f"길드 `{guild_id}` · 채널 `{previous_channel_id}` → `{channel_id}`"
     else:
-        status_line = (
-            f"⚠️ 테스트 발송 실패 — {test_result.get('outcome')} "
-            f"status={test_result.get('status_code')} code={test_result.get('error_code')} "
-            f"{test_result.get('message') or ''}"
-        )
-        color = 0xE67E22
+        target_line = f"길드 `{guild_id}` · 채널 `{channel_id}`"
+
+    actor_label = "실행자" if event == "remove" else "등록자"
+    lines = [target_line, f"{actor_label}: {actor}"]
+
+    color = 0x95A5A6  # remove 기본색
+    if test_result is not None:
+        if test_result.get("outcome") == "success":
+            lines.append("✅ 테스트 발송 성공")
+            color = 0x2ECC71
+        else:
+            lines.append(
+                f"⚠️ 테스트 발송 실패 — {test_result.get('outcome')} "
+                f"status={test_result.get('status_code')} code={test_result.get('error_code')} "
+                f"{test_result.get('message') or ''}"
+            )
+            color = 0xE67E22
 
     payload = {
         "username": "오하아사 발송 모니터",
         "embeds": [{
-            "title": "🆕 신규 알림 채널 등록",
-            "description": (
-                f"길드 `{guild_id}` · 채널 `{channel_id}`\n"
-                f"등록자: {registered_by}\n"
-                f"{status_line}"
-            ),
+            "title": EVENT_TITLES.get(event, "알림 채널 이벤트"),
+            "description": "\n".join(lines),
             "color": color,
         }],
     }

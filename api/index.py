@@ -6,7 +6,7 @@ from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
 
 from channels import get_channel, set_channel, remove_channel
-from notifier import send_test_message, notify_new_registration
+from notifier import send_test_message, notify_channel_event
 
 # ─────────────────────────────────────────────
 # 환경변수 (lazy — import 시점에 읽지 않음)
@@ -142,15 +142,21 @@ def handle_settings_command(interaction):
         if not channel_id:
             return ephemeral("채널을 지정해주세요.")
 
-        is_new = get_channel(guild_id) is None
+        previous_channel_id = get_channel(guild_id)
         set_channel(guild_id, channel_id)
 
         test = send_test_message(channel_id)
 
-        if is_new:
-            user = (member.get("user") or {})
-            registered_by = user.get("username") or user.get("id") or "알 수 없음"
-            notify_new_registration(guild_id, channel_id, registered_by, test)
+        user = (member.get("user") or {})
+        actor = user.get("username") or user.get("id") or "알 수 없음"
+        if previous_channel_id is None:
+            notify_channel_event("register", guild_id, channel_id, actor, test_result=test)
+        elif previous_channel_id != channel_id:
+            notify_channel_event(
+                "change", guild_id, channel_id, actor,
+                previous_channel_id=previous_channel_id, test_result=test,
+            )
+        # previous_channel_id == channel_id (동일 채널 재등록)는 실질적 변경이 아니므로 알림 생략
 
         if test["outcome"] == "success":
             return ephemeral(
@@ -177,9 +183,15 @@ def handle_settings_command(interaction):
         return ephemeral(f"현재 알림 채널: <#{channel_id}>\n-# 서버 ID: {guild_id}")
 
     if sub_name == "알림해제":
-        if not get_channel(guild_id):
+        channel_id = get_channel(guild_id)
+        if not channel_id:
             return ephemeral("설정된 알림 채널이 없습니다.")
         remove_channel(guild_id)
+
+        user = (member.get("user") or {})
+        actor = user.get("username") or user.get("id") or "알 수 없음"
+        notify_channel_event("remove", guild_id, channel_id, actor)
+
         return ephemeral("✅ 알림 채널 설정이 해제되었습니다.")
 
     return ephemeral("지원하지 않는 하위 명령입니다.")
