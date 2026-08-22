@@ -28,9 +28,11 @@ import os
 import sys
 import time
 import json
+import math
 import argparse
 import urllib.request
 import urllib.error
+import urllib.parse
 
 API = "https://discord.com/api/v10"
 
@@ -196,25 +198,155 @@ def check_permissions(bot_id, guild_id):
 
 
 # ─────────────────────────────────────────────
+# 더미 데이터 — 연간 리포트 UI 시안 재현용
+# (연간 순위 1~12위 순서. index 0 = 1위 ... index 11 = 12위)
+# ─────────────────────────────────────────────
+SIGNS_RANKED = [
+    ("처녀자리", "おとめ座"),
+    ("게자리",   "かに座"),
+    ("물고기자리", "うお座"),
+    ("황소자리", "おうし座"),
+    ("사자자리", "しし座"),
+    ("쌍둥이자리", "ふたご座"),
+    ("양자리",   "おひつじ座"),
+    ("천칭자리", "てんびん座"),
+    ("사수자리", "いて座"),
+    ("염소자리", "やぎ座"),
+    ("물병자리", "みずがめ座"),
+    ("전갈자리", "さそり座"),
+]
+
+RANK_EMOJI = {1: "👑", 2: "🥈", 3: "🥉", 12: "🥲"}
+RANK_COLOR = {1: 0xF1C40F, 2: 0xBEC2CB, 3: 0xCD7F32}  # 1~3위 전용 색상 (금/은/동) — 유지 대상
+
+# 별자리(연간 순위 index)별 표준편차 더미값 — 전부 다른 값이어야 안정형/기복형 상이
+# 한쪽으로 쏠리지 않는다. index0(1위 처녀자리)=2.89·index11(12위 전갈자리)=3.87로
+# 시안 예시 숫자(전체 8위 안정형 / 전체 2위 기복형)를 그대로 재현하도록 값을 잡았다.
+STDEV_POOL = [2.89, 4.50, 3.60, 3.35, 3.10, 2.95, 2.92, 2.40, 2.10, 1.75, 1.40, 3.87]
+
+
+def build_dummy_yearly_stats():
+    """12개 별자리의 더미 연간 통계를 결정론적으로 생성한다 (매 실행 동일 결과).
+
+    실제 데이터가 아니라 UI 시안(전체 랭킹표 + 수상 4종 + 개별 리포트 통계)을
+    재현하기 위한 값이며, 매번 같은 값이 나와야 디버깅이 쉬워서 random을 쓰지 않는다.
+    """
+    stats = []
+    for i, (sign_kr, sign_ja) in enumerate(SIGNS_RANKED):
+        rank = i + 1
+        avg = round(4.0 + i * 0.42, 2)                     # 1위일수록 낮은(좋은) 평균
+        first_count = max(1, 60 - i * 5)                     # 1위일수록 1위 횟수 많음
+        last_count = max(1, 3 + i * 4)                       # 12위일수록 12위 횟수 많음
+        stdev = STDEV_POOL[i]
+        monthly = [
+            round(min(12.0, max(1.0, avg + 2.2 * math.sin((m + i) / 1.8))), 2)
+            for m in range(12)
+        ]
+        mode_rank = max(1, min(12, round(avg)))
+        mode_days = 30 + (i % 4) * 8
+
+        stats.append({
+            "rank": rank, "sign_kr": sign_kr, "sign_ja": sign_ja,
+            "avg": avg, "first_count": first_count, "last_count": last_count,
+            "monthly": monthly, "stdev": stdev,
+            "mode_rank": mode_rank, "mode_days": mode_days,
+        })
+
+    # 변동성(표준편차) 순위 — 큰 순으로 1위(가장 기복 심함)
+    for stdev_rank, s in enumerate(sorted(stats, key=lambda s: -s["stdev"]), start=1):
+        s["stdev_rank"] = stdev_rank
+        s["stdev_label"] = "기복형" if stdev_rank <= 6 else "안정형"
+
+    return stats
+
+
+def build_monthly_chart_url(monthly: list) -> str:
+    """월별 평균 순위 꺾은선그래프 — QuickChart 이미지 URL. y축은 1위가 위로 오도록 반전."""
+    config = {
+        "type": "line",
+        "data": {
+            "labels": [f"{m}월" for m in range(1, 13)],
+            "datasets": [{
+                "label": "월별 평균 순위",
+                "data": monthly,
+                "borderColor": "#9B59B6",
+                "backgroundColor": "rgba(155, 89, 182, 0.15)",
+                "fill": True,
+                "tension": 0.35,
+                "pointRadius": 3,
+            }],
+        },
+        "options": {
+            "legend": {"display": False},
+            "scales": {
+                "yAxes": [{"ticks": {"min": 1, "max": 12, "stepSize": 1, "reverse": True}}],
+            },
+        },
+    }
+    encoded = urllib.parse.quote(json.dumps(config))
+    return f"https://quickchart.io/chart?w=520&h=220&bkg=white&c={encoded}"
+
+
+def build_summary_embed(stats: list) -> dict:
+    """① 채널 메인 메시지 — 연간 요약 (골드 컬러, 전체 랭킹 + 수상 4종)"""
+    lines = ["**📈 연간 평균 순위**"]
+    for s in stats:
+        medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(s["rank"], "🔹")
+        lines.append(f"{medal} {s['rank']}위 {s['sign_kr']} (평균 {s['avg']:.2f}위)")
+
+    most_first = max(stats, key=lambda s: s["first_count"])
+    most_last = max(stats, key=lambda s: s["last_count"])
+    stable = min(stats, key=lambda s: s["stdev"])
+    chaotic = max(stats, key=lambda s: s["stdev"])
+
+    lines += [
+        "",
+        "**🏆 올해의 수상**",
+        f"👑 최다 1위: {most_first['sign_kr']} ({most_first['first_count']}회)",
+        f"🌧️ 최다 12위: {most_last['sign_kr']} ({most_last['last_count']}회)",
+        f"🧘 안정형 상: {stable['sign_kr']} (표준편차 {stable['stdev']:.2f})",
+        f"🎢 멘헤라 상: {chaotic['sign_kr']} (표준편차 {chaotic['stdev']:.2f})",
+    ]
+
+    return {
+        "title": "🧪 [TEST] 2026년 오하아사 연간 리포트",
+        "description": "\n".join(lines),
+        "color": 0xF1C40F,   # 골드
+        "footer": {"text": "2026-01-01 ~ 2026-12-31 · 집계 358일 · 쓰레드 생성 테스트용 더미 데이터"},
+    }
+
+
+def build_sign_embed(s: dict) -> dict:
+    """② 쓰레드 내부 개별 리포트 — 별자리 1개"""
+    emoji = RANK_EMOJI.get(s["rank"], "🔹")
+    color = RANK_COLOR.get(s["rank"], 0x9B59B6)   # 1~3위 전용 색상 유지, 그 외는 기본 보라
+    best_month = min(range(12), key=lambda m: s["monthly"][m]) + 1
+    worst_month = max(range(12), key=lambda m: s["monthly"][m]) + 1
+
+    description = (
+        f"연간 평균 {s['avg']:.2f}위\n\n"
+        f"👑 1위 {s['first_count']}회 · 🌧️ 12위 {s['last_count']}회\n"
+        f"🎯 최다 등수: {s['mode_rank']}위 ({s['mode_days']}일)\n"
+        f"📊 변동성: 표준편차 {s['stdev']:.2f} (전체 {s['stdev_rank']}위 — {s['stdev_label']})\n"
+        f"🌸 최고의 달: {best_month}월 (평균 {min(s['monthly']):.2f}위)\n"
+        f"🍂 최악의 달: {worst_month}월 (평균 {max(s['monthly']):.2f}위)\n\n"
+        "_더미 데이터입니다._"
+    )
+
+    return {
+        "title": f"{emoji} 종합 {s['rank']}위 — {s['sign_kr']} ({s['sign_ja']})",
+        "description": description,
+        "color": color,
+        "image": {"url": build_monthly_chart_url(s["monthly"])},
+    }
+
+
+# ─────────────────────────────────────────────
 # 실제 흐름 테스트
 # ─────────────────────────────────────────────
-def post_summary():
-    """① 요약 메시지 발송"""
-    embed = {
-        "title": "🧪 [TEST] 2026년 오하아사 연간 리포트",
-        "description": (
-            "**📈 연간 평균 순위**\n"
-            "🥇 1위 처녀자리 (평균 4.13위)\n"
-            "🥈 2위 게자리 (평균 4.87위)\n"
-            "🥉 3위 물고기자리 (평균 5.21위)\n\n"
-            "**🏆 올해의 수상**\n"
-            "👑 최다 1위: 처녀자리 (58회)\n"
-            "🌧️ 최다 12위: 전갈자리 (41회)\n\n"
-            "_이것은 쓰레드 생성 테스트용 더미 메시지입니다._"
-        ),
-        "color": 0xE67E22,
-        "footer": {"text": "쓰레드 생성 테스트 · 실제 데이터 아님"},
-    }
+def post_summary(stats):
+    """① 요약 메시지 발송 (연간 랭킹 1~12위 전체 + 수상 4종)"""
+    embed = build_summary_embed(stats)
     status, body = call("POST", f"/channels/{CHANNEL_ID}/messages", {"embeds": [embed]})
     if status not in (200, 201):
         print("❌ ① 요약 메시지 발송 실패")
@@ -243,36 +375,21 @@ def create_thread(message_id):
     return thread_id
 
 
-def post_to_thread(thread_id, count, delay):
-    """③ 쓰레드에 개별 리포트 발송 (12위 → 1위 순서 예행)"""
-    signs = [
-        "전갈자리", "물병자리", "사수자리", "염소자리", "물고기자리", "황소자리",
-        "천칭자리", "양자리", "쌍둥이자리", "게자리", "사자자리", "처녀자리",
-    ]
-    n = min(count, len(signs))
+def post_to_thread(thread_id, stats, count, delay):
+    """③ 쓰레드에 개별 리포트 발송 (12위 → 1위 순서 예행, 마지막이 챔피언)"""
+    by_rank_desc = sorted(stats, key=lambda s: -s["rank"])  # 12위 ... 1위
+    selected = by_rank_desc[:min(count, len(by_rank_desc))]
+    n = len(selected)
     ok_count = 0
 
-    for i in range(n):
-        rank = len(signs) - i          # 12위부터 카운트다운
-        sign = signs[i]
-        emoji = "👑" if rank == 1 else ("🥲" if rank == 12 else "🔹")
-        embed = {
-            "title": f"{emoji} 종합 {rank}위 — {sign}",
-            "description": (
-                f"연간 평균 {round(4 + i * 0.4, 2)}위\n\n"
-                "👑 1위 12회 · 🌧️ 12위 8회\n"
-                "🎯 최다 등수: 6위 (34일)\n"
-                "📊 변동성: 표준편차 3.21\n\n"
-                "_더미 데이터입니다._"
-            ),
-            "color": {1: 0xF1C40F, 2: 0xBEC2CB, 3: 0xCD7F32}.get(rank, 0x9B59B6),
-        }
+    for i, s in enumerate(selected):
+        embed = build_sign_embed(s)
         status, body = call("POST", f"/channels/{thread_id}/messages", {"embeds": [embed]})
         if status in (200, 201):
             ok_count += 1
-            print(f"   ✅ [{i+1}/{n}] {rank}위 {sign}")
+            print(f"   ✅ [{i+1}/{n}] {s['rank']}위 {s['sign_kr']}")
         else:
-            print(f"   ❌ [{i+1}/{n}] {rank}위 {sign} 실패")
+            print(f"   ❌ [{i+1}/{n}] {s['rank']}위 {s['sign_kr']} 실패")
             print(explain_error(status, body))
             if status == 429:
                 retry = body.get("retry_after", 1)
@@ -332,7 +449,9 @@ def main():
     print(" 실제 흐름 예행")
     print("-" * 56)
 
-    msg_id = post_summary()
+    stats = build_dummy_yearly_stats()
+
+    msg_id = post_summary(stats)
     if not msg_id:
         sys.exit(1)
 
@@ -341,7 +460,7 @@ def main():
         print("\n💡 쓰레드 생성만 실패했다면 '공개 스레드 만들기' 권한을 확인하세요.")
         sys.exit(1)
 
-    all_ok = post_to_thread(thread_id, args.count, args.delay)
+    all_ok = post_to_thread(thread_id, stats, args.count, args.delay)
 
     if args.cleanup:
         print()
