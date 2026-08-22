@@ -219,3 +219,5 @@ __marimo__/
 
 # Test Report
 test/email_report.html
+test/.DS_Store
+.DS_Store

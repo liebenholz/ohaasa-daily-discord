@@ -1,0 +1,40 @@
+name: Thread Creation Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '실행 모드'
+        required: true
+        default: 'check-only'
+        type: choice
+        options:
+          - check-only   # 권한 확인만 (발송 없음) ← 처음에는 이것부터
+          - full-test    # 전체 흐름 (요약 → 쓰레드 → 메시지)
+          - full-cleanup # 전체 흐름 + 테스트 쓰레드 삭제
+      count:
+        description: '쓰레드에 보낼 메시지 수 (full-test 시, 기본 3, 최대 12)'
+        required: false
+        default: '3'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          # 표준 라이브러리만 사용 — pip install 불필요
+
+      - name: Run thread test
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          TEST_CHANNEL_ID:   ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:     ${{ secrets.TEST_GUILD_ID }}
+          # 모드에 따라 환경변수로 플래그 전달
+          THREAD_TEST_COUNT:      ${{ inputs.count }}
+          THREAD_TEST_CHECK_ONLY: ${{ inputs.mode == 'check-only' && 'true' || 'false' }}
+          THREAD_TEST_CLEANUP:    ${{ inputs.mode == 'full-cleanup' && 'true' || 'false' }}
+        run: python test/test_thread.py
