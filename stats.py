@@ -145,7 +145,7 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
     }
 
     # ⭐ 3단계: 웹훅 제거 — 아래 블록 전체 주석 처리 (삭제 아님, 복원 가능)
-    webhook = os.environ.get("DISCORD_WEBHOOK")
+    webhook = os.environ.get("TEST_DISCORD_WEBHOOK")
     if webhook:
         payload = {
             "username": "아침별점 요정",
