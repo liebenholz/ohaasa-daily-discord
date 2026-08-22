@@ -158,7 +158,6 @@ def send_report(title: str, description: str, day_count: int, period_label: str)
         print(json.dumps(embed, ensure_ascii=False, indent=2))
 
     # send_embed_to_channels(embed)
-ㄴ
 
 def run_report(start_iso: str, end_iso: str, label: str): # kind: str, 
     days = load_period(start_iso, end_iso)
