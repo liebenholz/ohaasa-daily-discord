@@ -23,18 +23,29 @@
 ```
 ├── .github
 │   └── workflows
-│       ├── daily_bot.yml          # 매일 크롤 + 커밋&푸시 (GitHub Actions)
-│       └── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
-│       └── stats_report.yml       # 월간 리포트
+│       ├── daily_bot.yml          # 매일 크롤 + 알림 발송 + 커밋&푸시 (GitHub Actions)
+│       ├── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
+│       ├── stats_report.yml       # 월간 리포트 발송
+│       ├── preview_only.yml       # 최신 데이터로 프리뷰 채널 발송 (수동 실행)
+│       ├── preview_on_pr.yml      # 코드 변경 PR 시 자동 프리뷰
+│       └── thread_test.yml        # 연간 리포트 쓰레드 발송 사전 검증
 ├── api
-│   └── index.py                   # Discord Interactions 엔드포인트 (Vercel)
+│   └── index.py                   # Discord Interactions 엔드포인트 — 운세 조회 + 알림 채널 설정 커맨드 (Vercel)
 ├── data
 │   ├── horoscope_YYYY-MM-DD.json  # 날짜별 운세 데이터 (자동 생성)
 │   └── latest.json                # 가장 최신 운세 (봇이 조회)
-├── main.py                        # 크롤링 + 번역 + JSON 저장 + Webhook 전송
+├── test
+│   ├── preview_webhook.py         # 테스트 웹훅으로 번역 결과 프리뷰 발송
+│   ├── build_email_report.py      # 일일 테스트 리포트 이메일 본문 생성
+│   └── test_thread.py             # 연간 리포트 채널→쓰레드 발송 흐름 더미 테스트
+├── src                            # README/랜딩 페이지용 이미지
+├── channels.py                    # Upstash Redis 기반 서버별 알림 채널 저장소 (등록/조회/해제)
+├── notifier.py                    # Bot API 멀티채널 발송 — 재시도/백오프/에러분류/실패요약 알림
+├── main.py                        # 크롤링 + 번역 + JSON 저장 + 알림 발송(Bot API, 웹훅은 폴백으로 보존)
 ├── register_commands.py           # 슬래시 커맨드 1회성 등록 스크립트
 ├── requirements.txt
-├── stats.py                       # 월간/연간 리포트 생성 + Webhook 전송
+├── stats.py                       # 월간 리포트 생성 + 알림 발송
+├── index.html                     # 프로젝트 소개 랜딩 페이지
 └── vercel.json                    # Vercel 배포 리전 설정
 ```
 
@@ -80,17 +91,23 @@
 │ - GitHub Actions가 자동으로 커밋 & 푸시
 ▼
 ┌─────────────────────────────────────────────────────────┐
-  6. 순위 메시지 전송 (main.py - Requests)
+  6. 알림 발송 (main.py → notifier.py, channels.py)
 └─────────────────────────────────────────────────────────┘
-│ - GitHub Secrets의 DISCORD_WEBHOOK URL 호출
+│ - Upstash Redis에서 서버별로 등록된 알림 채널 목록 조회
+│ - 채널마다 Discord Bot API로 순위 임베드 발송
+│ - 실패 시 채널당 최대 3회 지수 백오프 재시도
+│   (429/5xx/timeout → 재시도, 403/404 → 영구 실패, 401 → 전체 중단)
+│ - 예비 cron이 같은 날 재실행돼도 이미 성공한 채널은 건너뜀
+│   (Upstash의 sent:{date} 기록 기준)
+│ - 남은 실패가 있으면 TEST_DISCORD_WEBHOOK으로 실패 요약 알림
+│ - DISCORD_WEBHOOK(단일 채널 전송)은 현재 비활성화된 폴백 경로로 코드에 보존
 │ - E-mail로 순위 및 번역 정보가 포함된 테스트 리포트 전달
-│ - 디스코드 서버로 HTTP POST 요청 발송
 │ - 어제 파일(data/horoscope_YYYY-MM-DD.json)과 순위 비교
 ▼
 ┌─────────────────────────────────────────────────────────┐
   7. 최종 목적지 (Discord App)
 └─────────────────────────────────────────────────────────┘
-내 디스코드 채널에 순위 메시지 도착!
+등록된 각 서버 채널에 순위 메시지 도착!
 ```
 
 ### 유저 요청 시 — 세부 운세 응답
@@ -124,6 +141,45 @@
   5. 최종 목적지 (Discord App)
 └─────────────────────────────────────────────────────────┘
 유저 채널에 상세 운세 임베드 표시!
+```
+
+### 알림 채널 등록/변경/해제 — `/오하아사설정`
+```
+┌─────────────────────────────────────────────────────────┐
+  1. 유저 입력 (Discord Client)
+└─────────────────────────────────────────────────────────┘
+│ - '/오하아사설정 알림설정 채널:#운세' 등 서브커맨드 실행
+│ - Discord UI에서 '서버 관리(Manage Guild)' 권한자에게만 노출
+▼
+┌─────────────────────────────────────────────────────────┐
+  2. 요청 라우팅 & 서명·권한 검증 (Vercel - api/index.py)
+└─────────────────────────────────────────────────────────┘
+│ - X-Signature-Ed25519 헤더 검증 (PyNaCl)
+│ - member.permissions로 서버 관리 권한 서버단 재검증
+▼
+┌─────────────────────────────────────────────────────────┐
+  3. 채널 등록/변경/해제 (Vercel - channels.py)
+└─────────────────────────────────────────────────────────┘
+│ - 알림설정: Upstash에 channels:{guild_id} SET + channels:index SADD
+│ - 알림해제: DEL + SREM (등록 해제는 이 경로로만 발생 — 발송 실패로는 해제 안 됨)
+│ - 알림확인: 현재 등록된 채널 조회
+▼
+┌─────────────────────────────────────────────────────────┐
+  4. 즉시 테스트 발송 (Vercel - notifier.py)
+└─────────────────────────────────────────────────────────┘
+│ - 등록/변경 직후 Bot API로 해당 채널에 테스트 메시지 1회 발송
+│ - 403 등 실패 시 권한 안내 메시지를 ephemeral로 응답
+▼
+┌─────────────────────────────────────────────────────────┐
+  5. 운영 모니터링 알림 (Vercel - notifier.py)
+└─────────────────────────────────────────────────────────┘
+│ - 신규 등록/변경/해제 이벤트를 TEST_DISCORD_WEBHOOK으로 전송
+│ - 실행자, 서버/채널, 테스트 발송 성공·실패 여부 포함
+▼
+┌─────────────────────────────────────────────────────────┐
+  6. 최종 목적지 (Discord App)
+└─────────────────────────────────────────────────────────┘
+요청한 유저에게는 ephemeral 응답, 운영자에게는 모니터링 채널로 별도 알림!
 ```
 
 ## 데이터 스키마 (data/latest.json)
@@ -181,17 +237,24 @@
 
 | Secret | 용도 | 발급처 |
 |---|---|---|
-| `DISCORD_WEBHOOK` | 매일 아침 순위 메시지 전송 | Discord 채널 → 연동 → 웹후크 |
+| `DISCORD_WEBHOOK` | (현재 비활성화) 단일 채널 웹훅 전송 — 코드에 폴백용으로 주석 보존 | Discord 채널 → 연동 → 웹후크 |
+| `TEST_DISCORD_WEBHOOK` | 프리뷰 채널 발송 + 알림 발송 실패/채널 등록 이벤트 모니터링 | Discord 채널 → 연동 → 웹후크 |
 | `DISCORD_APP_ID` | 슬래시 커맨드 등록 | Developer Portal → General Information |
-| `DISCORD_BOT_TOKEN` | 슬래시 커맨드 등록 인증 | Developer Portal → Bot → Reset Token |
+| `DISCORD_BOT_TOKEN` | 슬래시 커맨드 등록 인증 + Bot API 알림 발송 | Developer Portal → Bot → Reset Token |
 | `DEEPL_API_KEY` | 일본어 → 한국어 운세 번역 | <https://www.deepl.com/pro-api> |
+| `UPSTASH_REDIS_REST_URL` | 서버별 알림 채널 등록 정보 저장 | Upstash 콘솔 → REST API |
+| `UPSTASH_REDIS_REST_TOKEN` | 위와 동일 | Upstash 콘솔 → REST API |
 
-### Vercel Environment Variables — 세부 운세 응답용
+### Vercel Environment Variables — Interactions 엔드포인트(운세 조회 + 알림 채널 설정)용
 
 | Variable | 용도 | 발급처 |
 |---|---|---|
 | `DISCORD_PUBLIC_KEY` | Interactions 요청 서명 검증 | Developer Portal → General Information |
 | `DISCORD_APP_ID` | 팔로우업 응답 전송 | Developer Portal → General Information |
+| `DISCORD_BOT_TOKEN` | 채널 등록 시 즉시 테스트 발송 | Developer Portal → Bot → Reset Token |
+| `UPSTASH_REDIS_REST_URL` | 알림 채널 등록/조회/해제 | Upstash 콘솔 → REST API |
+| `UPSTASH_REDIS_REST_TOKEN` | 위와 동일 | Upstash 콘솔 → REST API |
+| `TEST_DISCORD_WEBHOOK` | 채널 등록/변경/해제 모니터링 알림 | Discord 채널 → 연동 → 웹후크 |
 
 
 ## 사용 스택
@@ -199,9 +262,10 @@
 - **크롤링**: Python, Playwright, BeautifulSoup4
 - **번역**: DeepL API (JA → KO)
 - **스케줄링 & 데이터 저장**: GitHub Actions, Git 자동 커밋
-- **서버리스 함수**: Vercel Python Runtime (`api/interactions.py`)
+- **알림 채널 저장소**: Upstash Redis (REST API)
+- **서버리스 함수**: Vercel Python Runtime (`api/index.py`)
 - **서명 검증**: PyNaCl (Ed25519)
-- **디스코드 통신**: Webhook (송신), Interactions (요청-응답)
+- **디스코드 통신**: Discord Bot API (멀티채널 알림 발송, 재시도/백오프), Webhook (프리뷰·모니터링·폴백), Interactions (요청-응답)
 
 
 ## 버전
