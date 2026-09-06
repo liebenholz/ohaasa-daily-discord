@@ -33,9 +33,15 @@ def _classify_response(r: requests.Response) -> dict:
     """단일 응답을 outcome으로 분류한다.
 
     outcome: "success" | "retry"(429/5xx/응답 파싱 불가) | "permanent"(403/404 등) | "abort"(401)
+    성공 시 파싱된 응답 바디를 result["body"]에 담는다 — 메시지 발송 성공 후
+    그 message_id로 쓰레드를 만드는 등, 후속 호출이 응답 내용을 필요로 해서다.
     """
     if r.status_code < 400:
-        return {"outcome": "success", "status_code": r.status_code}
+        try:
+            body = r.json()
+        except ValueError:
+            body = {}
+        return {"outcome": "success", "status_code": r.status_code, "body": body}
 
     try:
         body = r.json()
@@ -60,15 +66,14 @@ def _classify_response(r: requests.Response) -> dict:
     return result
 
 
-def send_once(channel_id: str, embed: dict, headers: dict) -> dict:
-    """단일 시도. 네트워크 예외/타임아웃은 재시도 대상으로 분류한다."""
+def _api_post(path: str, payload: dict, headers: dict) -> dict:
+    """DISCORD_API + path 로 POST하고 응답을 outcome으로 분류한다.
+
+    send_once/send_with_retry/create_thread가 공유하는 저수준 호출부.
+    네트워크 예외/타임아웃은 재시도 대상으로 분류한다.
+    """
     try:
-        r = requests.post(
-            f"{DISCORD_API}/channels/{channel_id}/messages",
-            headers=headers,
-            json={"embeds": [embed]},
-            timeout=10,
-        )
+        r = requests.post(f"{DISCORD_API}{path}", headers=headers, json=payload, timeout=10)
     except requests.Timeout:
         return {"outcome": "retry", "status_code": None, "error_code": None, "message": "timeout"}
     except requests.RequestException as e:
@@ -77,17 +82,17 @@ def send_once(channel_id: str, embed: dict, headers: dict) -> dict:
     return _classify_response(r)
 
 
-def send_with_retry(channel_id: str, embed: dict, headers: dict) -> dict:
+def _api_post_with_retry(path: str, payload: dict, headers: dict, label: str) -> dict:
     """지수 백오프로 최대 MAX_ATTEMPTS회 시도. 성공/영구실패/중단은 즉시 반환."""
     result = None
     for attempt in range(MAX_ATTEMPTS):
-        result = send_once(channel_id, embed, headers)
+        result = _api_post(path, payload, headers)
         if result["outcome"] != "retry":
             return result
 
         if attempt < MAX_ATTEMPTS - 1:
             wait = result.get("retry_after") or BASE_BACKOFF * (2 ** attempt)
-            print(f"  ↻ 채널 {channel_id} 재시도 {attempt + 1}/{MAX_ATTEMPTS} "
+            print(f"  ↻ {label} 재시도 {attempt + 1}/{MAX_ATTEMPTS} "
                   f"({result.get('status_code')} {result.get('message')}) — {wait:.1f}s 대기")
             time.sleep(wait)
 
@@ -95,12 +100,46 @@ def send_with_retry(channel_id: str, embed: dict, headers: dict) -> dict:
     return result
 
 
-def send_test_message(channel_id: str) -> dict:
-    """등록 직후 즉시 1회 테스트 발송 (재시도 없음 — 인터랙션 응답 지연 최소화)."""
+def send_once(channel_id: str, embed: dict, headers: dict) -> dict:
+    """단일 시도."""
+    return _api_post(f"/channels/{channel_id}/messages", {"embeds": [embed]}, headers)
+
+
+def send_with_retry(channel_id: str, embed: dict, headers: dict) -> dict:
+    """지수 백오프로 최대 MAX_ATTEMPTS회 시도. 성공/영구실패/중단은 즉시 반환."""
+    return _api_post_with_retry(
+        f"/channels/{channel_id}/messages", {"embeds": [embed]}, headers, f"채널 {channel_id}"
+    )
+
+
+def create_thread(
+    channel_id: str, message_id: str, thread_name: str, headers: dict,
+    auto_archive_duration: int = 1440,
+) -> dict:
+    """메시지에 쓰레드를 생성한다 (지수 백오프 재시도 포함).
+
+    성공 시 result["body"]["id"]가 새로 만들어진 thread_id.
+    """
+    payload = {"name": thread_name, "auto_archive_duration": auto_archive_duration}
+    return _api_post_with_retry(
+        f"/channels/{channel_id}/messages/{message_id}/threads", payload, headers,
+        f"쓰레드 생성({channel_id})",
+    )
+
+
+def bot_headers() -> dict | None:
+    """Bot API 호출용 헤더. DISCORD_BOT_TOKEN 미설정이면 None."""
     bot_token = os.environ.get("DISCORD_BOT_TOKEN")
     if not bot_token:
+        return None
+    return {"Authorization": f"Bot {bot_token}", "Content-Type": "application/json"}
+
+
+def send_test_message(channel_id: str) -> dict:
+    """등록 직후 즉시 1회 테스트 발송 (재시도 없음 — 인터랙션 응답 지연 최소화)."""
+    headers = bot_headers()
+    if not headers:
         return {"outcome": "retry", "status_code": None, "error_code": None, "message": "DISCORD_BOT_TOKEN 미설정"}
-    headers = {"Authorization": f"Bot {bot_token}", "Content-Type": "application/json"}
     return send_once(channel_id, TEST_EMBED, headers)
 
 
@@ -227,12 +266,10 @@ def send_embed_to_channels(
 
     already_sent = registered_count - len(pending)
 
-    bot_token = os.environ.get("DISCORD_BOT_TOKEN")
-    if not bot_token:
+    headers = bot_headers()
+    if not headers:
         print("⚠️  DISCORD_BOT_TOKEN 미설정 — Bot API 발송 생략")
         return
-
-    headers = {"Authorization": f"Bot {bot_token}", "Content-Type": "application/json"}
 
     print(f"📨 발송 시작 — 등록 {registered_count}건, 기존 성공 {already_sent}건, "
           f"이번 대상 {len(pending)}건")

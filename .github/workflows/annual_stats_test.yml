@@ -1,0 +1,35 @@
+name: Annual Report Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: '집계 시작일 (YYYY-MM-DD)'
+        required: true
+        default: '2026-01-01'
+      end_date:
+        description: '집계 종료일 (YYYY-MM-DD)'
+        required: true
+        default: '2026-08-31'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run annual report (thread) test
+        env:
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          TEST_CHANNEL_ID: ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:   ${{ secrets.TEST_GUILD_ID }}
+        run: python annual_stats.py "${{ inputs.start_date }}" "${{ inputs.end_date }}"
