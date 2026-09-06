@@ -171,7 +171,7 @@ def build_summary_embed(stats: list[dict], period_label: str, day_count: int, ye
     ]
 
     return {
-        "title": f"🧪 [TEST] {year}년 오하아사 연간 리포트",
+        "title": f"📊 {year}년 오하아사 연간 리포트",
         "description": "\n".join(lines),
         "color": 0xF1C40F,  # 골드
         "footer": {"text": f"{period_label} · 집계 {day_count}일 · 테스트 발송"},

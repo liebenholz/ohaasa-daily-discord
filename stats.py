@@ -111,7 +111,7 @@ def pick_awards(stats: dict) -> dict:
 # 메시지 조립 및 전송
 # ─────────────────────────────────────────────
 def build_description(stats: dict, awards: dict) -> str: # , kind: str
-    lines = ["**📈 평균 순위**"]
+    lines = ["**📈 월간 평균 순위**"]
     ranked = sorted(stats.items(), key=lambda kv: kv[1]["avg"])
     for i, (sign, s) in enumerate(ranked, start=1):
         medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(i, "🔹")
