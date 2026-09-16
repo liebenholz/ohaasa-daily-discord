@@ -1,0 +1,31 @@
+name: Monthly Report (Thread) Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_month:
+        description: '대상 월 (YYYY-MM)'
+        required: true
+        default: '2026-09'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run monthly report (thread) test
+        env:
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          TEST_CHANNEL_ID: ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:   ${{ secrets.TEST_GUILD_ID }}
+        run: python monthly_stats.py "${{ inputs.target_month }}"
