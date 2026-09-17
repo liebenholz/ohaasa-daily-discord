@@ -1,4 +1,4 @@
-name: Annual Report Test
+name: Annual Report
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ on:
         default: '2026-08-31'
 
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run annual report (thread) test
+      - name: Run annual report (thread)
         env:
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
