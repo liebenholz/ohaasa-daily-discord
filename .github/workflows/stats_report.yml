@@ -1,4 +1,4 @@
-name: Monthly Stats Report
+name: Monthly Stats Report (Legacy)
 
 on:
   schedule:

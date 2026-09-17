@@ -1,4 +1,4 @@
-name: Monthly Report (Thread)
+name: Monthly Report
 
 on:
   workflow_dispatch:
