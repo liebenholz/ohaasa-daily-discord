@@ -2,8 +2,8 @@ name: Annual Report
 
 on:
   schedule:
-    # 매년 12월 31일 KST 18:00 (UTC 09:00) — 실제 연도 말일 판정은 annual_stats.py가 수행
-    - cron: '0 9 31 12 *'
+    # 매년 12월 31일 KST 15:57 (UTC 06:57) — 실제 연도 말일 판정은 annual_stats.py가 수행
+    - cron: '57 6 31 12 *'
   workflow_dispatch:
     inputs:
       start_date:
