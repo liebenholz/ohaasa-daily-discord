@@ -1,12 +1,14 @@
 name: Monthly Report
 
 on:
+  schedule:
+    # 매월 28~31일 KST 12:23 (UTC 03:23) — 말일 판정은 monthly_stats.py가 수행
+    - cron: '23 03 28-31 * *'
   workflow_dispatch:
     inputs:
       target_month:
-        description: '대상 월 (YYYY-MM)'
-        required: true
-        default: '2026-09'
+        description: '대상 월 (YYYY-MM) — 비워두면 자동(말일 판정)'
+        required: false
 
 jobs:
   run:
@@ -21,7 +23,18 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run monthly report (thread)
+      - name: Run monthly report (auto — 말일 판정)
+        if: github.event_name == 'schedule' || inputs.target_month == ''
+        env:
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          TEST_CHANNEL_ID: ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:   ${{ secrets.TEST_GUILD_ID }}
+        run: python monthly_stats.py
+
+      - name: Run monthly report (manual — 월 지정)
+        if: github.event_name == 'workflow_dispatch' && inputs.target_month != ''
         env:
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}

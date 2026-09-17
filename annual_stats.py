@@ -4,8 +4,8 @@
 별자리별 개별 리포트(월별 평균 꺾은선그래프 포함)를 12위→1위 순으로 발송한다.
 
 사용법:
-  python annual_stats.py <시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD>
-  예) python annual_stats.py 2026-01-01 2026-08-31
+  python annual_stats.py <시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD>   # 수동: 기간 직접 지정
+  python annual_stats.py                                         # 자동: 오늘(KST)이 12/31이면 올해 전체 리포트
 
 발송 대상은 아래 TARGET_MODE 상수로 전환한다 (기본은 테스트 채널만).
 """
@@ -14,6 +14,7 @@ import sys
 import json
 import time
 import urllib.parse
+from datetime import datetime, timedelta, date
 
 from ranking_stats import load_period, aggregate, pick_mode_rank
 from channels import list_channel_entries
@@ -43,6 +44,10 @@ def _resolve_targets() -> list[tuple[str, str]]:
     guild_id = os.environ.get("TEST_GUILD_ID", "test")
     print(f"🧪 테스트 모드 — 채널 {channel_id} 로만 발송")
     return [(guild_id, channel_id)]
+
+
+def kst_today() -> date:
+    return (datetime.utcnow() + timedelta(hours=9)).date()
 
 
 # ─────────────────────────────────────────────
@@ -235,18 +240,11 @@ def send_annual_report(
     return ok == len(by_rank_desc)
 
 
-def main():
-    if len(sys.argv) != 3:
-        print("사용법: python annual_stats.py <시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD>")
-        sys.exit(1)
-
-    start_iso, end_iso = sys.argv[1], sys.argv[2]
-    year = int(start_iso[:4])
-
+def run_report(start_iso: str, end_iso: str, year: int):
     days = load_period(start_iso, end_iso)
     if not days:
         print(f"❌ {start_iso} ~ {end_iso} 기간에 데이터가 없습니다.")
-        sys.exit(1)
+        return
 
     months = _months_present(days)
     stats = build_yearly_stats(days, months)
@@ -257,7 +255,7 @@ def main():
     entries = _resolve_targets()
     if not entries:
         print("❌ 발송 대상이 없습니다.")
-        sys.exit(1)
+        return
 
     total_ok = 0
     for guild_id, channel_id in entries:
@@ -265,6 +263,28 @@ def main():
             total_ok += 1
 
     print(f"\n{'=' * 50}\n 전체 결과: {total_ok}/{len(entries)}개 서버 성공\n{'=' * 50}")
+
+
+def main():
+    args = sys.argv[1:]
+
+    # ── 수동 모드: python annual_stats.py 2026-01-01 2026-08-31
+    if len(args) == 2:
+        start_iso, end_iso = args
+        run_report(start_iso, end_iso, int(start_iso[:4]))
+        return
+    if args:
+        print("사용법: python annual_stats.py [<시작일 YYYY-MM-DD> <종료일 YYYY-MM-DD>]")
+        sys.exit(1)
+
+    # ── 자동 모드: 오늘(KST)이 12월 31일이면 올해 전체 리포트
+    today = kst_today()
+    if not (today.month == 12 and today.day == 31):
+        print(f"오늘({today})은 12월 31일이 아님 — 연간 리포트 생략")
+        return
+
+    start_iso, end_iso = f"{today.year}-01-01", f"{today.year}-12-31"
+    run_report(start_iso, end_iso, today.year)
 
 
 if __name__ == "__main__":

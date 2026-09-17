@@ -1,16 +1,17 @@
 name: Annual Report
 
 on:
+  schedule:
+    # 매년 12월 31일 KST 18:00 (UTC 09:00) — 실제 연도 말일 판정은 annual_stats.py가 수행
+    - cron: '0 9 31 12 *'
   workflow_dispatch:
     inputs:
       start_date:
-        description: '집계 시작일 (YYYY-MM-DD)'
-        required: true
-        default: '2026-01-01'
+        description: '집계 시작일 (YYYY-MM-DD) — 비워두면 자동(12/31 판정)'
+        required: false
       end_date:
-        description: '집계 종료일 (YYYY-MM-DD)'
-        required: true
-        default: '2026-08-31'
+        description: '집계 종료일 (YYYY-MM-DD) — 비워두면 자동(12/31 판정)'
+        required: false
 
 jobs:
   run:
@@ -25,7 +26,18 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run annual report (thread)
+      - name: Run annual report (auto — 12/31 판정)
+        if: github.event_name == 'schedule' || inputs.start_date == ''
+        env:
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          TEST_CHANNEL_ID: ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:   ${{ secrets.TEST_GUILD_ID }}
+        run: python annual_stats.py
+
+      - name: Run annual report (manual — 기간 지정)
+        if: github.event_name == 'workflow_dispatch' && inputs.start_date != ''
         env:
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
