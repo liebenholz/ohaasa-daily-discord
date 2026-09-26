@@ -20,6 +20,8 @@
 
 ![](/src/ohaasa-discord-bot-02.png)
 
+![](/src/ohaasa-discord-bot-03.png)
+
 ## 파일 구조
 ```
 ├── .github
