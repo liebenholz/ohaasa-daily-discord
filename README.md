@@ -28,7 +28,9 @@
 │   └── workflows
 │       ├── daily_bot.yml          # 매일 크롤 + 알림 발송 + 커밋&푸시 (GitHub Actions)
 │       ├── register_commands.yml  # 슬래시 커맨드 등록 (수동 실행)
-│       ├── stats_report.yml       # 월간 리포트 발송
+│       ├── stats_report.yml       # 월간 리포트 발송 (사용X)
+│       ├── monthly_stats.yml      # 월간 리포트 발송
+│       ├── annual_stats.yml       # 연간 리포트 발송
 │       ├── preview_only.yml       # 최신 데이터로 프리뷰 채널 발송 (수동 실행)
 │       ├── preview_on_pr.yml      # 코드 변경 PR 시 자동 프리뷰
 │       └── thread_test.yml        # 연간 리포트 쓰레드 발송 사전 검증
@@ -47,7 +49,9 @@
 ├── main.py                        # 크롤링 + 번역 + JSON 저장 + 알림 발송(Bot API, 웹훅은 폴백으로 보존)
 ├── register_commands.py           # 슬래시 커맨드 1회성 등록 스크립트
 ├── requirements.txt
-├── stats.py                       # 월간 리포트 생성 + 알림 발송
+├── stats.py                       # 월간 리포트 생성 + 알림 발송 (사용X)
+├── monthly_stats.py               # 월간 리포트 생성 + 알림 발송
+├── annual_stats.py                # 연간 리포트 생성 + 알림 발송s
 ├── index.html                     # 프로젝트 소개 랜딩 페이지
 └── vercel.json                    # Vercel 배포 리전 설정
 ```
@@ -273,6 +277,12 @@
 
 ## 버전
 
+- 1.3.1(261001)
+  - 월간 리포트에 스레드 형태로 상세정보 추가
+    - 이달 평균 순위
+    - 이달 1위 및 12위 횟수
+    - 이달 최다 등수, 표준편차
+    - 이달 일별 등수 그래프
 - 1.3.0(260831)
   - Bot 토큰 기반 채널 등록제 적용
   - GitHub Actions 실행 스케줄 개선
