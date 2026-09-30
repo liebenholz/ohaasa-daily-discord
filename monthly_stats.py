@@ -28,8 +28,8 @@ from notifier import send_with_retry, create_thread, bot_headers
 
 # ── 발송 대상 선택 ──────────────────────────────────────────────
 # 기본: 테스트 길드/채널로만 발송 (안전). 아래 두 줄 중 하나만 활성화한다.
-TARGET_MODE = "test"
-# TARGET_MODE = "all"   # 전체 등록 길드로 실제 발송 — 위 줄을 주석 처리하고 이 줄을 활성화
+# TARGET_MODE = "test" # 테스트 길드에만 발송 
+TARGET_MODE = "all"   # 전체 등록 길드로 실제 발송
 
 SEND_DELAY = 0.7  # 쓰레드 내 메시지 간 간격 (rate limit 대비)
 

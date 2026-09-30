@@ -22,7 +22,7 @@ from notifier import send_with_retry, create_thread, bot_headers
 
 # ── 발송 대상 선택 ──────────────────────────────────────────────
 # 기본: 테스트 길드/채널로만 발송 (안전). 아래 두 줄 중 하나만 활성화한다.
-TARGET_MODE = "test"
+TARGET_MODE = "test"    # 테스트 길드에만 발송 
 # TARGET_MODE = "all"   # 전체 등록 길드로 실제 발송 — 위 줄을 주석 처리하고 이 줄을 활성화
 
 SEND_DELAY = 0.7  # 쓰레드 내 메시지 간 간격 (rate limit 대비)
@@ -215,7 +215,7 @@ def send_annual_report(
     message_id = result["body"]["id"]
     print(f"✅ [{guild_id}] 요약 메시지 발송 (message_id={message_id})")
 
-    thread_name = f"🧪 [TEST] {year}년 별자리별 연간 결산"
+    thread_name = f"🧵 {year}년 별자리별 연간 결산"
     thread_result = create_thread(channel_id, message_id, thread_name, headers)
     if thread_result["outcome"] != "success":
         print(f"❌ [{guild_id}] 쓰레드 생성 실패: {thread_result}")

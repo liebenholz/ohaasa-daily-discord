@@ -1,10 +1,7 @@
 name: Monthly Stats Report (Legacy)
 
 on:
-  schedule:
-    # 매월 28~31일 KST 12:23 (UTC 03:23) — 말일 판정은 stats.py가 수행
-  
-    - cron: '23 03 28-31 * *'
+  # ⭐ 10월부터 monthly_stats.yml로 대체 — 자동 스케줄 제거, 수동 실행만 남김
   workflow_dispatch:
     inputs:
       target:
