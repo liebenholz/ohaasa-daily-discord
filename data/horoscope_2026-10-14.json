@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-14",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-10-14T06:01:44",
+  "signs": {
+    "천칭자리": {
+      "rank": 1,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "物事が思いどおりの展開に 直感に従って動いてみて 前向きな姿勢がＧＯＯＤ",
+      "lucky_item_ja": "あずき色",
+      "content_ko": "일이 생각대로 풀리도록 직감을 따라 행동해 보세요. 긍정적인 태도가 GOOD",
+      "lucky_item_ko": "팥색"
+    },
+    "쌍둥이자리": {
+      "rank": 2,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "有益な情報をＧＥＴ♪ アンテナを張り巡らせよう",
+      "lucky_item_ja": "豆腐",
+      "content_ko": "유익한 정보를 얻자♪ 주변 정보를 잘 파악해 둡시다",
+      "lucky_item_ko": "두부"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "うれしい出来事があるかも お誘いには積極的に参加を",
+      "lucky_item_ja": "ＤＶＤ",
+      "content_ko": "기쁜 일이 생길지도 몰라요. 초대받으면 적극적으로 참여하세요.",
+      "lucky_item_ko": "DVD"
+    },
+    "물고기자리": {
+      "rank": 4,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "温めていた企画が実現する日 このチャンスを逃さないで",
+      "lucky_item_ja": "黒色",
+      "content_ko": "오랫동안 준비해 온 기획이 실현되는 날, 이 기회를 놓치지 마세요",
+      "lucky_item_ko": "검은색"
+    },
+    "양자리": {
+      "rank": 5,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "大役を任される予感！ プラス思考を心掛けてね",
+      "lucky_item_ja": "ショルダーバッグ",
+      "content_ko": "중요한 임무를 맡게 될 것 같은 예감이 들어! 긍정적인 마음가짐을 가지도록 해",
+      "lucky_item_ko": "숄더백"
+    },
+    "사자자리": {
+      "rank": 6,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "努力が実を結びハッピー！ 周りに成果をアピールしよう",
+      "lucky_item_ja": "ギョーザ",
+      "content_ko": "노력이 결실을 맺어 기쁘다! 주변 사람들에게 그 성과를 뽐내 보자",
+      "lucky_item_ko": "만두"
+    },
+    "사수자리": {
+      "rank": 7,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "家族のサポートに期待大 困ったことがあれば相談を",
+      "lucky_item_ja": "オレンジ色",
+      "content_ko": "가족의 지원에 큰 기대를 걸고 있습니다. 어려움이 있으면 상담해 주세요.",
+      "lucky_item_ko": "주황색"
+    },
+    "물병자리": {
+      "rank": 8,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "神経質になってしまいそう もう少し気楽に構えて大丈夫",
+      "lucky_item_ja": "スケジュール帳",
+      "content_ko": "신경이 예민해질 것 같아. 조금 더 여유를 가지고 있어도 괜찮아.",
+      "lucky_item_ko": "일정 수첩"
+    },
+    "황소자리": {
+      "rank": 9,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "うっかりミスが増えるかも スピードより正確さを重視して",
+      "lucky_item_ja": "押し寿司",
+      "content_ko": "부주의한 실수가 늘어날 수도 있으니, 속도보다 정확성을 중시하세요",
+      "lucky_item_ko": "오시즈시"
+    },
+    "전갈자리": {
+      "rank": 10,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "迷いが出てきてモヤモヤ あなたの意思を大切に",
+      "lucky_item_ja": "目覚まし時計",
+      "content_ko": "망설임이 생겨 마음이 답답하다면, 당신의 뜻을 소중히 여기세요",
+      "lucky_item_ko": "알람 시계"
+    },
+    "처녀자리": {
+      "rank": 11,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "あやしいお誘いに注意が必要 ハッキリ断る勇気を持とう",
+      "lucky_item_ja": "青色",
+      "content_ko": "수상한 권유에 주의해야 한다. 단호하게 거절할 용기를 갖자.",
+      "lucky_item_ko": "파란색"
+    },
+    "게자리": {
+      "rank": 12,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "皆からの反感を買ってしまいそう 発言には十分気をつけて 協調性を忘れないでね",
+      "lucky_item_ja": "ダンベル",
+      "content_ko": "모두에게 반감을 살 것 같으니, 발언에 각별히 주의하고, 협조심을 잊지 말아 주세요.",
+      "lucky_item_ko": "덤벨"
+    }
+  }
+}
