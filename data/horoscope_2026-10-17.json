@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-17",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-10-17T06:01:43",
+  "signs": {
+    "양자리": {
+      "rank": 12,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "後悔する買い物をしがち。衝動まかせの購入が原因。きょうはリサーチに専念して買うのは日を改めましょう。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "メンテナンス",
+      "ratings": {
+        "money": 1,
+        "love": 3,
+        "work": 2,
+        "health": 2
+      },
+      "content_ko": "후회할 만한 물건을 사게 되는 경향이 있습니다. 충동적인 구매가 원인입니다. 오늘은 정보 수집에만 집중하고, 구매는 다른 날로 미루도록 합시다.",
+      "lucky_item_ko": "유지보수",
+      "lucky_color_ko": "하늘색"
+    },
+    "황소자리": {
+      "rank": 2,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "ブラッシュアップするために投資を。眠っていた才能が開花するなど、将来性の幅に広がりが。充実感でいっぱいに。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "さつまいも",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 4,
+        "health": 5
+      },
+      "content_ko": "더 발전하기 위해 투자하세요. 잠자고 있던 재능이 꽃피는 등, 미래의 가능성이 넓어집니다. 충만함으로 가득 차게 됩니다.",
+      "lucky_item_ko": "고구마",
+      "lucky_color_ko": "베이지"
+    },
+    "쌍둥이자리": {
+      "rank": 7,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "「もうダメだ」と思っても最後まで諦めないで。逆転可能です。健康面は代謝低下による冷えに要注意。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "ネットショッピング",
+      "ratings": {
+        "money": 3,
+        "love": 4,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "“이제 끝이다”라고 생각해도 끝까지 포기하지 마세요. 역전할 수 있습니다. 건강 면에서는 신진대사 저하로 인한 냉증에 각별히 주의하세요.",
+      "lucky_item_ko": "온라인 쇼핑",
+      "lucky_color_ko": "주황색"
+    },
+    "게자리": {
+      "rank": 11,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "人の顔色を気にしながら対応しがち。その結果ストレスをため込むことに。納得できない場合はきちんと主張を。",
+      "lucky_color_ja": "緑",
+      "lucky_item_ja": "ワイナリー",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 1,
+        "health": 3
+      },
+      "content_ko": "다른 사람의 눈치를 보며 대응하는 경향이 있다. 그 결과 스트레스를 쌓게 된다. 납득할 수 없는 경우에는 자신의 의견을 분명히 밝히자.",
+      "lucky_item_ko": "와이너리",
+      "lucky_color_ko": "초록"
+    },
+    "사자자리": {
+      "rank": 10,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "値下げなど、お得感のある言葉で購買意欲が上昇。つい買いすぎてしまいそう。予算を決めておくとストッパーに。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "フランス料理",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "가격 인하 등 알뜰한 느낌을 주는 표현에 구매 욕구가 높아진다. 무심코 너무 많이 사게 될 것 같다. 예산을 미리 정해두면 자제하는 데 도움이 된다.",
+      "lucky_item_ko": "프랑스 요리",
+      "lucky_color_ko": "노란색"
+    },
+    "처녀자리": {
+      "rank": 1,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "人気が集中しそう。親切にされて、お誘いの声がかかるなどモテモテ。フリーの人は本命を決めずライトな付き合いを。",
+      "lucky_color_ja": "ピンク",
+      "lucky_item_ja": "目覚まし時計",
+      "ratings": {
+        "money": 5,
+        "love": 5,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "인기가 쏠릴 것 같다. 친절한 대접을 받거나 데이트 신청을 받는 등 많은 이성에게 인기를 끌 것이다. 싱글인 사람은 진지한 상대를 정하지 말고 가벼운 만남을 즐기도록 하자.",
+      "lucky_item_ko": "알람 시계",
+      "lucky_color_ko": "분홍색"
+    },
+    "천칭자리": {
+      "rank": 9,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "家電など、値の張る品を壊してしまう恐れが。予想外の大きな出費にショックを受けそう。でも必需品ならケチらないで。",
+      "lucky_color_ja": "紫",
+      "lucky_item_ja": "オーダーメイド",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 3,
+        "health": 3
+      },
+      "content_ko": "가전제품 등 값비싼 물건을 망가뜨릴 우려가 있습니다. 예상치 못한 큰 지출에 충격을 받을 것 같습니다. 하지만 꼭 필요한 물건이라면 아끼지 마세요.",
+      "lucky_item_ko": "맞춤 제작",
+      "lucky_color_ko": "보라색"
+    },
+    "전갈자리": {
+      "rank": 5,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "身近な人との間に意外な共通点が。それがキッカケで恋愛に発展も。ファッションはカジュアルにまとめましょう。",
+      "lucky_color_ja": "ネイビー",
+      "lucky_item_ja": "サービスエリア",
+      "ratings": {
+        "money": 3,
+        "love": 5,
+        "work": 3,
+        "health": 4
+      },
+      "content_ko": "가까운 사람과의 사이에 뜻밖의 공통점이 발견될 수도 있습니다. 이를 계기로 연애로 발전할 수도 있죠. 패션은 캐주얼하게 연출해 보세요.",
+      "lucky_item_ko": "휴게소",
+      "lucky_color_ko": "네이비"
+    },
+    "사수자리": {
+      "rank": 8,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "食欲が刺激される星回り。「たまには」のつもりが思った以上に食べすぎてしまいそう。食後には運動を心掛けて。",
+      "lucky_color_ja": "茶色",
+      "lucky_item_ja": "古民家",
+      "ratings": {
+        "money": 4,
+        "love": 2,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "식욕을 자극하는 별자리 운세. ‘가끔은’ 하는 마음으로 시작했지만 생각보다 과식하게 될 것 같다. 식사 후에는 운동을 하는 것을 잊지 말자.",
+      "lucky_item_ko": "옛 민가",
+      "lucky_color_ko": "갈색"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "やる気のアピールがチャンスを引き寄せるカギ。積極的に行動を。新しくオープンした店で、すてきな出会いがありそう。",
+      "lucky_color_ja": "ゴールド",
+      "lucky_item_ja": "ホームセンター",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 3
+      },
+      "content_ko": "의욕을 보여주는 것이 기회를 끌어당기는 열쇠입니다. 적극적으로 행동하세요. 새로 오픈한 가게에서 멋진 만남이 있을 것 같습니다.",
+      "lucky_item_ko": "홈센터",
+      "lucky_color_ko": "골드"
+    },
+    "물병자리": {
+      "rank": 6,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "身の回りをキレイに掃除して。最近使っていない場所を洗い出し、整理を。なくしていたモノや貴重なお宝を発見。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "果樹園",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 4,
+        "health": 3
+      },
+      "content_ko": "주변을 깨끗이 청소하세요. 최근에 사용하지 않은 곳을 찾아내어 정리하세요. 잃어버렸던 물건이나 소중한 보물을 발견할 수도 있습니다.",
+      "lucky_item_ko": "과수원",
+      "lucky_color_ko": "실버"
+    },
+    "물고기자리": {
+      "rank": 4,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "人気トレーナーの動画をチェック。理想とする体形になれるエクササイズが。実践すると、みるみる効果が出そう。",
+      "lucky_color_ja": "グレー",
+      "lucky_item_ja": "版画",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "인기 트레이너의 영상을 확인해 보세요. 이상적인 체형을 만들 수 있는 운동이 소개되어 있습니다. 실제로 해보면 금세 효과가 나타날 것 같습니다.",
+      "lucky_item_ko": "판화",
+      "lucky_color_ko": "회색"
+    }
+  }
+}
