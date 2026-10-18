@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-19",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-10-19T06:01:45",
+  "signs": {
+    "물고기자리": {
+      "rank": 1,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "才能を発揮し大活躍！ 周囲からの評価も高まりそう 思い切ったアクションがＧＯＯＤ",
+      "lucky_item_ja": "レバニラ炒め",
+      "content_ko": "재능을 마음껏 발휘하며 대활약! 주변의 평가도 높아질 전망. 과감한 행동이 GOOD",
+      "lucky_item_ko": "간과 부추 볶음"
+    },
+    "사수자리": {
+      "rank": 2,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "刺激を受けヤル気ＵＰ♪ 仲間との共同作業にツキあり",
+      "lucky_item_ja": "マンガ",
+      "content_ko": "자극을 받아 의욕이 솟아오르네요♪ 동료들과의 협업에 행운이 따릅니다",
+      "lucky_item_ko": "만화"
+    },
+    "천칭자리": {
+      "rank": 3,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "充実した１日になるよ 人と積極的に関わってみて",
+      "lucky_item_ja": "シーフードカレー",
+      "content_ko": "알찬 하루가 될 거야. 다른 사람들과 적극적으로 어울려 봐.",
+      "lucky_item_ko": "해산물 카레"
+    },
+    "쌍둥이자리": {
+      "rank": 4,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "物事が大きく前進する日 計画を立てて動くと◎",
+      "lucky_item_ja": "コーヒーカップ",
+      "content_ko": "일이 크게 진전되는 날. 계획을 세우고 행동하면 ◎",
+      "lucky_item_ko": "커피잔"
+    },
+    "사자자리": {
+      "rank": 5,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "今までの努力が認められそう 皆からも褒められハッピーに！",
+      "lucky_item_ja": "財布",
+      "content_ko": "지금까지의 노력이 인정받을 것 같아. 모두에게 칭찬받으니 정말 행복해!",
+      "lucky_item_ko": "지갑"
+    },
+    "양자리": {
+      "rank": 6,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "交友関係を広げるチャンス お誘いがあればＯＫを",
+      "lucky_item_ja": "赤色",
+      "content_ko": "인맥을 넓힐 기회, 초대받으면 수락하세요",
+      "lucky_item_ko": "빨간색"
+    },
+    "처녀자리": {
+      "rank": 7,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "リラックスして過ごせるよ 友達とのおしゃべりがオススメ",
+      "lucky_item_ja": "郷土料理",
+      "content_ko": "편안하게 시간을 보낼 수 있어. 친구들과 수다를 떠는 걸 추천해.",
+      "lucky_item_ko": "향토 요리"
+    },
+    "염소자리": {
+      "rank": 8,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "一人で突っ走ってしまい後悔 よく考えてから行動して",
+      "lucky_item_ja": "ペンケース",
+      "content_ko": "혼자서 무턱대고 달려가서 후회했다. 잘 생각한 뒤에 행동해야 한다.",
+      "lucky_item_ko": "필통"
+    },
+    "황소자리": {
+      "rank": 9,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "迷いが多く優柔不断に 大きな決断は控えてね",
+      "lucky_item_ja": "イカ",
+      "content_ko": "망설임이 많고 우유부단하니, 큰 결정은 삼가도록 해",
+      "lucky_item_ko": "오징어"
+    },
+    "전갈자리": {
+      "rank": 10,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "相手に誤解されてしまうかも 気持ちはストレートに表現しよう",
+      "lucky_item_ja": "青色",
+      "content_ko": "상대방이 오해할 수도 있으니, 마음을 솔직하게 표현하자",
+      "lucky_item_ko": "파란색"
+    },
+    "게자리": {
+      "rank": 11,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "ハプニングに見舞われアタフタ きょうはなるべく静かに過ごして",
+      "lucky_item_ja": "フォトフレーム",
+      "content_ko": "예기치 못한 일이 생겨 허둥지둥… 오늘은 가능한 한 조용히 지내야겠다",
+      "lucky_item_ko": "사진 액자"
+    },
+    "물병자리": {
+      "rank": 12,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "だらしない所を見られるかも 緊張感を持って過ごすように 身だしなみにも気を配ってね",
+      "lucky_item_ja": "ハンカチ",
+      "content_ko": "부주의한 모습을 들킬 수도 있으니, 긴장감을 가지고 지내도록 하고, 외모 관리에도 신경 써 줘",
+      "lucky_item_ko": "손수건"
+    }
+  }
+}
