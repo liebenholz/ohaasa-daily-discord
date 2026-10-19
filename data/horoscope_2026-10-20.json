@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-20",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-10-20T06:01:42",
+  "signs": {
+    "천칭자리": {
+      "rank": 1,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "充実した１日になりそう 気の合う友達と一緒に 出かけると良いかも",
+      "lucky_item_ja": "宝石箱",
+      "content_ko": "알찬 하루가 될 것 같네요. 마음이 잘 맞는 친구와 함께 외출하면 좋을 것 같아요.",
+      "lucky_item_ko": "보석함"
+    },
+    "쌍둥이자리": {
+      "rank": 2,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "臨時収入がありウキウキ 欲しかった物を購入してね",
+      "lucky_item_ja": "フォー",
+      "content_ko": "예상치 못한 수입이 생겨 기분이 들뜬다. 갖고 싶었던 물건을 사자.",
+      "lucky_item_ko": "포"
+    },
+    "물병자리": {
+      "rank": 3,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "チャンスをうまくつかめるかも 「これ！」と思ったら即行動を",
+      "lucky_item_ja": "白色",
+      "content_ko": "기회를 잘 잡을 수 있을지도 모른다. ‘이거다!’라고 생각하면 바로 행동으로 옮기세요.",
+      "lucky_item_ko": "흰색"
+    },
+    "양자리": {
+      "rank": 4,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "良いアドバイスをＧＥＴ 仲間とのおしゃべりにツキあり",
+      "lucky_item_ja": "美術書",
+      "content_ko": "좋은 조언을 얻었다. 친구들과의 수다에 행운이 따른다.",
+      "lucky_item_ko": "미술 서적"
+    },
+    "사수자리": {
+      "rank": 5,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "あなたの魅力が輝くよ やさしい言葉遣いが幸運のカギ",
+      "lucky_item_ja": "黄色",
+      "content_ko": "당신의 매력이 빛날 거예요. 상냥한 말투가 행운의 열쇠입니다.",
+      "lucky_item_ko": "노란색"
+    },
+    "사자자리": {
+      "rank": 6,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "面白い発見がある時♪ 好奇心を大切にしてね",
+      "lucky_item_ja": "カレンダー",
+      "content_ko": "재미있는 발견이 있을 때♪ 호기심을 소중히 여겨요",
+      "lucky_item_ko": "달력"
+    },
+    "물고기자리": {
+      "rank": 7,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "積極的な行動で運気ＵＰ 直感を信じるとＧＯＯＤ",
+      "lucky_item_ja": "黒色",
+      "content_ko": "적극적인 행동으로 운을 높이자. 직감을 믿는 것이 좋다.",
+      "lucky_item_ko": "검은색"
+    },
+    "황소자리": {
+      "rank": 8,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "面倒な事に巻き込まれそう 落ち着いて対応すれば大丈夫",
+      "lucky_item_ja": "角煮",
+      "content_ko": "번거로운 일에 휘말릴 것 같다. 침착하게 대처하면 괜찮을 것이다.",
+      "lucky_item_ko": "조림"
+    },
+    "처녀자리": {
+      "rank": 9,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "作業が思うように進まずガッカリ… 投げやりな姿勢はＮＧ",
+      "lucky_item_ja": "水色",
+      "content_ko": "작업이 생각대로 진행되지 않아 실망스럽네요… 체념하는 태도는 금물입니다",
+      "lucky_item_ko": "하늘색"
+    },
+    "염소자리": {
+      "rank": 10,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "考えがうまくまとまらない日 気分転換の時間を作ると◎",
+      "lucky_item_ja": "ハンカチ",
+      "content_ko": "생각이 잘 정리되지 않는 날에는 기분 전환할 시간을 갖는 것이 좋습니다.",
+      "lucky_item_ko": "손수건"
+    },
+    "전갈자리": {
+      "rank": 11,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "ちょっとしたミスに注意が必要 慎重な振る舞いを心掛けて",
+      "lucky_item_ja": "納豆",
+      "content_ko": "사소한 실수에 주의해야 합니다. 신중한 행동을 유의하십시오.",
+      "lucky_item_ko": "낫토"
+    },
+    "게자리": {
+      "rank": 12,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "周りからの評価ダウン… 普段の言動を振り返ってみて 思い当たる事を見直そう",
+      "lucky_item_ja": "深緑色",
+      "content_ko": "주변의 평가가 떨어졌다… 평소 언행을 되돌아보고, 떠오르는 점을 다시 점검해 보자",
+      "lucky_item_ko": "짙은 녹색"
+    }
+  }
+}
