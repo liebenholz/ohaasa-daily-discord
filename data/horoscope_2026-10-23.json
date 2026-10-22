@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-23",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-10-23T06:01:45",
+  "signs": {
+    "염소자리": {
+      "rank": 1,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "恋が思いどおりの展開に…♥ 好きな人との距離が縮まるよ 心のままに動いてＯＫ",
+      "lucky_item_ja": "パイナップル",
+      "content_ko": "사랑이 뜻대로 흘러가네요…♥ 좋아하는 사람과의 거리가 좁혀질 거예요. 마음 가는 대로 행동해도 괜찮아요.",
+      "lucky_item_ko": "파인애플"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "大満足の買い物ができそう♪ セール情報を要チェック",
+      "lucky_item_ja": "つけ麺",
+      "content_ko": "정말 만족스러운 쇼핑을 할 수 있을 것 같아요♪ 세일 정보를 꼭 확인해 보세요",
+      "lucky_item_ko": "츠케멘"
+    },
+    "물고기자리": {
+      "rank": 3,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "新しい事に挑戦するチャンス 積極的な姿勢が幸運のカギ",
+      "lucky_item_ja": "茶色",
+      "content_ko": "새로운 일에 도전할 기회, 적극적인 자세가 행운의 열쇠",
+      "lucky_item_ko": "갈색"
+    },
+    "쌍둥이자리": {
+      "rank": 4,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "何でもスムーズにこなせる日 しっかり計画を立てるのがポイント",
+      "lucky_item_ja": "ピザ",
+      "content_ko": "무엇이든 순조롭게 해낼 수 있는 날. 꼼꼼하게 계획을 세우는 것이 핵심입니다.",
+      "lucky_item_ko": "피자"
+    },
+    "사자자리": {
+      "rank": 5,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "心に余裕が生まれる時 周りの人を助けてあげてね",
+      "lucky_item_ja": "ぬいぐるみ",
+      "content_ko": "마음에 여유가 생길 때 주변 사람들을 도와주세요",
+      "lucky_item_ko": "봉제인형"
+    },
+    "양자리": {
+      "rank": 6,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "良い刺激をもらえるかも 身近な人の話にヒントあり",
+      "lucky_item_ja": "惣菜パン",
+      "content_ko": "좋은 자극을 얻을 수도 있다. 주변 사람들의 이야기에서 힌트를 얻을 수 있다.",
+      "lucky_item_ko": "간식용 빵"
+    },
+    "황소자리": {
+      "rank": 7,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "穏やかな一日になる予感 スケジュール通りに過ごすと◎",
+      "lucky_item_ja": "緑色",
+      "content_ko": "평온한 하루가 될 것 같은 예감. 일정에 따라 지내면 ◎",
+      "lucky_item_ko": "초록색"
+    },
+    "처녀자리": {
+      "rank": 8,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "家族との関係がギクシャク 友達にアドバイスをもらって",
+      "lucky_item_ja": "煮干し",
+      "content_ko": "가족과의 관계가 어색해져서 친구에게 조언을 구했다",
+      "lucky_item_ko": "말린 멸치"
+    },
+    "게자리": {
+      "rank": 9,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "安請け合いに注意が必要 内容はしっかり確かめてね",
+      "lucky_item_ja": "塩ラーメン",
+      "content_ko": "무턱대고 약속하지 않도록 주의해야 해요. 내용은 꼼꼼히 확인해 주세요.",
+      "lucky_item_ko": "소금 라멘"
+    },
+    "사수자리": {
+      "rank": 10,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "迷いが出てきてモヤモヤ 信頼できる仲間に相談してみて",
+      "lucky_item_ja": "切手",
+      "content_ko": "망설임이 생겨 마음이 답답하다면, 믿을 수 있는 동료에게 상담해 보세요.",
+      "lucky_item_ko": "우표"
+    },
+    "천칭자리": {
+      "rank": 11,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "すぐに怠けてしまいそう… 仕事を後回しにするのはＮＧ",
+      "lucky_item_ja": "ハーブ",
+      "content_ko": "금방 게을러질 것 같아… 일을 미루는 건 안 돼",
+      "lucky_item_ko": "허브"
+    },
+    "물병자리": {
+      "rank": 12,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "なかなかヤル気がわかない時 リフレッシュの時間を作りながら 忍耐強く作業に向き合おう",
+      "lucky_item_ja": "ブローチ",
+      "content_ko": "의욕이 좀처럼 생기지 않을 때는 기분 전환할 시간을 가지면서 인내심을 가지고 작업에 임하자",
+      "lucky_item_ko": "브로치"
+    }
+  }
+}
