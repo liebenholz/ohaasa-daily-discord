@@ -230,6 +230,45 @@ def notify_channel_event(
     _post_to_test_webhook(payload)
 
 
+def notify_source_down(
+    label: str, url: str, detail: str, attempts: int, detected_at: str,
+    *, down_minutes: int | None = None,
+) -> None:
+    """기준 사이트 접속 불가를 TEST_DISCORD_WEBHOOK으로 알린다.
+
+    down_minutes가 있으면 '장애 지속' 리마인드, 없으면 최초 감지 알림이다.
+    """
+    if down_minutes is None:
+        title = "🚨 기준 사이트 접속 불가"
+        extra = []
+    else:
+        title = "⏰ 기준 사이트 장애 지속"
+        extra = [f"장애 지속: {down_minutes}분째"]
+
+    lines = [
+        f"{label} 사이트: {url}",
+        f"상태: {detail} ({attempts}회 시도 모두 실패)",
+        f"확인 시각: {detected_at}",
+        *extra,
+    ]
+    _post_to_test_webhook({
+        "username": "오하아사 발송 모니터",
+        "embeds": [{"title": title, "description": "\n".join(lines), "color": 0xE74C3C}],
+    })
+
+
+def notify_source_recovered(label: str, url: str, down_minutes: int) -> None:
+    """기준 사이트 복구를 TEST_DISCORD_WEBHOOK으로 알린다 (source_health.NOTIFY_RECOVERY가 켜진 경우만 호출)."""
+    _post_to_test_webhook({
+        "username": "오하아사 발송 모니터",
+        "embeds": [{
+            "title": "✅ 기준 사이트 복구",
+            "description": f"{label} 사이트: {url}\n장애 지속 시간: 약 {down_minutes}분",
+            "color": 0x2ECC71,
+        }],
+    })
+
+
 def send_embed_to_channels(
     embed: dict,
     entries: list[tuple[str, str]] | None = None,

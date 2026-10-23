@@ -35,7 +35,8 @@
 │       ├── preview_on_pr.yml      # 코드 변경 PR 시 자동 프리뷰
 │       └── thread_test.yml        # 연간 리포트 쓰레드 발송 사전 검증
 ├── api
-│   └── index.py                   # Discord Interactions 엔드포인트 — 운세 조회 + 알림 채널 설정 커맨드 (Vercel)
+│   ├── index.py                   # Discord Interactions 엔드포인트 — 운세 조회 + 알림 채널 설정 커맨드 (Vercel)
+│   └── health.py                  # 기준 사이트 접속 점검 엔드포인트 — QStash가 15분마다 호출 (Vercel)
 ├── data
 │   ├── horoscope_YYYY-MM-DD.json  # 날짜별 운세 데이터 (자동 생성)
 │   └── latest.json                # 가장 최신 운세 (봇이 조회)
@@ -46,6 +47,8 @@
 ├── src                            # README/랜딩 페이지용 이미지
 ├── channels.py                    # Upstash Redis 기반 서버별 알림 채널 저장소 (등록/조회/해제)
 ├── notifier.py                    # Bot API 멀티채널 발송 — 재시도/백오프/에러분류/실패요약 알림
+├── source_health.py               # 오늘의 기준 사이트 접속 점검 + 장애 알림(중복 방지)
+├── qstash_verify.py               # Upstash QStash 요청 서명(JWT) 검증
 ├── main.py                        # 크롤링 + 번역 + JSON 저장 + 알림 발송(Bot API, 웹훅은 폴백으로 보존)
 ├── register_commands.py           # 슬래시 커맨드 1회성 등록 스크립트
 ├── requirements.txt
@@ -189,6 +192,35 @@
 요청한 유저에게는 ephemeral 응답, 운영자에게는 모니터링 채널로 별도 알림!
 ```
 
+### 기준 사이트 접속 점검 — 15분 간격
+```
+┌─────────────────────────────────────────────────────────┐
+  1. 스케줄러 (Upstash QStash)
+└─────────────────────────────────────────────────────────┘
+│ - cron(*/15 * * * *)으로 api/health.py에 서명된 POST 호출
+▼
+┌─────────────────────────────────────────────────────────┐
+  2. 서명 검증 (Vercel - api/health.py, qstash_verify.py)
+└─────────────────────────────────────────────────────────┘
+│ - Upstash-Signature(JWT) 검증, 실패 시 401
+▼
+┌─────────────────────────────────────────────────────────┐
+  3. 사이트 점검 (source_health.py)
+└─────────────────────────────────────────────────────────┘
+│ - KST 요일 기준으로 오늘의 사이트 선택 (평일/주말)
+│ - GET 2xx면 정상, 실패 시 한 번의 실행 안에서 3회 재시도
+▼
+┌─────────────────────────────────────────────────────────┐
+  4. 알림 판단 (Upstash Redis - health:{site})
+└─────────────────────────────────────────────────────────┘
+│ - 정상: 무음 / 최초 장애: 알림 1회 / 장애 지속: 1시간마다 리마인드
+▼
+┌─────────────────────────────────────────────────────────┐
+  5. 모니터링 채널 (TEST_DISCORD_WEBHOOK)
+└─────────────────────────────────────────────────────────┘
+장애 알림 도착!
+```
+
 ## 데이터 스키마 (data/latest.json)
 
 ### 평일
@@ -261,7 +293,9 @@
 | `DISCORD_BOT_TOKEN` | 채널 등록 시 즉시 테스트 발송 | Developer Portal → Bot → Reset Token |
 | `UPSTASH_REDIS_REST_URL` | 알림 채널 등록/조회/해제 | Upstash 콘솔 → REST API |
 | `UPSTASH_REDIS_REST_TOKEN` | 위와 동일 | Upstash 콘솔 → REST API |
-| `TEST_DISCORD_WEBHOOK` | 채널 등록/변경/해제 모니터링 알림 | Discord 채널 → 연동 → 웹후크 |
+| `TEST_DISCORD_WEBHOOK` | 채널 등록/변경/해제 + 기준 사이트 장애 모니터링 알림 | Discord 채널 → 연동 → 웹후크 |
+| `QSTASH_CURRENT_SIGNING_KEY` | 기준 사이트 점검 요청(`api/health.py`)의 QStash 서명 검증 | Upstash 콘솔 → QStash → Signing Keys |
+| `QSTASH_NEXT_SIGNING_KEY` | 위와 동일 (키 로테이션 대비) | Upstash 콘솔 → QStash → Signing Keys |
 
 
 ## 사용 스택
@@ -270,8 +304,9 @@
 - **번역**: DeepL API (JA → KO)
 - **스케줄링 & 데이터 저장**: GitHub Actions, Git 자동 커밋
 - **알림 채널 저장소**: Upstash Redis (REST API)
-- **서버리스 함수**: Vercel Python Runtime (`api/index.py`)
-- **서명 검증**: PyNaCl (Ed25519)
+- **주기 실행(기준 사이트 점검)**: Upstash QStash 스케줄 (15분 간격, GitHub Actions cron은 지연이 커서 제외)
+- **서버리스 함수**: Vercel Python Runtime (`api/index.py`, `api/health.py`)
+- **서명 검증**: PyNaCl (Ed25519, Discord), HMAC-SHA256 JWT (QStash)
 - **디스코드 통신**: Discord Bot API (멀티채널 알림 발송, 재시도/백오프), Webhook (프리뷰·모니터링·폴백), Interactions (요청-응답)
 
 

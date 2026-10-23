@@ -3,6 +3,9 @@
   "functions": {
     "api/index.py": {
       "maxDuration": 10
+    },
+    "api/health.py": {
+      "maxDuration": 30
     }
   }
 }

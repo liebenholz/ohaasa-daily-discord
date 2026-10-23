@@ -3,11 +3,14 @@
 키 스키마:
   channels:{guild_id}  → channel_id (문자열)
   channels:index       → 등록된 guild_id들의 Set (전체 목록 조회용)
+  sent:{run_key}       → 그날 발송 성공한 guild_id Set (TTL 3일)
+  health:{site}        → 기준 사이트 장애 알림 상태 JSON (TTL 2시간, source_health.py)
 
 api/index.py의 설정 커맨드(/오하아사설정)와, 추후 발송 모듈(notifier.py)이
 공용으로 사용한다.
 """
 import os
+import json
 import requests
 
 INDEX_KEY = "channels:index"
@@ -97,3 +100,25 @@ def mark_sent(run_key: str, guild_id: str) -> None:
     key = _sent_key(run_key)
     _upstash("sadd", key, guild_id)
     _upstash("expire", key, SENT_TTL_SECONDS)
+
+
+# ─────────────────────────────────────────────
+# 기준 사이트 헬스체크 알림 상태 — 장애가 이어지는 동안 15분마다 알림이
+# 쌓이지 않도록 "언제부터 장애인지 / 마지막 알림이 언제였는지"를 기억한다.
+# 키가 없으면 정상(또는 아직 알리지 않은 상태)이다.
+# ─────────────────────────────────────────────
+def _health_key(site: str) -> str:
+    return f"health:{site}"
+
+
+def get_health_state(site: str) -> dict | None:
+    raw = _upstash("get", _health_key(site))
+    return json.loads(raw) if raw else None
+
+
+def set_health_state(site: str, state: dict, ttl_seconds: int) -> None:
+    _upstash("set", _health_key(site), json.dumps(state), "EX", ttl_seconds)
+
+
+def clear_health_state(site: str) -> None:
+    _upstash("del", _health_key(site))
