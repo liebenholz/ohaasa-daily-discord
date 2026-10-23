@@ -33,7 +33,8 @@
 │       ├── annual_stats.yml       # 연간 리포트 발송
 │       ├── preview_only.yml       # 최신 데이터로 프리뷰 채널 발송 (수동 실행)
 │       ├── preview_on_pr.yml      # 코드 변경 PR 시 자동 프리뷰
-│       └── thread_test.yml        # 연간 리포트 쓰레드 발송 사전 검증
+│       ├── thread_test.yml        # 연간 리포트 쓰레드 발송 사전 검증
+│       └── manual_message.yml     # 수동 메시지 발송 (수동 실행 전용, cron 없음)
 ├── api
 │   ├── index.py                   # Discord Interactions 엔드포인트 — 운세 조회 + 알림 채널 설정 커맨드 (Vercel)
 │   └── health.py                  # 기준 사이트 접속 점검 엔드포인트 — QStash가 15분마다 호출 (Vercel)
@@ -49,6 +50,8 @@
 ├── notifier.py                    # Bot API 멀티채널 발송 — 재시도/백오프/에러분류/실패요약 알림
 ├── source_health.py               # 오늘의 기준 사이트 접속 점검 + 장애 알림(중복 방지)
 ├── qstash_verify.py               # Upstash QStash 요청 서명(JWT) 검증
+├── manual_message.py              # 직접 작성/복사한 내용을 임베드로 발송 (test/all 선택)
+├── manual_message.txt             # 여러 줄 본문을 붙여넣는 곳 (비어 있으면 미사용)
 ├── main.py                        # 크롤링 + 번역 + JSON 저장 + 알림 발송(Bot API, 웹훅은 폴백으로 보존)
 ├── register_commands.py           # 슬래시 커맨드 1회성 등록 스크립트
 ├── requirements.txt

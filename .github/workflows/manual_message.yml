@@ -1,0 +1,46 @@
+name: Manual Message
+
+# 수동 실행 전용 — 의도적으로 schedule(cron)을 연결하지 않는다.
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: '발송 대상 — test: 테스트 채널만 / all: 등록된 모든 서버'
+        type: choice
+        options:
+          - test
+          - all
+        default: test
+      title:
+        description: '임베드 제목 (비워두면 기본 제목)'
+        required: false
+      message:
+        description: '본문 한 줄 (줄바꿈은 \n 으로 입력) — 비워두면 저장소의 manual_message.txt 사용'
+        required: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send manual message
+        # 사용자 입력은 run 스크립트에 직접 넣지 않고 env로만 전달한다 (스크립트 인젝션 방지)
+        env:
+          TARGET:  ${{ inputs.target }}
+          TITLE:   ${{ inputs.title }}
+          MESSAGE: ${{ inputs.message }}
+          DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
+          UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          TEST_CHANNEL_ID:      ${{ secrets.TEST_CHANNEL_ID }}
+          TEST_GUILD_ID:        ${{ secrets.TEST_GUILD_ID }}
+          TEST_DISCORD_WEBHOOK: ${{ secrets.TEST_DISCORD_WEBHOOK }}
+        run: python manual_message.py
