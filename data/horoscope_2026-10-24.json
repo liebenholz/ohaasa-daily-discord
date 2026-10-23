@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-24",
+  "mode": "weekend",
+  "source_url": "https://mezamashi.media/feature/chiikawa-fortune-daily",
+  "updated_at_kst": "2026-10-24T08:00:45",
+  "signs": {
+    "쌍둥이자리": {
+      "rank": 1,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "목표를 향해 한 걸음 전진할 수 있어요. 꿈은 동료에게 전하면 좋아요.",
+      "lucky_item_ko": "말하기 쉬운 사람"
+    },
+    "양자리": {
+      "rank": 2,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "직감을 믿은 행동으로 성공해요. 먼 곳의 이벤트에도 참가해봐요.",
+      "lucky_item_ko": "가로수길"
+    },
+    "황소자리": {
+      "rank": 3,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "인간관계에 기분 좋은 변화가 있을 것 같아요. 외출은 새로운 옷을 입어요.",
+      "lucky_item_ko": "핸드타월"
+    },
+    "천칭자리": {
+      "rank": 4,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "자신을 가꾸기에 좋은 날이에요. 새로운 분야에 도전해봐요.",
+      "lucky_item_ko": "팔찌"
+    },
+    "사자자리": {
+      "rank": 5,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "고민이 해결되어 한시름 놓을 수 있어요. 활동은 오후를 추천해요.",
+      "lucky_item_ko": "언덕이 많은 거리"
+    },
+    "처녀자리": {
+      "rank": 6,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "옛 친구와 재회할 것 같아요. 추억 이야기로 분위기를 띄워보세요.",
+      "lucky_item_ko": "옥상 정원"
+    },
+    "게자리": {
+      "rank": 7,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "주변의 신뢰도가 떨어져요. 상대방에게 맞춰주는 것도 중요해요.",
+      "lucky_item_ko": "산책로"
+    },
+    "전갈자리": {
+      "rank": 8,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "엇갈림이 늘어나 찜찜해요. 솔직한 마음을 전하면 좋아요.",
+      "lucky_item_ko": "크로와상"
+    },
+    "염소자리": {
+      "rank": 9,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "예정을 너무 빽빽하게 잡아 후회해요. 선택지를 줄이고 욕심을 내는 것은 좋지 않아요.",
+      "lucky_item_ko": "화장수"
+    },
+    "물고기자리": {
+      "rank": 10,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "뜻밖의 트러블에 당황해요. 여유있는 계획을 세워요.",
+      "lucky_item_ko": "공원 벤치"
+    },
+    "사수자리": {
+      "rank": 11,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "오해로 인한 다툼이 있을 것 같아요. 약속은 철저히 확인하세요.",
+      "lucky_item_ko": "로고 T셔츠"
+    },
+    "물병자리": {
+      "rank": 12,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "",
+      "lucky_item_ja": "",
+      "content_ko": "사소한 일에도 짜증이 날 수 있으니 주변 사람들과 대화할 때 말투에 주의하세요.",
+      "lucky_item_ko": "연어 주먹밥"
+    }
+  }
+}
