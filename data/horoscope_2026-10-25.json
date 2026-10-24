@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-25",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-10-25T08:38:13",
+  "signs": {
+    "양자리": {
+      "rank": 4,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "お金の流れが上向きに。欲しかったモノを手に入れるチャンス。事前に品質や価格などは調べておくと良さそう。",
+      "lucky_color_ja": "茶色",
+      "lucky_item_ja": "うろこ雲",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 3,
+        "health": 4
+      },
+      "content_ko": "돈의 흐름이 좋아집니다. 갖고 싶었던 물건을 손에 넣을 기회입니다. 미리 품질과 가격 등을 알아 두면 좋을 것 같습니다.",
+      "lucky_item_ko": "비늘구름",
+      "lucky_color_ko": "갈색"
+    },
+    "황소자리": {
+      "rank": 7,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "家の中の片付けがはかどる日。粗大ゴミを処分すると気分もスッキリ。新しい風が吹き込むので運気もアップ。",
+      "lucky_color_ja": "黒",
+      "lucky_item_ja": "カメラ",
+      "ratings": {
+        "money": 4,
+        "love": 2,
+        "work": 4,
+        "health": 3
+      },
+      "content_ko": "집 안 정리가 잘 되는 날입니다. 대형 폐기물을 처분하면 기분도 개운해집니다. 새로운 바람이 불어와 운도 상승합니다.",
+      "lucky_item_ko": "카메라",
+      "lucky_color_ko": "검정"
+    },
+    "쌍둥이자리": {
+      "rank": 6,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "人数の多い集まりほど出会いがありそう。友達関係から大切な存在に変わることも。常に笑顔で明るく接して。",
+      "lucky_color_ja": "緑",
+      "lucky_item_ja": "映画",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 3,
+        "health": 3
+      },
+      "content_ko": "사람이 많이 모이는 자리일수록 만남이 있을 것 같습니다. 친구 사이에서 소중한 존재로 바뀔 수도 있습니다. 항상 웃는 얼굴로 밝게 대하세요.",
+      "lucky_item_ko": "영화",
+      "lucky_color_ko": "초록"
+    },
+    "게자리": {
+      "rank": 12,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "不相応な買い物は考えもの。後で懐がピンチに陥るかも。見栄を張らず、お金のかからない方法を模索してみて。",
+      "lucky_color_ja": "ピンク",
+      "lucky_item_ja": "花瓶",
+      "ratings": {
+        "money": 1,
+        "love": 3,
+        "work": 2,
+        "health": 2
+      },
+      "content_ko": "분수에 맞지 않는 쇼핑은 다시 생각해 봐야 합니다. 나중에 지갑 사정이 어려워질 수 있습니다. 허세를 부리지 말고 돈이 들지 않는 방법을 찾아보세요.",
+      "lucky_item_ko": "꽃병",
+      "lucky_color_ko": "분홍색"
+    },
+    "사자자리": {
+      "rank": 1,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "周囲の応援を受けて、長年の夢がかないそう。思いがけず金銭面のサポートも。素直に受け取り、感謝の言葉を伝えて。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "家電量販店",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "주변의 응원을 받아 오랜 꿈이 이루어질 것 같습니다. 뜻밖에 금전적인 도움도 받을 수 있습니다. 순순히 받아들이고 감사의 말을 전하세요.",
+      "lucky_item_ko": "가전제품 전문 매장",
+      "lucky_color_ko": "노란색"
+    },
+    "처녀자리": {
+      "rank": 9,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "懐かしい気持ちになれる出来事が。疎遠になった仲間と意外な場所で遭遇も。引き出しやクローゼットの整理にツキあり。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "時刻表",
+      "ratings": {
+        "money": 2,
+        "love": 4,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "그리운 기분이 드는 일이 생깁니다. 소원해진 친구를 뜻밖의 장소에서 마주칠 수도 있습니다. 서랍이나 옷장 정리에 운이 따릅니다.",
+      "lucky_item_ko": "시간표",
+      "lucky_color_ko": "주황색"
+    },
+    "천칭자리": {
+      "rank": 10,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "あやふやな対応にトラブルの暗示が。知ったかぶりをするのは危険です。分からなかったら素直に教えてもらいましょう。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "海外情報",
+      "ratings": {
+        "money": 3,
+        "love": 2,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "애매한 대응이 문제를 부를 수 있습니다. 아는 척하는 것은 위험합니다. 모르면 솔직하게 알려 달라고 하세요.",
+      "lucky_item_ko": "해외 정보",
+      "lucky_color_ko": "베이지"
+    },
+    "전갈자리": {
+      "rank": 8,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "毎日の体重をノートに記録すること。自然と食べ物に気を付けるようになる時。理想のスタイルまであと一歩です。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "芳香剤",
+      "ratings": {
+        "money": 2,
+        "love": 2,
+        "work": 4,
+        "health": 4
+      },
+      "content_ko": "매일 체중을 노트에 기록하세요. 자연스럽게 음식에 신경 쓰게 되는 시기입니다. 이상적인 몸매까지 한 걸음 남았습니다.",
+      "lucky_item_ko": "방향제",
+      "lucky_color_ko": "실버"
+    },
+    "사수자리": {
+      "rank": 2,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "恋の女神がほほえんでくれる日。グループレジャーを通じてカップル誕生も。パートナーとは信頼感がカギに。",
+      "lucky_color_ja": "白",
+      "lucky_item_ja": "街路樹",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "사랑의 여신이 미소 짓는 날입니다. 단체 레저 활동을 통해 커플이 탄생할 수도 있습니다. 파트너와는 신뢰감이 열쇠입니다.",
+      "lucky_item_ko": "가로수",
+      "lucky_color_ko": "흰색"
+    },
+    "염소자리": {
+      "rank": 11,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "休日だからとゴロゴロしていてはＮＧ。生活リズムの乱れは、やる気をダウンさせます。スマホや動画も時間を決めて。",
+      "lucky_color_ja": "ゴールド",
+      "lucky_item_ja": "スマホケース",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 3,
+        "health": 1
+      },
+      "content_ko": "휴일이라고 빈둥거리면 안 됩니다. 생활 리듬이 흐트러지면 의욕이 떨어집니다. 스마트폰이나 동영상도 시간을 정해서 보세요.",
+      "lucky_item_ko": "스마트폰 케이스",
+      "lucky_color_ko": "골드"
+    },
+    "물병자리": {
+      "rank": 3,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "能力や責任感が高く評価されます。今まで積み上げた実績をアピールしましょう。友人とコラボすればビジネスも成功。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "ティーセット",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "능력과 책임감을 높이 평가받습니다. 지금까지 쌓아온 실적을 어필해 보세요. 친구와 협업하면 비즈니스도 성공할 것입니다.",
+      "lucky_item_ko": "티 세트",
+      "lucky_color_ko": "하늘색"
+    },
+    "물고기자리": {
+      "rank": 5,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "食欲の秋。つい食べすぎてしまう傾向が。でも心身ともに健康ならＯＫ。「よく食べよく動く」ことを意識して。",
+      "lucky_color_ja": "赤",
+      "lucky_item_ja": "Ｂ級グルメ",
+      "ratings": {
+        "money": 3,
+        "love": 4,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "식욕의 계절, 가을입니다. 자신도 모르게 과식하는 경향이 있습니다. 하지만 심신이 모두 건강하다면 괜찮습니다. '잘 먹고 잘 움직인다'는 점을 의식하세요.",
+      "lucky_item_ko": "B급 맛집",
+      "lucky_color_ko": "빨강"
+    }
+  }
+}
