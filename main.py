@@ -200,6 +200,21 @@ def fetch_html(url, selector, timeout=20000):
         finally:
             browser.close()
 
+def fetch_html_via_relay(timeout: int = 30) -> str:
+    """주말 사이트를 Vercel 도쿄 리전 중계(/api/relay)로 받아온다.
+
+    주말 사이트(tv-asahi.co.jp)는 일본 밖 IP에 406을 돌려줘서 GitHub Actions 러너가 직접 접근할 수
+    없다. 페이지 데이터가 정적 HTML에 들어 있어 JS 실행(Playwright) 없이 HTML만 받으면 된다.
+    """
+    r = requests.get(
+        os.environ["RELAY_URL"],
+        headers={"X-Relay-Token": os.environ.get("RELAY_TOKEN", "")},
+        timeout=timeout,
+    )
+    if r.status_code != 200:
+        raise RuntimeError(f"도쿄 중계 응답 오류: HTTP {r.status_code} {r.text[:120]}")
+    return r.text
+
 def _normalize_digits(text: str) -> str:
     """전각 숫자 → 반각"""
     return text.translate(str.maketrans("０１２３４５６７８９", "0123456789"))
@@ -252,8 +267,14 @@ def fetch_with_wait(url: str, selector: str, mode: str, today_iso: str) -> str:
     """오늘 데이터가 올라올 때까지 폴링하며 크롤"""
     prev_contents = load_previous_contents(today_iso)
 
+    # 주말 사이트는 일본 IP에서만 열려서, RELAY_URL이 설정돼 있으면 도쿄 중계를 거친다.
+    # 설정이 없으면 기존처럼 Playwright로 직접 크롤링한다 (평일 사이트는 항상 직접).
+    use_relay = mode == "weekend" and bool(os.environ.get("RELAY_URL"))
+    if use_relay:
+        print("🛰️  주말 사이트 — 도쿄 중계(Vercel hnd1) 경유")
+
     for attempt in range(1, MAX_RETRIES + 1):
-        html = fetch_html(url, selector)
+        html = fetch_html_via_relay() if use_relay else fetch_html(url, selector)
         if is_fresh(html, mode, prev_contents):
             print(f"✅ 오늘 데이터 확인 (시도 {attempt}회)")
             return html

@@ -239,9 +239,36 @@ def handle_interaction(interaction):
 # Vercel 엔트리포인트 — 반드시 소문자 'handler'
 # ─────────────────────────────────────────────
 class handler(BaseHTTPRequestHandler):
+    # ⚠️ 이 배포에서는 /api/* 요청이 전부 이 파일로 들어온다 (api/health.py 같은 별도 파일은
+    # 자기 경로로 연결되지 않음). 그래서 Discord 외 엔드포인트는 여기서 경로로 분기한다.
+    # 새 모듈은 분기 안에서만 import해서, 문제가 생겨도 Discord 응답에 영향이 없게 한다.
+    def _route(self) -> str:
+        return self.path.split("?")[0].rstrip("/")
+
+    def _send(self, status: int, content_type: str, body: bytes):
+        self.send_response(status)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_POST(self):
         length = int(self.headers.get("Content-Length", 0))
-        body = self.rfile.read(length).decode("utf-8")
+        raw = self.rfile.read(length)
+
+        # QStash가 15분마다 호출하는 기준 사이트 점검 (Discord 서명이 아니라 QStash 서명으로 검증)
+        if self._route() == "/api/health":
+            try:
+                from health_entry import handle_health_request
+                status, payload = handle_health_request(self.headers.get("Upstash-Signature", ""), raw)
+            except Exception as e:
+                print(f"❌ /api/health 처리 실패: {e}")
+                status, payload = 500, {"error": str(e)}
+            self._send(status, "application/json; charset=utf-8", json.dumps(payload, ensure_ascii=False).encode("utf-8"))
+            return
+
+        body = raw.decode("utf-8")
 
         signature = self.headers.get("X-Signature-Ed25519", "")
         timestamp = self.headers.get("X-Signature-Timestamp", "")
@@ -262,8 +289,24 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(body_bytes)
 
     def do_GET(self):
-        # 헬스체크용 (브라우저 확인 시)
-        msg = b"ohaasa interactions endpoint: OK (POST only)"
+        route = self._route()
+
+        # 주말 기준 사이트 도쿄 중계 (RELAY_TOKEN 헤더 필요) — source_relay.py 참고
+        if route == "/api/relay":
+            try:
+                from source_relay import handle_relay_request
+                status, content_type, body = handle_relay_request(self.headers.get("X-Relay-Token", ""))
+            except Exception as e:
+                print(f"❌ /api/relay 처리 실패: {e}")
+                status, content_type, body = 500, "application/json; charset=utf-8", json.dumps({"error": str(e)}).encode("utf-8")
+            self._send(status, content_type, body)
+            return
+
+        # 브라우저 확인용
+        if route == "/api/health":
+            msg = b"ohaasa health endpoint: OK (signed POST only)"
+        else:
+            msg = b"ohaasa interactions endpoint: OK (POST only)"
         self.send_response(200)
         self.send_header("Content-Type", "text/plain")
         self.send_header("Content-Length", str(len(msg)))

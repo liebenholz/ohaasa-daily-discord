@@ -1,8 +1,8 @@
 {
-  "regions": ["icn1"],
+  "regions": ["hnd1"],
   "functions": {
     "api/index.py": {
-      "maxDuration": 10
+      "maxDuration": 30
     },
     "api/health.py": {
       "maxDuration": 30

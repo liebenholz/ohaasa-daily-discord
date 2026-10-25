@@ -37,7 +37,7 @@
 │       └── manual_message.yml     # 수동 메시지 발송 (수동 실행 전용, cron 없음)
 ├── api
 │   ├── index.py                   # Discord Interactions 엔드포인트 — 운세 조회 + 알림 채널 설정 커맨드 (Vercel)
-│   └── health.py                  # 기준 사이트 접속 점검 엔드포인트 — QStash가 15분마다 호출 (Vercel)
+│   └── health.py                  # /api/health 래퍼 (실제 처리는 index.py가 경로로 분기 — 아래 참고)
 ├── data
 │   ├── horoscope_YYYY-MM-DD.json  # 날짜별 운세 데이터 (자동 생성)
 │   └── latest.json                # 가장 최신 운세 (봇이 조회)
@@ -50,6 +50,8 @@
 ├── notifier.py                    # Bot API 멀티채널 발송 — 재시도/백오프/에러분류/실패요약 알림
 ├── source_health.py               # 오늘의 기준 사이트 접속 점검 + 장애 알림(중복 방지)
 ├── qstash_verify.py               # Upstash QStash 요청 서명(JWT) 검증
+├── health_entry.py                # /api/health 요청 처리 (서명 검증 + 점검 실행)
+├── source_relay.py                # 주말 사이트 도쿄 중계 (/api/relay) — 일본 IP에서만 열리는 사이트 대응
 ├── manual_message.py              # 직접 작성/복사한 내용을 임베드로 발송 (test/all 선택)
 ├── manual_message.txt             # 여러 줄 본문을 붙여넣는 곳 (비어 있으면 미사용)
 ├── main.py                        # 크롤링 + 번역 + JSON 저장 + 알림 발송(Bot API, 웹훅은 폴백으로 보존)
@@ -77,6 +79,8 @@
   2. 데이터 수집 / 크롤링 (main.py - Playwright)
 └─────────────────────────────────────────────────────────┘
 │ - 아사히 방송 오하아사 웹페이지 호출 (평일/주말 분기)
+│ - 주말 사이트는 일본 IP에서만 열려서 Vercel 도쿄 리전(hnd1)의 /api/relay를 경유
+│   (정적 HTML이라 JS 실행 불필요, RELAY_URL 미설정 시 기존처럼 직접 크롤링)
 │ - Headless 크롬 브라우저 백그라운드 실행
 │ - 자바스크립트가 데이터를 채울 때까지 대기 (최대 20초)
 │ - 데이터가 모두 로딩된 최종 HTML 코드 확보
@@ -200,10 +204,10 @@
 ┌─────────────────────────────────────────────────────────┐
   1. 스케줄러 (Upstash QStash)
 └─────────────────────────────────────────────────────────┘
-│ - cron(*/15 * * * *)으로 api/health.py에 서명된 POST 호출
+│ - cron(*/15 * * * *)으로 /api/health에 서명된 POST 호출
 ▼
 ┌─────────────────────────────────────────────────────────┐
-  2. 서명 검증 (Vercel - api/health.py, qstash_verify.py)
+  2. 서명 검증 (Vercel - api/index.py → health_entry.py, qstash_verify.py)
 └─────────────────────────────────────────────────────────┘
 │ - Upstash-Signature(JWT) 검증, 실패 시 401
 ▼
@@ -286,6 +290,8 @@
 | `DEEPL_API_KEY` | 일본어 → 한국어 운세 번역 | <https://www.deepl.com/pro-api> |
 | `UPSTASH_REDIS_REST_URL` | 서버별 알림 채널 등록 정보 저장 | Upstash 콘솔 → REST API |
 | `UPSTASH_REDIS_REST_TOKEN` | 위와 동일 | Upstash 콘솔 → REST API |
+| `RELAY_URL` | 주말 사이트 도쿄 중계 주소 (`https://<프로덕션 도메인>/api/relay`) | Vercel 프로덕션 도메인 |
+| `RELAY_TOKEN` | 중계 호출 인증 (Vercel의 `RELAY_TOKEN`과 같은 값) | 직접 생성 (`openssl rand -hex 32`) |
 
 ### Vercel Environment Variables — Interactions 엔드포인트(운세 조회 + 알림 채널 설정)용
 
@@ -297,8 +303,9 @@
 | `UPSTASH_REDIS_REST_URL` | 알림 채널 등록/조회/해제 | Upstash 콘솔 → REST API |
 | `UPSTASH_REDIS_REST_TOKEN` | 위와 동일 | Upstash 콘솔 → REST API |
 | `TEST_DISCORD_WEBHOOK` | 채널 등록/변경/해제 + 기준 사이트 장애 모니터링 알림 | Discord 채널 → 연동 → 웹후크 |
-| `QSTASH_CURRENT_SIGNING_KEY` | 기준 사이트 점검 요청(`api/health.py`)의 QStash 서명 검증 | Upstash 콘솔 → QStash → Signing Keys |
+| `QSTASH_CURRENT_SIGNING_KEY` | 기준 사이트 점검 요청(`/api/health`)의 QStash 서명 검증 | Upstash 콘솔 → QStash → Signing Keys |
 | `QSTASH_NEXT_SIGNING_KEY` | 위와 동일 (키 로테이션 대비) | Upstash 콘솔 → QStash → Signing Keys |
+| `RELAY_TOKEN` | `/api/relay` 호출 인증 (없으면 중계 기능이 꺼짐) | 직접 생성, GitHub의 `RELAY_TOKEN`과 동일 값 |
 
 
 ## 사용 스택
@@ -308,7 +315,7 @@
 - **스케줄링 & 데이터 저장**: GitHub Actions, Git 자동 커밋
 - **알림 채널 저장소**: Upstash Redis (REST API)
 - **주기 실행(기준 사이트 점검)**: Upstash QStash 스케줄 (15분 간격, GitHub Actions cron은 지연이 커서 제외)
-- **서버리스 함수**: Vercel Python Runtime (`api/index.py`, `api/health.py`)
+- **서버리스 함수**: Vercel Python Runtime, 도쿄 리전 `hnd1` (`api/index.py` 한 곳에서 `/api/*`를 경로로 분기: Discord 응답, `/api/health`, `/api/relay`)
 - **서명 검증**: PyNaCl (Ed25519, Discord), HMAC-SHA256 JWT (QStash)
 - **디스코드 통신**: Discord Bot API (멀티채널 알림 발송, 재시도/백오프), Webhook (프리뷰·모니터링·폴백), Interactions (요청-응답)
 

@@ -42,6 +42,9 @@ jobs:
           DISCORD_BOT_TOKEN:        ${{ secrets.DISCORD_BOT_TOKEN }}
           UPSTASH_REDIS_REST_URL:   ${{ secrets.UPSTASH_REDIS_REST_URL }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          # 주말 사이트는 일본 IP에서만 열려서 Vercel 도쿄 리전 중계를 거친다 (미설정이면 직접 크롤링)
+          RELAY_URL:   ${{ secrets.RELAY_URL }}
+          RELAY_TOKEN: ${{ secrets.RELAY_TOKEN }}
         run: python main.py
 
       # ⭐ 이메일 테스트 리포트
