@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-30",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-10-30T06:01:43",
+  "signs": {
+    "물병자리": {
+      "rank": 1,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "好きな人のハートをつかめそう♥ 大胆な行動にツキあり 素直な思いを言葉で伝えてね",
+      "lucky_item_ja": "ピンク色",
+      "content_ko": "마음에 드는 사람의 마음을 사로잡을 수 있을 것 같아♥ 대담한 행동에 행운이 따를 거야. 솔직한 마음을 말로 전해 봐",
+      "lucky_item_ko": "분홍색"
+    },
+    "천칭자리": {
+      "rank": 2,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "テキパキ作業がはかどる日 仕事はできる限り進めておこう",
+      "lucky_item_ja": "レバニラ炒め",
+      "content_ko": "일이 술술 풀리는 날, 할 수 있는 한 일을 미리 해두자",
+      "lucky_item_ko": "간과 부추 볶음"
+    },
+    "사자자리": {
+      "rank": 3,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "やりたかった事を始めるチャンス 仲間も応援してくれるよ",
+      "lucky_item_ja": "ポスター",
+      "content_ko": "하고 싶었던 일을 시작할 기회야. 친구들도 응원해 줄 거야.",
+      "lucky_item_ko": "포스터"
+    },
+    "쌍둥이자리": {
+      "rank": 4,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "良い出会いがある予感 流行のスポットに出かけると◎",
+      "lucky_item_ja": "タオル",
+      "content_ko": "좋은 만남이 있을 것 같은 예감이 들어요. 유행하는 명소에 가보면 ◎",
+      "lucky_item_ko": "수건"
+    },
+    "황소자리": {
+      "rank": 5,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "目上の人からの評価ＵＰ 臨機応変な対応が幸運のカギ",
+      "lucky_item_ja": "ハンバーグ",
+      "content_ko": "상사로부터의 평가 상승, 상황에 따른 유연한 대처가 행운의 열쇠",
+      "lucky_item_ko": "함박스테이크"
+    },
+    "사수자리": {
+      "rank": 6,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "思わぬ臨時収入に期待大！ 依頼は快く引き受けよう",
+      "lucky_item_ja": "黄緑色",
+      "content_ko": "예상치 못한 덤 수입에 기대가 크다! 의뢰는 기꺼이 수락하자",
+      "lucky_item_ko": "노란빛이 도는 초록색"
+    },
+    "양자리": {
+      "rank": 7,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "幸運を引き寄せられるよ♪ 心に余裕を持つとＧＯＯＤ",
+      "lucky_item_ja": "イカ",
+      "content_ko": "행운을 불러올 수 있어♪ 마음의 여유를 가지면 GOOD",
+      "lucky_item_ko": "오징어"
+    },
+    "처녀자리": {
+      "rank": 8,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "優しい気持ちで過ごせる時 小さな幸せを探すと良いかも",
+      "lucky_item_ja": "ぬいぐるみ",
+      "content_ko": "마음이 편안한 순간에는 작은 행복을 찾아보는 것도 좋을 것 같아요",
+      "lucky_item_ko": "봉제인형"
+    },
+    "염소자리": {
+      "rank": 9,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "お金を使いすぎて財布がピンチ 通信費を見直してみては？",
+      "lucky_item_ja": "点心",
+      "content_ko": "돈을 너무 많이 써서 지갑 사정이 빠듯하다면, 통신비를 다시 한번 점검해 보는 건 어떨까요?",
+      "lucky_item_ko": "딤섬"
+    },
+    "게자리": {
+      "rank": 10,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "ヤル気が出ずミスを連発… 一つずつ丁寧にこなすように",
+      "lucky_item_ja": "カードケース",
+      "content_ko": "의욕이 나지 않아 실수를 연발… 하나씩 꼼꼼하게 처리하도록",
+      "lucky_item_ko": "카드 지갑"
+    },
+    "물고기자리": {
+      "rank": 11,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "ワガママな人だと思われそう 感情的になるのはＮＧ",
+      "lucky_item_ja": "エビギョーザ",
+      "content_ko": "제멋대로인 사람으로 보일 것 같다. 감정적으로 반응하는 건 금물이다.",
+      "lucky_item_ko": "새우 만두"
+    },
+    "전갈자리": {
+      "rank": 12,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "アクシデントに巻き込まれるかも きょうはいつも以上に 慎重な姿勢を心掛けて",
+      "lucky_item_ja": "ペン",
+      "content_ko": "예기치 못한 사고에 휘말릴 수도 있으니, 오늘은 평소보다 더 신중한 태도를 유지하도록 노력하세요.",
+      "lucky_item_ko": "펜"
+    }
+  }
+}
