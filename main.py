@@ -20,6 +20,9 @@ DEBUG = os.environ.get("CRAWLER_DEBUG", "0") == "1"
 MAX_RETRIES = 12          # 최대 12회
 RETRY_INTERVAL = 300      # 5분 간격 → 최대 약 1시간 대기
 
+# 크롤링이 실패했을 때 대신 읽을 HTML 폴더 (브라우저로 저장한 평일/주말 페이지를 여기에 커밋)
+FALLBACK_DIR = "manual_html"
+
 # ─────────────────────────────────────────────
 # 사이트별 매핑 설정 (이전 코드 동일, 생략 없이 유지)
 # ─────────────────────────────────────────────
@@ -285,6 +288,88 @@ def fetch_with_wait(url: str, selector: str, mode: str, today_iso: str) -> str:
     raise RuntimeError(
         f"제한 시간({MAX_RETRIES * RETRY_INTERVAL // 60}분) 내에 오늘 데이터가 갱신되지 않음"
     )
+
+def _read_html_file(path: str) -> str:
+    """저장된 HTML 파일을 읽는다. 브라우저 저장본은 보통 UTF-8이고, 아니면 일본어 인코딩(cp932)을 시도한다."""
+    with open(path, "rb") as f:
+        raw = f.read()
+    for encoding in ("utf-8", "cp932"):
+        try:
+            return raw.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    return raw.decode("utf-8", errors="replace")
+
+
+def _detect_mode(html: str):
+    """페이지 구조로 평일/주말 사이트를 판별한다. 별자리 12개가 순위 1~12까지 온전히 파싱될 때만 인정."""
+    for mode in ("weekend", "weekday"):
+        try:
+            detail = parse_horoscope_detail(html, mode)
+        except Exception:
+            continue
+        if len(detail) == 12 and sorted(e["rank"] for e in detail.values()) == list(range(1, 13)):
+            return mode
+    return None
+
+
+def load_fallback_html(date_iso: str):
+    """FALLBACK_DIR에서 '오늘 날짜' 페이지를 찾는다. 반환: (mode, html, path) 또는 None.
+
+    파일 이름은 상관없다. 구조로 평일/주말을 판별하고, 페이지에 적힌 날짜가 오늘(KST)이 아니면
+    (어제 파일이 남아 있는 경우 등) 건너뛴다. 오늘 날짜 파일이 여러 개면 오늘 요일에 맞는 쪽을 우선한다.
+    """
+    today_md = (int(date_iso[5:7]), int(date_iso[8:10]))
+    expected = "weekday" if datetime.strptime(date_iso, "%Y-%m-%d").weekday() < 5 else "weekend"
+
+    paths = sorted(glob.glob(f"{FALLBACK_DIR}/*.html") + glob.glob(f"{FALLBACK_DIR}/*.htm"))
+    if not paths:
+        print(f"ℹ️  {FALLBACK_DIR}/ 에 대체할 HTML 파일이 없습니다")
+        return None
+
+    matches = []
+    for path in paths:
+        name = os.path.basename(path)
+        try:
+            html = _read_html_file(path)
+        except OSError as e:
+            print(f"  ⏭️  {name}: 파일을 읽지 못함 ({e}) — 건너뜀")
+            continue
+        mode = _detect_mode(html)
+        if mode is None:
+            print(f"  ⏭️  {name}: 평일/주말 사이트의 별자리 12개 구조를 읽지 못함 — 건너뜀")
+            continue
+        page_md = extract_page_date(html, mode)
+        if page_md != today_md:
+            print(f"  ⏭️  {name}: 페이지 날짜({page_md})가 오늘{today_md}이 아님 — 건너뜀")
+            continue
+        matches.append((mode, html, path))
+
+    if not matches:
+        print(f"ℹ️  {FALLBACK_DIR}/ 에 오늘 날짜의 사용 가능한 HTML이 없습니다")
+        return None
+    return next((m for m in matches if m[0] == expected), matches[0])
+
+
+def get_html_with_fallback(mode: str, date_iso: str):
+    """크롤링으로 HTML을 받고, 실패하면 FALLBACK_DIR의 오늘 날짜 HTML로 대체한다.
+
+    반환: (mode, html, from_fallback). 대체 파일이 없으면 원래 크롤링 예외를 그대로 다시 던져서
+    기존처럼 '크롤링 실패' 메시지가 나가게 한다. 대체 파일을 쓰면 mode는 파일 구조에서 읽은 값이다.
+    """
+    config = SIGN_CONFIG[mode]
+    try:
+        html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
+        return mode, html, False
+    except Exception as crawl_error:
+        print(f"⚠️  크롤링 실패 — {type(crawl_error).__name__}: {crawl_error}")
+        fallback = load_fallback_html(date_iso)
+        if fallback is None:
+            raise
+        fb_mode, fb_html, fb_path = fallback
+        print(f"🗂️  {fb_path}({'주말' if fb_mode == 'weekend' else '평일'} 사이트 구조)로 대체해서 진행합니다")
+        return fb_mode, fb_html, True
+
 
 def load_previous_contents(today_iso: str) -> dict:
     """오늘 이전 가장 최근 파일의 {별자리: content_ja} (2차 폴백용)"""
@@ -668,13 +753,13 @@ if __name__ == "__main__":
             with open(existing_path, encoding="utf-8") as f:
                 detail = json.load(f).get("signs", {})
         else:
-            config = SIGN_CONFIG[mode]
-            html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
+            mode, html, from_fallback = get_html_with_fallback(mode, date_iso)
 
-            # 디버그 덤프 (유지 권장)
-            os.makedirs("debug", exist_ok=True)
-            with open(f"debug/raw_{mode}_{date_iso}.html", "w", encoding="utf-8") as f:
-                f.write(html)
+            if not from_fallback:
+                # 디버그 덤프 (유지 권장)
+                os.makedirs("debug", exist_ok=True)
+                with open(f"debug/raw_{mode}_{date_iso}.html", "w", encoding="utf-8") as f:
+                    f.write(html)
 
             detail = parse_horoscope_detail(html, mode)
 

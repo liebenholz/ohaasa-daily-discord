@@ -8,3 +8,4 @@ test/
 LICENSE
 __pycache__/
 *.pyc
+manual_html/
