@@ -8,7 +8,7 @@ import time
 import glob
 from datetime import datetime, timedelta
 
-from notifier import send_embed_to_channels
+from notifier import send_embed_to_channels, notify_crawl_result
 # ⭐ 3단계: 웹훅 제거 — 아래 import/상수는 웹훅 중복 발송 방지용이라 함께 주석 처리
 # from channels import get_sent_guild_ids, mark_sent
 
@@ -266,13 +266,18 @@ def is_fresh(html: str, mode: str, prev_contents: dict) -> bool:
     return fresh
 
 
+def _uses_relay(mode: str) -> bool:
+    """주말 사이트는 일본 IP에서만 열려서, RELAY_URL이 설정돼 있으면 도쿄 중계를 거친다."""
+    return mode == "weekend" and bool(os.environ.get("RELAY_URL"))
+
+
 def fetch_with_wait(url: str, selector: str, mode: str, today_iso: str) -> str:
     """오늘 데이터가 올라올 때까지 폴링하며 크롤"""
     prev_contents = load_previous_contents(today_iso)
 
     # 주말 사이트는 일본 IP에서만 열려서, RELAY_URL이 설정돼 있으면 도쿄 중계를 거친다.
     # 설정이 없으면 기존처럼 Playwright로 직접 크롤링한다 (평일 사이트는 항상 직접).
-    use_relay = mode == "weekend" and bool(os.environ.get("RELAY_URL"))
+    use_relay = _uses_relay(mode)
     if use_relay:
         print("🛰️  주말 사이트 — 도쿄 중계(Vercel hnd1) 경유")
 
@@ -314,10 +319,11 @@ def _detect_mode(html: str):
 
 
 def load_fallback_html(date_iso: str):
-    """FALLBACK_DIR에서 '오늘 날짜' 페이지를 찾는다. 반환: (mode, html, path) 또는 None.
+    """FALLBACK_DIR에서 '오늘 날짜' 페이지를 찾는다. 반환: ((mode, html, path) 또는 None, 실패 이유).
 
     파일 이름은 상관없다. 구조로 평일/주말을 판별하고, 페이지에 적힌 날짜가 오늘(KST)이 아니면
     (어제 파일이 남아 있는 경우 등) 건너뛴다. 오늘 날짜 파일이 여러 개면 오늘 요일에 맞는 쪽을 우선한다.
+    실패 이유는 모니터링 알림에 그대로 쓰인다.
     """
     today_md = (int(date_iso[5:7]), int(date_iso[8:10]))
     expected = "weekday" if datetime.strptime(date_iso, "%Y-%m-%d").weekday() < 5 else "weekend"
@@ -325,30 +331,42 @@ def load_fallback_html(date_iso: str):
     paths = sorted(glob.glob(f"{FALLBACK_DIR}/*.html") + glob.glob(f"{FALLBACK_DIR}/*.htm"))
     if not paths:
         print(f"ℹ️  {FALLBACK_DIR}/ 에 대체할 HTML 파일이 없습니다")
-        return None
+        return None, f"{FALLBACK_DIR}/ 에 HTML 파일 없음"
 
-    matches = []
+    matches, notes = [], []
     for path in paths:
         name = os.path.basename(path)
         try:
             html = _read_html_file(path)
         except OSError as e:
             print(f"  ⏭️  {name}: 파일을 읽지 못함 ({e}) — 건너뜀")
+            notes.append(f"{name}: 읽기 실패")
             continue
         mode = _detect_mode(html)
         if mode is None:
             print(f"  ⏭️  {name}: 평일/주말 사이트의 별자리 12개 구조를 읽지 못함 — 건너뜀")
+            notes.append(f"{name}: 구조 인식 실패")
             continue
         page_md = extract_page_date(html, mode)
         if page_md != today_md:
             print(f"  ⏭️  {name}: 페이지 날짜({page_md})가 오늘{today_md}이 아님 — 건너뜀")
+            notes.append(f"{name}: 날짜 불일치(페이지 {page_md[0]}/{page_md[1]} ≠ 오늘 {today_md[0]}/{today_md[1]})"
+                         if page_md else f"{name}: 페이지 날짜를 읽지 못함")
             continue
         matches.append((mode, html, path))
 
     if not matches:
         print(f"ℹ️  {FALLBACK_DIR}/ 에 오늘 날짜의 사용 가능한 HTML이 없습니다")
-        return None
-    return next((m for m in matches if m[0] == expected), matches[0])
+        return None, f"오늘({today_md[0]}/{today_md[1]}) 날짜의 사용 가능한 파일 없음 — " + "; ".join(notes)
+    return next((m for m in matches if m[0] == expected), matches[0]), ""
+
+
+def _notify_crawl(outcome: str, **kwargs):
+    """모니터링 채널 알림. 알림 쪽 문제가 크롤링/발송 흐름을 막지 않도록 모든 예외를 삼킨다."""
+    try:
+        notify_crawl_result(outcome, **kwargs)
+    except Exception as e:
+        print(f"⚠️  모니터링 알림 실패(무시): {e}")
 
 
 def get_html_with_fallback(mode: str, date_iso: str):
@@ -356,19 +374,29 @@ def get_html_with_fallback(mode: str, date_iso: str):
 
     반환: (mode, html, from_fallback). 대체 파일이 없으면 원래 크롤링 예외를 그대로 다시 던져서
     기존처럼 '크롤링 실패' 메시지가 나가게 한다. 대체 파일을 쓰면 mode는 파일 구조에서 읽은 값이다.
+    세 결과(크롤링 성공 / HTML 대체 성공 / 모두 실패) 모두 모니터링 채널로 알린다.
     """
     config = SIGN_CONFIG[mode]
+    label = lambda m: "주말" if m == "weekend" else "평일"
+    common = {"target_label": label(mode), "target_url": config["url"], "date_display": get_date_display()}
+
     try:
         html = fetch_with_wait(config["url"], config["selector"], mode, date_iso)
-        return mode, html, False
     except Exception as crawl_error:
         print(f"⚠️  크롤링 실패 — {type(crawl_error).__name__}: {crawl_error}")
-        fallback = load_fallback_html(date_iso)
+        fallback, reason = load_fallback_html(date_iso)
         if fallback is None:
+            _notify_crawl("all_failed", error=f"{type(crawl_error).__name__}: {crawl_error}",
+                          fallback_reason=reason, **common)
             raise
         fb_mode, fb_html, fb_path = fallback
-        print(f"🗂️  {fb_path}({'주말' if fb_mode == 'weekend' else '평일'} 사이트 구조)로 대체해서 진행합니다")
+        print(f"🗂️  {fb_path}({label(fb_mode)} 사이트 구조)로 대체해서 진행합니다")
+        _notify_crawl("fallback_ok", error=f"{type(crawl_error).__name__}: {crawl_error}",
+                      fallback_file=fb_path, fallback_label=label(fb_mode), **common)
         return fb_mode, fb_html, True
+
+    _notify_crawl("crawl_ok", route="도쿄 중계(Vercel hnd1) 경유" if _uses_relay(mode) else "직접 크롤링", **common)
+    return mode, html, False
 
 
 def load_previous_contents(today_iso: str) -> dict:

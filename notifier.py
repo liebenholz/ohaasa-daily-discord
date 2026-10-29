@@ -269,6 +269,56 @@ def notify_source_recovered(label: str, url: str, down_minutes: int) -> None:
     })
 
 
+def _one_line(text, limit: int) -> str:
+    """로그/알림용으로 줄바꿈을 없애고 길이를 제한한다."""
+    flat = " ".join(str(text).split())
+    return flat if len(flat) <= limit else flat[: limit - 1] + "…"
+
+
+def notify_crawl_result(
+    outcome: str,
+    *,
+    target_label: str,
+    target_url: str,
+    date_display: str,
+    route: str | None = None,
+    error: str | None = None,
+    fallback_file: str | None = None,
+    fallback_label: str | None = None,
+    fallback_reason: str | None = None,
+) -> None:
+    """일일 크롤링 결과를 TEST_DISCORD_WEBHOOK(모니터링 채널)으로 알린다.
+
+    outcome:
+      "crawl_ok"    기준 웹페이지 접근 성공
+      "fallback_ok" 기준 웹페이지 접근 실패 → HTML 파일로 대체 성공
+      "all_failed"  기준 웹페이지 및 HTML 파일 모두 실패 (서버 채널에는 크롤링 실패 메시지가 나간다)
+    """
+    head = f"{target_label} 사이트 · {date_display}"
+    lines = [head, target_url]
+
+    if outcome == "crawl_ok":
+        title, color = "✅ 기준 웹페이지 접근 성공", 0x2ECC71
+        if route:
+            lines.append(f"접속 경로: {route}")
+    elif outcome == "fallback_ok":
+        title, color = "⚠️ 기준 웹페이지 접근 실패 → HTML 파일로 대체", 0xE67E22
+        lines.append(f"크롤링 실패 원인: `{_one_line(error or '알 수 없음', 200)}`")
+        lines.append(f"대체 파일: `{fallback_file}` ({fallback_label} 사이트 구조)")
+    elif outcome == "all_failed":
+        title, color = "🚨 기준 웹페이지 및 HTML 파일 접근 실패", 0xE74C3C
+        lines.append(f"크롤링 실패 원인: `{_one_line(error or '알 수 없음', 200)}`")
+        lines.append(f"HTML 파일: {_one_line(fallback_reason or '확인 불가', 500)}")
+        lines.append("→ 서버 채널에는 크롤링 실패 메시지가 발송됩니다.")
+    else:
+        raise ValueError(f"알 수 없는 outcome: {outcome}")
+
+    _post_to_test_webhook({
+        "username": "오하아사 발송 모니터",
+        "embeds": [{"title": title, "description": "\n".join(lines), "color": color}],
+    })
+
+
 def send_embed_to_channels(
     embed: dict,
     entries: list[tuple[str, str]] | None = None,
