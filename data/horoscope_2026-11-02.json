@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-02",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-02T06:01:57",
+  "signs": {
+    "물병자리": {
+      "rank": 1,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "才能をいかして大活躍♪ 得意分野で力を発揮しよう ポジティブ思考にツキあり",
+      "lucky_item_ja": "黄緑色",
+      "content_ko": "재능을 살려 대활약♪ 자신 있는 분야에서 실력을 발휘하자. 긍정적인 사고에는 행운이 따른다.",
+      "lucky_item_ko": "노란빛이 도는 초록색"
+    },
+    "천칭자리": {
+      "rank": 2,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "物事が良い方向に進む予感 アクティブに過ごすとＧＯＯＤ",
+      "lucky_item_ja": "消しゴム",
+      "content_ko": "일이 좋은 방향으로 흘러갈 것 같은 예감. 적극적으로 지내면 GOOD",
+      "lucky_item_ko": "지우개"
+    },
+    "사수자리": {
+      "rank": 3,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "期待以上の成果が得られそう チャレンジ精神を大切に",
+      "lucky_item_ja": "新刊本",
+      "content_ko": "기대 이상의 성과를 거둘 수 있을 것 같다. 도전 정신을 소중히 여기자.",
+      "lucky_item_ko": "신간 도서"
+    },
+    "게자리": {
+      "rank": 4,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "恋がゆっくりと進展するかも♥ 焦らずマイペースでＯＫ",
+      "lucky_item_ja": "ブローチ",
+      "content_ko": "사랑이 천천히 진전될지도 몰라요♥ 서두르지 말고 나만의 페이스로 가도 괜찮아요",
+      "lucky_item_ko": "브로치"
+    },
+    "황소자리": {
+      "rank": 5,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "会話が弾み楽しめる日 習い事の話がオススメ",
+      "lucky_item_ja": "黒色",
+      "content_ko": "대화가 술술 이어지며 즐거운 날, 취미 활동에 대한 이야기를 나누는 것을 추천합니다",
+      "lucky_item_ko": "검은색"
+    },
+    "쌍둥이자리": {
+      "rank": 6,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "優しい雰囲気が好印象 丁寧な言葉遣いを心掛けると◎",
+      "lucky_item_ja": "焼きそば",
+      "content_ko": "부드러운 분위기가 좋은 인상을 줍니다. 정중한 말투를 쓰도록 노력하면 좋습니다.",
+      "lucky_item_ko": "야키소바"
+    },
+    "사자자리": {
+      "rank": 7,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "作業をスムーズにこなせる時 周りとの協調性を忘れずに",
+      "lucky_item_ja": "深緑色",
+      "content_ko": "일을 원활하게 처리할 때는 주변 사람들과의 협조를 잊지 말자",
+      "lucky_item_ko": "짙은 녹색"
+    },
+    "양자리": {
+      "rank": 8,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "日常に良い変化が訪れそう 前向きな姿勢が幸運のカギ",
+      "lucky_item_ja": "お好み焼き",
+      "content_ko": "일상에 좋은 변화가 찾아올 것 같다. 긍정적인 태도가 행운의 열쇠다.",
+      "lucky_item_ko": "오코노미야키"
+    },
+    "처녀자리": {
+      "rank": 9,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "あなたの魅力が伝わるよ パワフルに動いてアピールを",
+      "lucky_item_ja": "自転車",
+      "content_ko": "당신의 매력이 잘 전해질 거예요. 힘차게 움직이며 매력을 어필해 보세요.",
+      "lucky_item_ko": "자전거"
+    },
+    "염소자리": {
+      "rank": 10,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "不満がたまっているのでは？ グチを言うのはやめておこう",
+      "lucky_item_ja": "なす",
+      "content_ko": "불만이 쌓여 있는 건 아닐까? 불평은 그만두자.",
+      "lucky_item_ko": "가지"
+    },
+    "물고기자리": {
+      "rank": 11,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "うっかりミスに要注意 いつも以上に慎重になってね",
+      "lucky_item_ja": "茶色",
+      "content_ko": "부주의한 실수에 주의하세요. 평소보다 더 신중하게 행동해 주세요.",
+      "lucky_item_ko": "갈색"
+    },
+    "전갈자리": {
+      "rank": 12,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "ヤル気が出ずパワーダウン 無理して頑張るのはＮＧ きょうはゆっくり休んで",
+      "lucky_item_ja": "にんにく料理",
+      "content_ko": "의욕이 나지 않아 기운이 떨어졌어요. 무리해서 애쓰는 건 금물이에요. 오늘은 푹 쉬세요.",
+      "lucky_item_ko": "마늘 요리"
+    }
+  }
+}
