@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-08",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-11-08T06:01:41",
+  "signs": {
+    "양자리": {
+      "rank": 10,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "軽い気持ちのうそでも、バレると気まずい雰囲気に。正直に伝えることで誠実な印象を与えます。秘密は持たないで。",
+      "lucky_color_ja": "グレー",
+      "lucky_item_ja": "ランチセット",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "가벼운 마음으로 한 거짓말이라도 들키면 어색한 분위기가 될 수 있습니다. 솔직하게 말하는 것이 성실한 인상을 줍니다. 비밀은 만들지 마세요.",
+      "lucky_item_ko": "점심 세트",
+      "lucky_color_ko": "회색"
+    },
+    "황소자리": {
+      "rank": 8,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "プレッシャーを感じる出来事が。完璧を求めず、肩の力を抜いて進めましょう。コメディー映画やドラマで気分転換を。",
+      "lucky_color_ja": "茶色",
+      "lucky_item_ja": "交通情報",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "부담감을 주는 일이 생겼네요. 완벽함을 추구하지 말고, 긴장을 풀고 나아가세요. 코미디 영화나 드라마를 보며 기분 전환을 해보세요.",
+      "lucky_item_ko": "교통 정보",
+      "lucky_color_ko": "갈색"
+    },
+    "쌍둥이자리": {
+      "rank": 11,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "欲しいモノへの執着が強くなりがち。衝動買いは避けないと後悔するハメに。予算オーバーには十分気を付けて。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "和小物",
+      "ratings": {
+        "money": 1,
+        "love": 3,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "원하는 물건에 대한 집착이 강해지기 쉽습니다. 충동구매를 피하지 않으면 후회하게 될 것입니다. 예산을 초과하지 않도록 각별히 주의하세요.",
+      "lucky_item_ko": "일본식 소품",
+      "lucky_color_ko": "하늘색"
+    },
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "諦めていた限定品が手に入りそう。チラシなどはこまめにチェックして。夕方には友人からうれしい知らせも。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "掃除機",
+      "ratings": {
+        "money": 6,
+        "love": 5,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "포기했던 한정 상품을 구할 수 있을 것 같다. 전단지 등은 수시로 확인해 두자. 저녁 무렵에는 친구로부터 기쁜 소식도 들려올 것이다.",
+      "lucky_item_ko": "진공청소기",
+      "lucky_color_ko": "노란색"
+    },
+    "사자자리": {
+      "rank": 12,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "気が緩むと散財する傾向が。高価なモノに手を出してしまいそう。目的がなければ店に立ち寄らない方が無難です。",
+      "lucky_color_ja": "赤",
+      "lucky_item_ja": "コンサート",
+      "ratings": {
+        "money": 1,
+        "love": 2,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "방심하면 돈을 함부로 쓰게 되는 경향이 있습니다. 비싼 물건을 사게 될 것 같습니다. 특별한 목적이 없다면 가게에 들르지 않는 편이 좋습니다.",
+      "lucky_item_ko": "콘서트",
+      "lucky_color_ko": "빨강"
+    },
+    "처녀자리": {
+      "rank": 5,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "１週間分の疲れを解消するのに最適な休日。気になっていた本を読むと◎。心身が穏やかに整い、気力もチャージ。",
+      "lucky_color_ja": "紫",
+      "lucky_item_ja": "文庫本",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "일주일 동안 쌓인 피로를 풀기에 안성맞춤인 휴일. 궁금했던 책을 읽으면 ◎. 심신이 차분하게 정돈되고, 기운도 충전됩니다.",
+      "lucky_item_ko": "문고판",
+      "lucky_color_ko": "보라색"
+    },
+    "천칭자리": {
+      "rank": 7,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "「とらぬ狸の皮算用」的な運気。アテにしていた入金も望みが薄い様子。マルシェなどの集客は大きな声でアピールを。",
+      "lucky_color_ja": "ピンク",
+      "lucky_item_ja": "ペンケース",
+      "ratings": {
+        "money": 2,
+        "love": 4,
+        "work": 3,
+        "health": 4
+      },
+      "content_ko": "‘잡지도 못한 너구리의 가죽으로 계산하는’ 식의 운세. 기대하고 있던 입금도 희망이 희박해 보인다. 마르쉐 등에서 고객을 유치하려면 큰 소리로 홍보하라.",
+      "lucky_item_ko": "필통",
+      "lucky_color_ko": "분홍색"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "パートナーに一途な想いが伝わると、いい雰囲気に。焦らずじっくり関係を築いて。二人だけの時間が愛を深めます。",
+      "lucky_color_ja": "黒",
+      "lucky_item_ja": "ＣＤ",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "파트너에게 한결같은 마음이 전해지면 분위기가 좋아집니다. 서두르지 말고 차근차근 관계를 쌓아가세요. 둘만의 시간이 사랑을 더욱 깊게 해줄 것입니다.",
+      "lucky_item_ko": "CD",
+      "lucky_color_ko": "검정"
+    },
+    "사수자리": {
+      "rank": 6,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "部屋をキレイに掃除して。フリマやリサイクル店を活用すると予想以上の臨時収入が。窓や床をふくと、さらに運気アップ。",
+      "lucky_color_ja": "ネイビー",
+      "lucky_item_ja": "クローゼット",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 3,
+        "health": 3
+      },
+      "content_ko": "방을 깨끗이 청소하세요. 벼룩시장이나 중고품 가게를 활용하면 예상보다 많은 짭짤한 수입이 생길 수 있습니다. 창문과 바닥을 닦으면 운이 더욱 좋아집니다.",
+      "lucky_item_ko": "옷장",
+      "lucky_color_ko": "네이비"
+    },
+    "염소자리": {
+      "rank": 4,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "家庭内は温かな愛情に包まれてハッピー。冬支度を家族で行うのもあり。全員が協力できる良いタイミングです。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "こたつ",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 3,
+        "health": 4
+      },
+      "content_ko": "가정 안은 따뜻한 사랑으로 가득 차 행복합니다. 가족과 함께 겨울 준비를 하는 것도 좋은 방법입니다. 모두가 힘을 합칠 수 있는 좋은 시기입니다.",
+      "lucky_item_ko": "코타츠",
+      "lucky_color_ko": "베이지"
+    },
+    "물병자리": {
+      "rank": 9,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "運気は下り坂へ。大事な用事は早めに済ませた方が安心。お出かけは交通機関の乱れに注意。夕方までには帰宅を。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "芳香剤",
+      "ratings": {
+        "money": 3,
+        "love": 2,
+        "work": 3,
+        "health": 3
+      },
+      "content_ko": "운세가 내리막길로 접어듭니다. 중요한 일은 미리 처리해 두는 것이 좋습니다. 외출 시에는 대중교통의 혼란에 주의하세요. 저녁 무렵까지는 귀가하시기 바랍니다.",
+      "lucky_item_ko": "방향제",
+      "lucky_color_ko": "주황색"
+    },
+    "물고기자리": {
+      "rank": 3,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "試験やオーディションは本番で実力を発揮。目標を達成できそう。希望を持って最後まで粘り強く取り組んで。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "雑貨",
+      "ratings": {
+        "money": 3,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "시험이나 오디션에서는 실전에서 실력을 발휘하세요. 목표를 달성할 수 있을 것 같습니다. 희망을 가지고 끝까지 끈기 있게 임하세요.",
+      "lucky_item_ko": "잡화",
+      "lucky_color_ko": "실버"
+    }
+  }
+}
