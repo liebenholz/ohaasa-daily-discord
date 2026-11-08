@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-09",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-09T06:01:39",
+  "signs": {
+    "전갈자리": {
+      "rank": 1,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "予想外のチャンスが舞い込む日 得意分野で力を発揮しよう 仲間からの評価も高まるよ",
+      "lucky_item_ja": "クリーム色",
+      "content_ko": "예상치 못한 기회가 찾아오는 날, 자신 있는 분야에서 실력을 발휘해 보자. 동료들의 평가도 높아질 거야.",
+      "lucky_item_ko": "크림색"
+    },
+    "게자리": {
+      "rank": 2,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "勝負事に強くなりそう ひらめきを信じると◎",
+      "lucky_item_ja": "レバー",
+      "content_ko": "경쟁에서 강해질 것 같다. 직감을 믿으면 ◎",
+      "lucky_item_ko": "레버"
+    },
+    "처녀자리": {
+      "rank": 3,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "耳寄りな情報をＧＥＴ♪ アンテナを張り巡らせてね",
+      "lucky_item_ja": "赤色",
+      "content_ko": "유익한 정보를 얻었어요♪ 주변 소식을 잘 파악해 두세요",
+      "lucky_item_ko": "빨간색"
+    },
+    "황소자리": {
+      "rank": 4,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "良いスタートを切れる時 やりたかった事に挑戦を",
+      "lucky_item_ja": "つくね",
+      "content_ko": "좋은 출발을 할 수 있을 때, 하고 싶었던 일에 도전해 보자",
+      "lucky_item_ko": "츠쿠네"
+    },
+    "물병자리": {
+      "rank": 5,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "アイデアが採用されるかも 積極的にアピールしよう",
+      "lucky_item_ja": "ティーカップ",
+      "content_ko": "아이디어가 채택될지도 모르니 적극적으로 어필해 보자",
+      "lucky_item_ko": "찻잔"
+    },
+    "사수자리": {
+      "rank": 6,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "恋の進展を感じてドキドキ♥ 大胆なアクションがＧＯＯＤ",
+      "lucky_item_ja": "野菜ジュース",
+      "content_ko": "사랑이 진전되는 게 느껴져서 두근두근♥ 대담한 액션이 GOOD",
+      "lucky_item_ko": "채소 주스"
+    },
+    "염소자리": {
+      "rank": 7,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "新たな世界が広がるよ 習い事を始めてみては？",
+      "lucky_item_ja": "かっぱ巻き",
+      "content_ko": "새로운 세상이 펼쳐질 거예요. 취미 활동을 시작해 보는 건 어떨까요?",
+      "lucky_item_ko": "카파마키"
+    },
+    "물고기자리": {
+      "rank": 8,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "ステキな出会いに期待大 友達からの紹介にツキあり",
+      "lucky_item_ja": "オレンジ色",
+      "content_ko": "멋진 만남에 대한 기대가 크다. 친구의 소개를 통해 행운이 따를 것 같다.",
+      "lucky_item_ko": "주황색"
+    },
+    "천칭자리": {
+      "rank": 9,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "優柔不断な態度に気をつけて 意思表示はハッキリと",
+      "lucky_item_ja": "肉まん",
+      "content_ko": "우유부단한 태도를 조심하고, 의사를 분명히 표현하세요",
+      "lucky_item_ko": "고기만두"
+    },
+    "쌍둥이자리": {
+      "rank": 10,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "体調管理がおろそかに… 睡眠時間を見直すと良いかも",
+      "lucky_item_ja": "ラジオ",
+      "content_ko": "건강 관리가 소홀해졌네요… 수면 시간을 다시 점검해 보는 게 좋을지도 모르겠네요",
+      "lucky_item_ko": "라디오"
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "予算オーバーで財布がピンチ 計画的な出費を心掛けて",
+      "lucky_item_ja": "チャーハン",
+      "content_ko": "예산 초과로 지갑 사정이 빠듯해졌으니, 계획적인 지출을 하도록 노력합시다.",
+      "lucky_item_ko": "볶음밥"
+    },
+    "양자리": {
+      "rank": 12,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "思うように進まずイライラ 周りに八つ当たりするのはＮＧ 心に余裕を持って過ごしてね",
+      "lucky_item_ja": "ミネラルウォーター",
+      "content_ko": "생각대로 풀리지 않아 짜증이 나더라도 주위 사람들에게 화풀이하는 건 금물이에요. 마음의 여유를 가지고 지내세요.",
+      "lucky_item_ko": "생수"
+    }
+  }
+}
