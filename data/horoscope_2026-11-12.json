@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-12",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-12T06:01:37",
+  "signs": {
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "豊かな発想力で注目度ＵＰ♪ アイデアが次々と浮かんでくるよ 積極的に発表してみて",
+      "lucky_item_ja": "クリアファイル",
+      "content_ko": "풍부한 창의력으로 주목도 UP♪ 아이디어가 줄줄이 떠오를 거야. 적극적으로 발표해 보자",
+      "lucky_item_ko": "클리어 파일"
+    },
+    "물병자리": {
+      "rank": 2,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "掘り出し物が見つかりそう バーゲンセールを要チェック",
+      "lucky_item_ja": "アイスクリーム",
+      "content_ko": "보물 같은 물건을 찾을 수 있을 것 같아요. 할인 세일을 꼭 확인해 보세요.",
+      "lucky_item_ko": "아이스크림"
+    },
+    "황소자리": {
+      "rank": 3,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "片想いの恋が一歩前進♥ 思い切ってアタックを",
+      "lucky_item_ja": "ミネラルウォーター",
+      "content_ko": "짝사랑이 한 걸음 더 나아갔어요♥ 과감하게 고백해 보세요",
+      "lucky_item_ko": "생수"
+    },
+    "쌍둥이자리": {
+      "rank": 4,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "効率よく仕事が進む日 できる作業はどんどんこなして",
+      "lucky_item_ja": "紫色",
+      "content_ko": "일이 효율적으로 진행되는 날, 할 수 있는 일은 하나씩 차근차근 처리해 나가자",
+      "lucky_item_ko": "보라색"
+    },
+    "전갈자리": {
+      "rank": 5,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "家族との関係に良い変化が…！ コミュニケーションを大切にすると◎",
+      "lucky_item_ja": "メンチカツ",
+      "content_ko": "가족과의 관계에 좋은 변화가…! 소통을 소중히 여기면 ◎",
+      "lucky_item_ko": "멘치카츠"
+    },
+    "처녀자리": {
+      "rank": 6,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "新しいスタートが切れる予感 やってみたかった事に挑戦を",
+      "lucky_item_ja": "ヘルメット",
+      "content_ko": "새로운 시작을 할 수 있을 것 같은 예감, 해보고 싶었던 일에 도전해 보자",
+      "lucky_item_ko": "헬멧"
+    },
+    "천칭자리": {
+      "rank": 7,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "スケジュール管理がおろそかに 早めの行動を意識するとＧＯＯＤ",
+      "lucky_item_ja": "豚肉",
+      "content_ko": "일정 관리를 소홀히 하지 말고, 미리미리 행동하는 것을 의식하면 GOOD",
+      "lucky_item_ko": "돼지고기"
+    },
+    "염소자리": {
+      "rank": 8,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "うまい話に注意が必要 ハッキリと断る勇気を持って",
+      "lucky_item_ja": "アクセサリー",
+      "content_ko": "너무 좋은 제안에는 주의가 필요하다. 단호하게 거절할 용기를 가져야 한다.",
+      "lucky_item_ko": "액세서리"
+    },
+    "양자리": {
+      "rank": 9,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "集中力が続かずダラダラ ミスが増えてしまうかも",
+      "lucky_item_ja": "焼き肉",
+      "content_ko": "집중력이 오래가지 않아 딴짓을 하다 보면 실수가 늘어날 수도 있다",
+      "lucky_item_ko": "불고기"
+    },
+    "물고기자리": {
+      "rank": 10,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "思うように結果が出せないかも コツコツと頑張る姿勢を忘れずに",
+      "lucky_item_ja": "観葉植物",
+      "content_ko": "원하는 만큼의 결과를 얻지 못할 수도 있지만, 꾸준히 노력하는 자세를 잊지 말자",
+      "lucky_item_ko": "관엽식물"
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "価値観の違いに悩みそう 相手に歩み寄る気持ちが大事",
+      "lucky_item_ja": "黄色",
+      "content_ko": "가치관의 차이로 고민하게 될 것 같다. 상대방에게 한 발짝 다가가는 마음이 중요하다.",
+      "lucky_item_ko": "노란색"
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "判断力が低下してしまうかも 無理に決めなくても大丈夫 じっくり考える時間を作って",
+      "lucky_item_ja": "とうもろこし",
+      "content_ko": "판단력이 떨어질 수도 있어요. 억지로 결정하지 않아도 괜찮아요. 천천히 생각할 시간을 가져보세요.",
+      "lucky_item_ko": "옥수수"
+    }
+  }
+}

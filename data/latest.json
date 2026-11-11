@@ -1,128 +1,128 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "mode": "weekday",
   "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
-  "updated_at_kst": "2026-11-11T06:01:41",
+  "updated_at_kst": "2026-11-12T06:01:37",
   "signs": {
-    "물병자리": {
-      "rank": 1,
-      "sign_kr": "물병자리",
-      "sign_ja": "みずがめ座",
-      "sign_key": "aquarius",
-      "content_ja": "良い出会いに恵まれそう アクティブに動き回ると良いかも ラッキーパーソンは年上の人",
-      "lucky_item_ja": "黄緑色",
-      "content_ko": "좋은 만남이 있을 것 같다. 적극적으로 움직이는 것이 좋을지도 모른다. 행운의 사람은 연상이다.",
-      "lucky_item_ko": "노란빛이 도는 초록색"
-    },
-    "전갈자리": {
-      "rank": 2,
-      "sign_kr": "전갈자리",
-      "sign_ja": "さそり座",
-      "sign_key": "scorpio",
-      "content_ja": "皆からの評価が高まるよ 用事をテキパキこなして",
-      "lucky_item_ja": "ブレスレット",
-      "content_ko": "모두에게서 좋은 평가를 받게 될 거야. 할 일을 쓱쓱 처리하고",
-      "lucky_item_ko": "팔찌"
-    },
     "게자리": {
-      "rank": 3,
+      "rank": 1,
       "sign_kr": "게자리",
       "sign_ja": "かに座",
       "sign_key": "cancer",
-      "content_ja": "心強い味方が現れる日 悩みがあれば相談しよう",
-      "lucky_item_ja": "天ぷら",
-      "content_ko": "믿음직한 아군이 나타나는 날, 고민이 있다면 상담해 보자",
-      "lucky_item_ko": "덴푸라"
+      "content_ja": "豊かな発想力で注目度ＵＰ♪ アイデアが次々と浮かんでくるよ 積極的に発表してみて",
+      "lucky_item_ja": "クリアファイル",
+      "content_ko": "풍부한 창의력으로 주목도 UP♪ 아이디어가 줄줄이 떠오를 거야. 적극적으로 발표해 보자",
+      "lucky_item_ko": "클리어 파일"
+    },
+    "물병자리": {
+      "rank": 2,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "掘り出し物が見つかりそう バーゲンセールを要チェック",
+      "lucky_item_ja": "アイスクリーム",
+      "content_ko": "보물 같은 물건을 찾을 수 있을 것 같아요. 할인 세일을 꼭 확인해 보세요.",
+      "lucky_item_ko": "아이스크림"
     },
     "황소자리": {
-      "rank": 4,
+      "rank": 3,
       "sign_kr": "황소자리",
       "sign_ja": "おうし座",
       "sign_key": "taurus",
-      "content_ja": "身近な人と仲が深まりそう ちょっとした贈り物をしてみては？",
-      "lucky_item_ja": "大豆",
-      "content_ko": "가까운 사람과 사이가 더 가까워질 것 같네요. 작은 선물을 해보는 건 어떨까요?",
-      "lucky_item_ko": "대두"
-    },
-    "처녀자리": {
-      "rank": 5,
-      "sign_kr": "처녀자리",
-      "sign_ja": "おとめ座",
-      "sign_key": "virgo",
-      "content_ja": "周囲からの注目が集まる時 実力を存分に発揮して",
-      "lucky_item_ja": "コーヒーカップ",
-      "content_ko": "주변의 관심이 쏠릴 때, 실력을 마음껏 발휘하여",
-      "lucky_item_ko": "커피잔"
-    },
-    "천칭자리": {
-      "rank": 6,
-      "sign_kr": "천칭자리",
-      "sign_ja": "てんびん座",
-      "sign_key": "libra",
-      "content_ja": "大きな転機が訪れるかも 自分の可能性を信じて動くと◎",
-      "lucky_item_ja": "緑色",
-      "content_ko": "큰 전환점이 찾아올지도 모릅니다. 자신의 가능성을 믿고 행동하면 좋습니다.",
-      "lucky_item_ko": "초록색"
+      "content_ja": "片想いの恋が一歩前進♥ 思い切ってアタックを",
+      "lucky_item_ja": "ミネラルウォーター",
+      "content_ko": "짝사랑이 한 걸음 더 나아갔어요♥ 과감하게 고백해 보세요",
+      "lucky_item_ko": "생수"
     },
     "쌍둥이자리": {
-      "rank": 7,
+      "rank": 4,
       "sign_kr": "쌍둥이자리",
       "sign_ja": "ふたご座",
       "sign_key": "gemini",
-      "content_ja": "今までの努力が報われる予感 支えてくれた人達に感謝してね",
-      "lucky_item_ja": "パソコン",
-      "content_ko": "지금까지의 노력이 결실을 맺을 것 같은 예감이 들어. 나를 지지해 준 사람들에게 감사해 줘.",
-      "lucky_item_ko": "컴퓨터"
+      "content_ja": "効率よく仕事が進む日 できる作業はどんどんこなして",
+      "lucky_item_ja": "紫色",
+      "content_ko": "일이 효율적으로 진행되는 날, 할 수 있는 일은 하나씩 차근차근 처리해 나가자",
+      "lucky_item_ko": "보라색"
     },
-    "사수자리": {
-      "rank": 8,
-      "sign_kr": "사수자리",
-      "sign_ja": "いて座",
-      "sign_key": "sagittarius",
-      "content_ja": "充実した時間を過ごせるよ 将来について考えると良いかも",
-      "lucky_item_ja": "赤色",
-      "content_ko": "보람찬 시간을 보낼 수 있을 거야. 미래에 대해 생각해 보는 것도 좋을 것 같아.",
-      "lucky_item_ko": "빨간색"
+    "전갈자리": {
+      "rank": 5,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "家族との関係に良い変化が…！ コミュニケーションを大切にすると◎",
+      "lucky_item_ja": "メンチカツ",
+      "content_ko": "가족과의 관계에 좋은 변화가…! 소통을 소중히 여기면 ◎",
+      "lucky_item_ko": "멘치카츠"
     },
-    "사자자리": {
-      "rank": 9,
-      "sign_kr": "사자자리",
-      "sign_ja": "しし座",
-      "sign_key": "leo",
-      "content_ja": "やりたかった事を始めるチャンス 前向きな姿勢が幸運のカギ",
-      "lucky_item_ja": "タコ",
-      "content_ko": "하고 싶었던 일을 시작할 기회, 긍정적인 태도가 행운의 열쇠",
-      "lucky_item_ko": "문어"
+    "처녀자리": {
+      "rank": 6,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "新しいスタートが切れる予感 やってみたかった事に挑戦を",
+      "lucky_item_ja": "ヘルメット",
+      "content_ko": "새로운 시작을 할 수 있을 것 같은 예감, 해보고 싶었던 일에 도전해 보자",
+      "lucky_item_ko": "헬멧"
     },
-    "양자리": {
-      "rank": 10,
-      "sign_kr": "양자리",
-      "sign_ja": "おひつじ座",
-      "sign_key": "aries",
-      "content_ja": "面倒な問題が起こるかも… 無理せず周りの力を借りて",
-      "lucky_item_ja": "サングラス",
-      "content_ko": "번거로운 문제가 생길지도 몰라… 무리하지 말고 주변 사람들의 도움을 받아",
-      "lucky_item_ko": "선글라스"
+    "천칭자리": {
+      "rank": 7,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "スケジュール管理がおろそかに 早めの行動を意識するとＧＯＯＤ",
+      "lucky_item_ja": "豚肉",
+      "content_ko": "일정 관리를 소홀히 하지 말고, 미리미리 행동하는 것을 의식하면 GOOD",
+      "lucky_item_ko": "돼지고기"
     },
     "염소자리": {
-      "rank": 11,
+      "rank": 8,
       "sign_kr": "염소자리",
       "sign_ja": "やぎ座",
       "sign_key": "capricorn",
-      "content_ja": "安請け合いをしてしまいそう 内容はしっかり確認を",
-      "lucky_item_ja": "水色",
-      "content_ko": "무턱대고 수락할 것 같으니, 내용은 꼼꼼히 확인하세요.",
-      "lucky_item_ko": "하늘색"
+      "content_ja": "うまい話に注意が必要 ハッキリと断る勇気を持って",
+      "lucky_item_ja": "アクセサリー",
+      "content_ko": "너무 좋은 제안에는 주의가 필요하다. 단호하게 거절할 용기를 가져야 한다.",
+      "lucky_item_ko": "액세서리"
+    },
+    "양자리": {
+      "rank": 9,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "集中力が続かずダラダラ ミスが増えてしまうかも",
+      "lucky_item_ja": "焼き肉",
+      "content_ko": "집중력이 오래가지 않아 딴짓을 하다 보면 실수가 늘어날 수도 있다",
+      "lucky_item_ko": "불고기"
     },
     "물고기자리": {
-      "rank": 12,
+      "rank": 10,
       "sign_kr": "물고기자리",
       "sign_ja": "うお座",
       "sign_key": "pisces",
-      "content_ja": "理想と現実の差にガッカリ 今は我慢が必要な時かも ポジティブ思考を大切に",
-      "lucky_item_ja": "のどあめ",
-      "content_ko": "이상과 현실의 차이에 실망스럽지만, 지금은 인내심이 필요한 때일지도 모릅니다. 긍정적인 사고방식을 소중히 여기세요.",
-      "lucky_item_ko": "목캔디"
+      "content_ja": "思うように結果が出せないかも コツコツと頑張る姿勢を忘れずに",
+      "lucky_item_ja": "観葉植物",
+      "content_ko": "원하는 만큼의 결과를 얻지 못할 수도 있지만, 꾸준히 노력하는 자세를 잊지 말자",
+      "lucky_item_ko": "관엽식물"
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "価値観の違いに悩みそう 相手に歩み寄る気持ちが大事",
+      "lucky_item_ja": "黄色",
+      "content_ko": "가치관의 차이로 고민하게 될 것 같다. 상대방에게 한 발짝 다가가는 마음이 중요하다.",
+      "lucky_item_ko": "노란색"
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "判断力が低下してしまうかも 無理に決めなくても大丈夫 じっくり考える時間を作って",
+      "lucky_item_ja": "とうもろこし",
+      "content_ko": "판단력이 떨어질 수도 있어요. 억지로 결정하지 않아도 괜찮아요. 천천히 생각할 시간을 가져보세요.",
+      "lucky_item_ko": "옥수수"
     }
   }
 }
