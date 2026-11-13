@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-14",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-11-14T06:01:37",
+  "signs": {
+    "양자리": {
+      "rank": 12,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "タイミングを外す心配が。せっかくのチャンスも生かせずガッカリ。「もう少し」と先送りせず、行動を起こしましょう。",
+      "lucky_color_ja": "黒",
+      "lucky_item_ja": "アドレス帳",
+      "ratings": {
+        "money": 2,
+        "love": 1,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "시기를 놓칠까 봐 걱정됩니다. 모처럼 찾아온 기회를 살리지 못해 실망스럽습니다. ‘조금만 더’라고 미루지 말고, 지금 바로 행동에 나서 봅시다.",
+      "lucky_item_ko": "주소록",
+      "lucky_color_ko": "검정"
+    },
+    "황소자리": {
+      "rank": 1,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "プラス思考がラッキーを引き寄せる時。夢を実現させる可能性大。ビジネスは得意分野の仕事が成功しそう。",
+      "lucky_color_ja": "紫",
+      "lucky_item_ja": "日記帳",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "긍정적인 사고가 행운을 불러오는 때입니다. 꿈을 실현할 가능성이 높습니다. 비즈니스에서는 자신이 잘하는 분야의 일이 성공할 것 같습니다.",
+      "lucky_item_ko": "일기장",
+      "lucky_color_ko": "보라색"
+    },
+    "쌍둥이자리": {
+      "rank": 10,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "気力の中だるみに注意。「これくらいは大丈夫」と安易に構えていると足をすくわれます。やるべきことはキッチリと。",
+      "lucky_color_ja": "グレー",
+      "lucky_item_ja": "イタリア映画",
+      "ratings": {
+        "money": 3,
+        "love": 2,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "의욕이 떨어질 때 주의하세요. “이 정도는 괜찮겠지”라고 안일하게 생각하면 발목을 잡힐 수 있습니다. 해야 할 일은 꼼꼼히 해내세요.",
+      "lucky_item_ko": "이탈리아 영화",
+      "lucky_color_ko": "회색"
+    },
+    "게자리": {
+      "rank": 7,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "ライバルと好勝負ができる日。リードされたらやり返して、互角のデッドヒートに。刺激を受け充実したひとときに。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "スニーカー",
+      "ratings": {
+        "money": 3,
+        "love": 3,
+        "work": 4,
+        "health": 3
+      },
+      "content_ko": "라이벌과 치열한 승부를 펼칠 수 있는 날. 뒤처지면 반격하여, 팽팽한 접전을 벌이게 될 것입니다. 자극을 받으며 알찬 시간을 보내세요.",
+      "lucky_item_ko": "운동화",
+      "lucky_color_ko": "하늘색"
+    },
+    "사자자리": {
+      "rank": 9,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "パートナーの行動に干渉しすぎるのはＮＧ。度がすぎるとケンカに。まずは何も言わずに動向を見守る姿勢で。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "四つ葉のモチーフ",
+      "ratings": {
+        "money": 3,
+        "love": 2,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "파트너의 행동에 지나치게 간섭하는 것은 금물입니다. 도를 넘으면 다툼으로 이어집니다. 우선은 아무 말도 하지 않고 상황을 지켜보는 자세를 취하세요.",
+      "lucky_item_ko": "네 잎 클로버 모티브",
+      "lucky_color_ko": "실버"
+    },
+    "처녀자리": {
+      "rank": 2,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "テーマパークなど娯楽施設に恋の予感。行きたい場所へ足を運んで。すてきな人に出会ったら即連絡先の交換を。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "鍋料理",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "테마파크 등 오락 시설에서 로맨스가 예감됩니다. 가고 싶은 곳으로 발걸음을 옮겨 보세요. 멋진 사람을 만나면 바로 연락처를 교환하세요.",
+      "lucky_item_ko": "전골 요리",
+      "lucky_color_ko": "노란색"
+    },
+    "천칭자리": {
+      "rank": 11,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "必要以上に神経を使っているためドッと疲れそう。予定は最小限にとどめて。早めに帰宅して体をいたわること。",
+      "lucky_color_ja": "ネイビー",
+      "lucky_item_ja": "メガネ",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 3,
+        "health": 1
+      },
+      "content_ko": "필요 이상으로 신경을 쓰고 있어서 한꺼번에 피로가 몰려올 것 같다. 일정은 최소한으로 줄이고, 일찍 귀가하여 몸을 돌보는 것이 좋다.",
+      "lucky_item_ko": "안경",
+      "lucky_color_ko": "네이비"
+    },
+    "전갈자리": {
+      "rank": 5,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "美容に投資すると良さそう。見た目が変わるだけでなく気持ちも前向きに。好感度がアップし、周囲にも良い変化が。",
+      "lucky_color_ja": "ゴールド",
+      "lucky_item_ja": "紅葉",
+      "ratings": {
+        "money": 5,
+        "love": 3,
+        "work": 4,
+        "health": 3
+      },
+      "content_ko": "미용에 투자하는 게 좋을 것 같다. 외모가 달라질 뿐만 아니라 마음가짐도 긍정적으로 변한다. 호감도가 올라가고, 주변에도 좋은 변화가 생긴다.",
+      "lucky_item_ko": "단풍",
+      "lucky_color_ko": "골드"
+    },
+    "사수자리": {
+      "rank": 4,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "健康に良いとされる食材をとるとＯＫ。すぐには実感できませんが、ジワジワと確実に効果が。まわりからもうれしい反応あり。",
+      "lucky_color_ja": "青",
+      "lucky_item_ja": "体温計",
+      "ratings": {
+        "money": 4,
+        "love": 4,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "건강에 좋다고 알려진 식재료를 섭취하면 됩니다. 당장 효과를 실감할 수는 없지만, 서서히 그러나 확실하게 효과가 나타납니다. 주변에서도 반가운 반응을 보이고 있습니다.",
+      "lucky_item_ko": "체온계",
+      "lucky_color_ko": "파랑"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "大胆になるほど強運に。ここ一番の勝負どころで思い切った策に出ると勝利をゲット。思いがけない臨時収入も。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "ヘルメット",
+      "ratings": {
+        "money": 5,
+        "love": 4,
+        "work": 5,
+        "health": 3
+      },
+      "content_ko": "대담해질수록 행운이 따릅니다. 결정적인 순간에 과감한 전략을 펼치면 승리를 거둘 수 있습니다. 뜻밖의 횡재도 있을 것입니다.",
+      "lucky_item_ko": "헬멧",
+      "lucky_color_ko": "베이지"
+    },
+    "물병자리": {
+      "rank": 8,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "恋愛に関する直感は外れやすい傾向。すぐにアプローチするのは控えて。まずは相手のリサーチから。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "ピルケース",
+      "ratings": {
+        "money": 4,
+        "love": 2,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "연애에 관한 직감은 빗나갈 가능성이 높다. 당장 접근하는 것은 자제하라. 우선 상대방에 대해 알아보는 것부터 시작하라.",
+      "lucky_item_ko": "약통",
+      "lucky_color_ko": "주황색"
+    },
+    "물고기자리": {
+      "rank": 6,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "ＳＮＳのコミュニケーションツールは上手に活用を。あなたにとってプラスになる内容が続々。ライバルを倒せるかも。",
+      "lucky_color_ja": "白",
+      "lucky_item_ja": "タクシー",
+      "ratings": {
+        "money": 3,
+        "love": 3,
+        "work": 4,
+        "health": 4
+      },
+      "content_ko": "SNS 커뮤니케이션 도구를 잘 활용하세요. 여러분에게 도움이 될 만한 내용이 속속 등장하고 있습니다. 경쟁자를 이길 수도 있을지도 모릅니다.",
+      "lucky_item_ko": "택시",
+      "lucky_color_ko": "흰색"
+    }
+  }
+}
