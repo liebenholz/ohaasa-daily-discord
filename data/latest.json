@@ -1,128 +1,128 @@
 {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "mode": "weekday",
   "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
-  "updated_at_kst": "2026-11-19T06:01:43",
+  "updated_at_kst": "2026-11-20T06:01:50",
   "signs": {
-    "전갈자리": {
-      "rank": 1,
-      "sign_kr": "전갈자리",
-      "sign_ja": "さそり座",
-      "sign_key": "scorpio",
-      "content_ja": "恋愛運が高まり絶好調♥ 良い出会いに恵まれるかも 行動範囲を広げてみては？",
-      "lucky_item_ja": "ハヤシライス",
-      "content_ko": "연애 운이 상승해 최상의 컨디션♥ 좋은 인연을 만날 수도 있어요. 활동 범위를 넓혀보는 건 어떨까요?",
-      "lucky_item_ko": "하야시라이스"
-    },
-    "게자리": {
-      "rank": 2,
-      "sign_kr": "게자리",
-      "sign_ja": "かに座",
-      "sign_key": "cancer",
-      "content_ja": "臨時収入がありウキウキ！ 前から欲しかった物を買おう",
-      "lucky_item_ja": "ティッシュケース",
-      "content_ko": "예상치 못한 수입이 생겨 기분이 들뜬다! 예전부터 갖고 싶었던 물건을 사자",
-      "lucky_item_ko": "티슈 케이스"
-    },
-    "처녀자리": {
-      "rank": 3,
-      "sign_kr": "처녀자리",
-      "sign_ja": "おとめ座",
-      "sign_key": "virgo",
-      "content_ja": "役に立つ情報をＧＥＴ♪ 周囲の話に耳を傾けてみて",
-      "lucky_item_ja": "ハーブ",
-      "content_ko": "유용한 정보를 얻어보세요♪ 주변 사람들의 이야기에 귀를 기울여 보세요",
-      "lucky_item_ko": "허브"
-    },
-    "염소자리": {
-      "rank": 4,
-      "sign_kr": "염소자리",
-      "sign_ja": "やぎ座",
-      "sign_key": "capricorn",
-      "content_ja": "楽しい時間を過ごせるよ ポジティブ思考が幸運のカギ",
-      "lucky_item_ja": "緑色",
-      "content_ko": "즐거운 시간을 보낼 수 있을 거야. 긍정적인 사고방식이 행운의 열쇠다.",
-      "lucky_item_ko": "초록색"
-    },
     "물고기자리": {
-      "rank": 5,
+      "rank": 1,
       "sign_kr": "물고기자리",
       "sign_ja": "うお座",
       "sign_key": "pisces",
-      "content_ja": "仲間からの信頼度がＵＰ 思いやりの心を大切に",
-      "lucky_item_ja": "グラタン",
-      "content_ko": "동료들의 신뢰도 상승, 배려심을 소중히 여기기",
-      "lucky_item_ko": "그라탕"
+      "content_ja": "皆から褒められハッピー♪ これまでの頑張りが報われるよ あなたの評価も高まるかも",
+      "lucky_item_ja": "カメラ",
+      "content_ko": "모두에게 칭찬받아서 행복해♪ 그동안의 노력이 결실을 맺을 거야. 네 평가도 올라갈지도 몰라",
+      "lucky_item_ko": "카메라"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "コミュニケーション能力がＵＰ！ 周りと積極的に交流を",
+      "lucky_item_ja": "天ぷらうどん",
+      "content_ko": "소통 능력이 향상됩니다! 주변 사람들과 적극적으로 교류하세요",
+      "lucky_item_ko": "덴푸라 우동"
+    },
+    "게자리": {
+      "rank": 3,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "夢の実現に近づける日 あきらめない姿勢が大事",
+      "lucky_item_ja": "雑誌",
+      "content_ko": "꿈을 실현하는 데 한 걸음 더 다가가는 날, 포기하지 않는 자세가 중요하다",
+      "lucky_item_ko": "잡지"
     },
     "황소자리": {
-      "rank": 6,
+      "rank": 4,
       "sign_kr": "황소자리",
       "sign_ja": "おうし座",
       "sign_key": "taurus",
-      "content_ja": "掘り出し物が見つかる予感 ネットショッピングにツキあり",
-      "lucky_item_ja": "もんじゃ焼き",
-      "content_ko": "보물 같은 물건을 발견할 것 같은 예감, 온라인 쇼핑에 행운이 따를 것 같다",
-      "lucky_item_ko": "몬자야키"
+      "content_ja": "恋のチャンスが訪れるかも♥ ポジティブ思考を大切に",
+      "lucky_item_ja": "ペンネ",
+      "content_ko": "사랑의 기회가 찾아올지도 몰라요♥ 긍정적인 마음가짐을 소중히 여기세요",
+      "lucky_item_ko": "펜네"
     },
-    "물병자리": {
-      "rank": 7,
-      "sign_kr": "물병자리",
-      "sign_ja": "みずがめ座",
-      "sign_key": "aquarius",
-      "content_ja": "止まっていた恋が動き出すかも 積極的な姿勢がＧＯＯＤ",
-      "lucky_item_ja": "スマートフォン",
-      "content_ko": "멈춰 있던 사랑이 다시 시작될지도 몰라요. 적극적인 태도가 GOOD",
-      "lucky_item_ko": "스마트폰"
+    "처녀자리": {
+      "rank": 5,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "交友関係が活発になる時 優しい言葉遣いが好印象",
+      "lucky_item_ja": "紫色",
+      "content_ko": "사교 활동이 활발해질 때, 상냥한 말투가 좋은 인상을 준다",
+      "lucky_item_ko": "보라색"
+    },
+    "염소자리": {
+      "rank": 6,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "目標に向かって一歩前進 やりたい事をアピールしてみて",
+      "lucky_item_ja": "ピルケース",
+      "content_ko": "목표를 향해 한 걸음 나아가자. 하고 싶은 일을 어필해 보자.",
+      "lucky_item_ko": "약통"
     },
     "천칭자리": {
-      "rank": 8,
+      "rank": 7,
       "sign_kr": "천칭자리",
       "sign_ja": "てんびん座",
       "sign_key": "libra",
-      "content_ja": "問題をうまく解決できる日 友達にアドバイスをもらおう",
-      "lucky_item_ja": "和菓子",
-      "content_ko": "문제를 잘 해결할 수 있는 날, 친구에게 조언을 구해 보자",
-      "lucky_item_ko": "일본 전통 과자"
+      "content_ja": "周囲から良い刺激をＧＥＴ いつもと違うタイプの人と話すと◎",
+      "lucky_item_ja": "カニ",
+      "content_ko": "주변에서 긍정적인 자극을 얻어보세요. 평소와는 다른 유형의 사람과 대화하면 좋습니다.",
+      "lucky_item_ko": "게"
     },
-    "쌍둥이자리": {
-      "rank": 9,
-      "sign_kr": "쌍둥이자리",
-      "sign_ja": "ふたご座",
-      "sign_key": "gemini",
-      "content_ja": "考えがまとまらずモヤモヤ リフレッシュの時間を作ってね",
-      "lucky_item_ja": "黄色",
-      "content_ko": "생각이 정리되지 않아 답답하다면, 기분 전환할 시간을 좀 가져보세요.",
-      "lucky_item_ko": "노란색"
+    "물병자리": {
+      "rank": 8,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "皆と意見が合わずモヤモヤ 客観的な視点で考え直して",
+      "lucky_item_ja": "コンソメスープ",
+      "content_ko": "다른 사람들과 의견이 맞지 않아 속이 답답하다. 객관적인 관점에서 다시 생각해 보자.",
+      "lucky_item_ko": "콘소메 수프"
     },
     "사수자리": {
-      "rank": 10,
+      "rank": 9,
       "sign_kr": "사수자리",
       "sign_ja": "いて座",
       "sign_key": "sagittarius",
-      "content_ja": "自己中心的な態度に注意 相手への気遣いを忘れずに",
-      "lucky_item_ja": "タオル",
-      "content_ko": "이기적인 태도에 주의하고, 상대방을 배려하는 마음을 잊지 말자",
-      "lucky_item_ko": "수건"
-    },
-    "사자자리": {
-      "rank": 11,
-      "sign_kr": "사자자리",
-      "sign_ja": "しし座",
-      "sign_key": "leo",
-      "content_ja": "良くないうわさが流れそう 普段の言動を振り返ってみて",
-      "lucky_item_ja": "ミートローフ",
-      "content_ko": "안 좋은 소문이 돌 것 같다. 평소 말과 행동을 되돌아보자.",
-      "lucky_item_ko": "미트로프"
+      "content_ja": "集中力が続かずミスを連発 慌てず慎重に取り組んで",
+      "lucky_item_ja": "切手",
+      "content_ko": "집중력이 이어지지 않아 실수를 연발했다. 당황하지 말고 신중하게 임해야 한다.",
+      "lucky_item_ko": "우표"
     },
     "양자리": {
-      "rank": 12,
+      "rank": 10,
       "sign_kr": "양자리",
       "sign_ja": "おひつじ座",
       "sign_key": "aries",
-      "content_ja": "ネガティブになり運気ダウン 疲れがたまっているみたい きょうは無理せずゆっくり休んで",
-      "lucky_item_ja": "グレー",
-      "content_ko": "부정적인 생각이 들어 운이 떨어지는 것 같아. 피로가 쌓인 것 같으니 오늘은 무리하지 말고 푹 쉬어.",
-      "lucky_item_ko": "회색"
+      "content_ja": "人と自分を比較しガッカリ… 友達からアドバイスをもらおう",
+      "lucky_item_ja": "きゅうり",
+      "content_ko": "다른 사람과 자신을 비교하다 실망했다면… 친구에게 조언을 구해 보자",
+      "lucky_item_ko": "오이"
+    },
+    "쌍둥이자리": {
+      "rank": 11,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "物事が思うように進まないかも 仲間の力を借りてみては？",
+      "lucky_item_ja": "緑色",
+      "content_ko": "일이 생각대로 풀리지 않을 수도 있으니, 동료들의 도움을 받아보는 건 어떨까요?",
+      "lucky_item_ko": "초록색"
+    },
+    "사자자리": {
+      "rank": 12,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "ストレスがたまりイライラ 独りよがりな態度はＮＧ 冷静な言動を心掛けてね",
+      "lucky_item_ja": "和食",
+      "content_ko": "스트레스가 쌓여 짜증이 나지만, 자기중심적인 태도는 금물이에요. 침착한 언행을 유지하도록 노력해 주세요.",
+      "lucky_item_ko": "일식"
     }
   }
 }
