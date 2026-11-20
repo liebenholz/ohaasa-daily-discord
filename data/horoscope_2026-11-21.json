@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-21",
+  "mode": "weekend",
+  "source_url": "https://www.tv-asahi.co.jp/goodmorning/uranai/",
+  "updated_at_kst": "2026-11-21T06:01:40",
+  "signs": {
+    "양자리": {
+      "rank": 3,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "ohitsuji",
+      "content_ja": "面白い発想や考えが次々と浮かぶ日。独自のアイデアが周囲から注目されそう。新たな仕事につながる可能性大。",
+      "lucky_color_ja": "水色",
+      "lucky_item_ja": "保存食",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 3
+      },
+      "content_ko": "재미있는 발상이나 생각이 잇달아 떠오르는 날. 독창적인 아이디어가 주변의 주목을 받을 것 같다. 새로운 일로 이어질 가능성이 크다.",
+      "lucky_item_ko": "비상식량",
+      "lucky_color_ko": "하늘색"
+    },
+    "황소자리": {
+      "rank": 7,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "ousi",
+      "content_ja": "本格的な冬支度のタイミング。アウターなどファッションを研究してみて。肌のケアを念入りにすると魅力がアップ。",
+      "lucky_color_ja": "緑",
+      "lucky_item_ja": "ベストセラー小説",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "본격적인 겨울 준비를 시작할 시기입니다. 아우터 등 패션에 대해 알아보세요. 피부 관리를 꼼꼼히 하면 매력이 한층 더 살아납니다.",
+      "lucky_item_ko": "베스트셀러 소설",
+      "lucky_color_ko": "초록"
+    },
+    "쌍둥이자리": {
+      "rank": 4,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "futago",
+      "content_ja": "学習意欲が高まります。スポーツのレッスンや講座では探していた講師と出会える予感。古書店めぐりにツキあり。",
+      "lucky_color_ja": "赤",
+      "lucky_item_ja": "ペット",
+      "ratings": {
+        "money": 3,
+        "love": 4,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "학습 의욕이 높아집니다. 스포츠 레슨이나 강좌에서 찾던 강사를 만날 수 있을 것 같은 예감이 듭니다. 중고서점 탐방에 행운이 따릅니다.",
+      "lucky_item_ko": "반려동물",
+      "lucky_color_ko": "빨강"
+    },
+    "게자리": {
+      "rank": 10,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "kani",
+      "content_ja": "甘いモノの食べすぎに注意。体調が崩れるだけでなく歯医者に通うことになるかも。シェイプアップを真剣に考えてみて。",
+      "lucky_color_ja": "青",
+      "lucky_item_ja": "レンタルショップ",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 3,
+        "health": 2
+      },
+      "content_ko": "단 것을 너무 많이 먹지 않도록 주의하세요. 건강이 나빠질 뿐만 아니라 치과에 다니게 될 수도 있습니다. 체중 감량을 진지하게 고려해 보세요.",
+      "lucky_item_ko": "대여점",
+      "lucky_color_ko": "파랑"
+    },
+    "사자자리": {
+      "rank": 2,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "sisi",
+      "content_ja": "行動範囲が広がると恋のチャンスも増加。遠出や初めての場所にすてきな出会いあり。ペアの小物がラッキーグッズ。",
+      "lucky_color_ja": "黒",
+      "lucky_item_ja": "カフェランチ",
+      "ratings": {
+        "money": 4,
+        "love": 5,
+        "work": 5,
+        "health": 4
+      },
+      "content_ko": "활동 반경이 넓어지면 연애 기회도 늘어납니다. 먼 곳으로 여행을 가거나 처음 가는 곳에서 멋진 만남이 있을 것입니다. 커플 소품이 행운의 아이템입니다.",
+      "lucky_item_ko": "카페 점심",
+      "lucky_color_ko": "검정"
+    },
+    "처녀자리": {
+      "rank": 9,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "otome",
+      "content_ja": "良くも悪くも勘が鋭い時。気乗りしない誘いには乗らなくても大丈夫です。自分の感覚を大切にして行動しましょう。",
+      "lucky_color_ja": "シルバー",
+      "lucky_item_ja": "ブローチ",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 2,
+        "health": 2
+      },
+      "content_ko": "좋든 나쁘든 직감이 예리한 때입니다. 내키지 않는 제안은 거절해도 괜찮습니다. 자신의 직감을 소중히 여기며 행동합시다.",
+      "lucky_item_ko": "브로치",
+      "lucky_color_ko": "실버"
+    },
+    "천칭자리": {
+      "rank": 11,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "tenbin",
+      "content_ja": "価値観の違いでイライラしそう。無理に押し付けず、サラリと聞き流して。好物のスイーツで気分転換を。",
+      "lucky_color_ja": "オレンジ色",
+      "lucky_item_ja": "便せん",
+      "ratings": {
+        "money": 3,
+        "love": 1,
+        "work": 2,
+        "health": 3
+      },
+      "content_ko": "가치관 차이로 인해 짜증이 날 것 같다. 억지로 강요하지 말고, 가볍게 흘려듣자. 좋아하는 디저트로 기분 전환을 해보자.",
+      "lucky_item_ko": "편지지",
+      "lucky_color_ko": "주황색"
+    },
+    "전갈자리": {
+      "rank": 8,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "sasori",
+      "content_ja": "表に立つより裏方でのサポートに力を入れて。細かな気配りが高評価。部屋の片付けや掃除は全員で協力を。",
+      "lucky_color_ja": "ネイビー",
+      "lucky_item_ja": "モデル",
+      "ratings": {
+        "money": 3,
+        "love": 3,
+        "work": 4,
+        "health": 2
+      },
+      "content_ko": "전면에 나서기보다는 뒤에서 지원하는 데 힘을 쏟으세요. 세심한 배려가 높은 평가를 받습니다. 방 정리와 청소는 모두가 함께 협력해 주세요.",
+      "lucky_item_ko": "모델",
+      "lucky_color_ko": "네이비"
+    },
+    "사수자리": {
+      "rank": 1,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "ite",
+      "content_ja": "くじ引きや抽選会で豪華景品が当たりそう。遊び心をもって楽しむと◎。お歳暮や思わぬギフトが届く日。",
+      "lucky_color_ja": "黄色",
+      "lucky_item_ja": "運動公園",
+      "ratings": {
+        "money": 5,
+        "love": 5,
+        "work": 5,
+        "health": 5
+      },
+      "content_ko": "제비뽑기나 추첨 행사에서 호화 경품을 받을 것 같다. 유쾌한 마음으로 즐기면 좋다. 연말 선물이나 뜻밖의 선물이 도착하는 날이다.",
+      "lucky_item_ko": "운동공원",
+      "lucky_color_ko": "노란색"
+    },
+    "염소자리": {
+      "rank": 12,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "yagi",
+      "content_ja": "責任やプレッシャーに押しつぶされそう。ひとりで抱え込むとトラブルに。信頼できる仲間と作業を分担しましょう。",
+      "lucky_color_ja": "グレー",
+      "lucky_item_ja": "趣味の集まり",
+      "ratings": {
+        "money": 2,
+        "love": 3,
+        "work": 1,
+        "health": 2
+      },
+      "content_ko": "책임과 압박감에 짓눌릴 것 같습니다. 혼자서 모든 것을 떠안으면 문제가 생길 수 있습니다. 믿을 수 있는 동료와 업무를 분담합시다.",
+      "lucky_item_ko": "취미 모임",
+      "lucky_color_ko": "회색"
+    },
+    "물병자리": {
+      "rank": 5,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "mizugame",
+      "content_ja": "日頃の食事や睡眠を見直して。少し変えるだけでも効果を実感。家族みんなが健康で元気をキープできます。",
+      "lucky_color_ja": "紫",
+      "lucky_item_ja": "露天風呂",
+      "ratings": {
+        "money": 3,
+        "love": 4,
+        "work": 3,
+        "health": 5
+      },
+      "content_ko": "평소의 식습관과 수면 습관을 다시 점검해 보세요. 조금만 바꿔도 효과를 실감할 수 있습니다. 온 가족이 건강하고 활기찬 상태를 유지할 수 있습니다.",
+      "lucky_item_ko": "노천탕",
+      "lucky_color_ko": "보라색"
+    },
+    "물고기자리": {
+      "rank": 6,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "uo",
+      "content_ja": "胃腸が疲れ気味。飲むなら白湯にして、プチ断食もおすすめ。ただし過激なダイエットは控えた方が良さそうです。",
+      "lucky_color_ja": "ベージュ",
+      "lucky_item_ja": "図書カード",
+      "ratings": {
+        "money": 4,
+        "love": 3,
+        "work": 3,
+        "health": 4
+      },
+      "content_ko": "위장이 좀 지친 상태입니다. 음료를 마실 때는 따뜻한 물로 하고, 가벼운 단식도 추천합니다. 다만, 지나치게 극단적인 다이어트는 자제하는 편이 좋을 것 같습니다.",
+      "lucky_item_ko": "도서 상품권",
+      "lucky_color_ko": "베이지"
+    }
+  }
+}
