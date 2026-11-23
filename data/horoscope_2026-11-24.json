@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-24",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-24T06:01:52",
+  "signs": {
+    "게자리": {
+      "rank": 1,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "ステキな出会いに期待大！ 仲の良い友達と一緒に 大勢が集まる場所に出かけよう",
+      "lucky_item_ja": "中華丼",
+      "content_ko": "멋진 만남을 기대해 봐요! 사이 좋은 친구와 함께 사람들이 많이 모이는 곳으로 나가 봅시다",
+      "lucky_item_ko": "중화덮밥"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "チャンスがたくさん舞い込む日 積極的な行動がＧＯＯＤ",
+      "lucky_item_ja": "バインダー",
+      "content_ko": "기회가 많이 찾아오는 날, 적극적인 행동이 GOOD",
+      "lucky_item_ko": "바인더"
+    },
+    "처녀자리": {
+      "rank": 3,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "周りに好印象を残せるよ♪ 何事も一生懸命に取り組んで",
+      "lucky_item_ja": "黒色",
+      "content_ko": "주변 사람들에게 좋은 인상을 줄 수 있어♪ 어떤 일이든 열심히 임하면",
+      "lucky_item_ko": "검은색"
+    },
+    "양자리": {
+      "rank": 4,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "良い買い物ができる予感 量より質を選ぶのがポイント",
+      "lucky_item_ja": "ティーカップ",
+      "content_ko": "만족스러운 쇼핑이 될 것 같은 예감. 양보다 질을 선택하는 것이 핵심이다.",
+      "lucky_item_ko": "찻잔"
+    },
+    "물고기자리": {
+      "rank": 5,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "気になる相手と進展があるかも♥ あなたからアプローチを",
+      "lucky_item_ja": "麻婆豆腐",
+      "content_ko": "마음에 드는 상대와 관계가 진전될지도 몰라요♥ 먼저 다가가 보세요",
+      "lucky_item_ko": "마파두부"
+    },
+    "염소자리": {
+      "rank": 6,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "発想力が豊かになる時 新しい企画を考えてみては？",
+      "lucky_item_ja": "電卓",
+      "content_ko": "창의력이 풍부해질 때, 새로운 기획을 구상해 보는 건 어떨까요?",
+      "lucky_item_ko": "계산기"
+    },
+    "사자자리": {
+      "rank": 7,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "ヤル気がなくなり運気ダウン リフレッシュの時間を作ると◎",
+      "lucky_item_ja": "ソーセージ",
+      "content_ko": "의욕이 떨어지고 운이 나빠질 때, 기분 전환할 시간을 갖는 것이 좋습니다.",
+      "lucky_item_ko": "소시지"
+    },
+    "황소자리": {
+      "rank": 8,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "心配事がありモヤモヤ… 家族に相談してみよう",
+      "lucky_item_ja": "深緑色",
+      "content_ko": "걱정거리가 있어서 마음이 답답해… 가족과 상의해 보자",
+      "lucky_item_ko": "짙은 녹색"
+    },
+    "물병자리": {
+      "rank": 9,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "自分勝手な行動はＮＧ 協調性を忘れないでね",
+      "lucky_item_ja": "アイスクリーム",
+      "content_ko": "제멋대로 행동하는 건 안 돼. 협동심을 잊지 말자.",
+      "lucky_item_ko": "아이스크림"
+    },
+    "사수자리": {
+      "rank": 10,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "頼まれ事に注意が必要 内容は丁寧に確認してね",
+      "lucky_item_ja": "ブロッコリー",
+      "content_ko": "부탁받은 일에는 주의가 필요해. 내용은 꼼꼼히 확인해 줘.",
+      "lucky_item_ko": "브로콜리"
+    },
+    "천칭자리": {
+      "rank": 11,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "お金の貸し借りはしないように しっかり断る事が大切",
+      "lucky_item_ja": "ベージュ",
+      "content_ko": "돈을 빌려주거나 빌리는 일은 하지 않도록 단호하게 거절하는 것이 중요합니다",
+      "lucky_item_ko": "베이지"
+    },
+    "쌍둥이자리": {
+      "rank": 12,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "ハメを外して悪目立ち 周囲から反感を買ってしまうかも 慎重な言動を心掛けて",
+      "lucky_item_ja": "紺色",
+      "content_ko": "도를 넘어서 눈에 띄게 행동하면 주변의 반감을 살 수도 있으니, 신중한 언행을 유의하세요.",
+      "lucky_item_ko": "감색"
+    }
+  }
+}
