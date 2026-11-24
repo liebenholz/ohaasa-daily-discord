@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-25",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-25T06:01:44",
+  "signs": {
+    "양자리": {
+      "rank": 1,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "心強い味方が現れる予感♪ 本音で語り合うとＧＯＯＤ 良い方向に導いてくれるよ",
+      "lucky_item_ja": "白菜",
+      "content_ko": "믿음직한 아군이 나타날 것 같은 예감♪ 속마음을 털어놓으면 GOOD, 좋은 방향으로 이끌어 줄 거야",
+      "lucky_item_ko": "배추"
+    },
+    "쌍둥이자리": {
+      "rank": 2,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "楽しい時間を過ごせそう 華やかな場所にツキあり",
+      "lucky_item_ja": "茶色",
+      "content_ko": "즐거운 시간을 보낼 수 있을 것 같다. 화려한 곳에 행운이 따른다.",
+      "lucky_item_ko": "갈색"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "金運が良好でハッピー！ オシャレに関する買い物が◎",
+      "lucky_item_ja": "万年筆",
+      "content_ko": "재물운이 좋아서 행복해요! 패션 관련 쇼핑이 딱이에요!",
+      "lucky_item_ko": "만년필"
+    },
+    "전갈자리": {
+      "rank": 4,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "願いをかなえてもらえるかも 親しい人と行動を共にしてね",
+      "lucky_item_ja": "野菜ジュース",
+      "content_ko": "소원이 이루어질지도 몰라요. 가까운 사람과 함께 시간을 보내세요.",
+      "lucky_item_ko": "채소 주스"
+    },
+    "게자리": {
+      "rank": 5,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "周囲から高評価をＧＥＴ オリジナリティを大切に",
+      "lucky_item_ja": "新刊本",
+      "content_ko": "주변으로부터 호평을 받다. 독창성을 소중히 여긴다.",
+      "lucky_item_ko": "신간 도서"
+    },
+    "물고기자리": {
+      "rank": 6,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "思いがけない再会がある日 予定がなくても外出してみて",
+      "lucky_item_ja": "クリーム色",
+      "content_ko": "예기치 못한 재회가 있을지도 모르는 날, 별다른 계획이 없더라도 외출해 보세요",
+      "lucky_item_ko": "크림색"
+    },
+    "처녀자리": {
+      "rank": 7,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "仲間からのサポートに期待大 誠実な態度が幸運のカギ",
+      "lucky_item_ja": "肉まん",
+      "content_ko": "동료들의 지원에 큰 기대를 걸고 있다. 성실한 태도가 행운의 열쇠다.",
+      "lucky_item_ko": "고기만두"
+    },
+    "물병자리": {
+      "rank": 8,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "集中力が低下しミスを連発 リフレッシュの時間を作って",
+      "lucky_item_ja": "コーヒーカップ",
+      "content_ko": "집중력이 떨어지면서 실수가 잇따르니, 기분 전환할 시간을 마련하세요.",
+      "lucky_item_ko": "커피잔"
+    },
+    "천칭자리": {
+      "rank": 9,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "あなたの気持ちが伝わりそう 素直な思いを言葉にしてね",
+      "lucky_item_ja": "シャーベット",
+      "content_ko": "네 마음이 전해질 것 같아. 솔직한 마음을 말로 표현해 봐.",
+      "lucky_item_ko": "셔벗"
+    },
+    "사자자리": {
+      "rank": 10,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "つまらない意地を張るかも 謙虚な姿勢を忘れずに",
+      "lucky_item_ja": "おにぎり",
+      "content_ko": "시시한 고집을 부릴지도 모르니, 겸손한 자세를 잊지 말자",
+      "lucky_item_ko": "주먹밥"
+    },
+    "사수자리": {
+      "rank": 11,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "身勝手な振る舞いに注意 じっくり考えてから行動を",
+      "lucky_item_ja": "カレンダー",
+      "content_ko": "제멋대로인 행동에 주의하세요. 신중하게 생각한 뒤 행동하세요.",
+      "lucky_item_ko": "달력"
+    },
+    "황소자리": {
+      "rank": 12,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "チャンスを逃して後悔 目の前の事に丁寧に取り組んで 最後まで気を抜かないように",
+      "lucky_item_ja": "春雨",
+      "content_ko": "기회를 놓치고 후회하지 않도록, 눈앞의 일에 성실하게 임하고 끝까지 긴장을 늦추지 않도록",
+      "lucky_item_ko": "당면"
+    }
+  }
+}
