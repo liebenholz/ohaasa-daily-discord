@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-27",
+  "mode": "weekday",
+  "source_url": "https://www.asahi.co.jp/ohaasa/week/horoscope/",
+  "updated_at_kst": "2026-11-27T06:01:37",
+  "signs": {
+    "물고기자리": {
+      "rank": 1,
+      "sign_kr": "물고기자리",
+      "sign_ja": "うお座",
+      "sign_key": "pisces",
+      "content_ja": "あなたの才能が認められるかも このチャンスを逃さないように 自信を持ってアピールを",
+      "lucky_item_ja": "もつ鍋",
+      "content_ko": "당신의 재능이 인정받을지도 모릅니다. 이 기회를 놓치지 말고 자신감을 가지고 어필하세요.",
+      "lucky_item_ko": "모츠나베"
+    },
+    "전갈자리": {
+      "rank": 2,
+      "sign_kr": "전갈자리",
+      "sign_ja": "さそり座",
+      "sign_key": "scorpio",
+      "content_ja": "欲しかった物をＧＥＴ♪ 最近オープンしたお店をチェックして",
+      "lucky_item_ja": "コーンフレーク",
+      "content_ko": "원하던 물건을 샀어요♪ 최근에 오픈한 가게를 둘러보고",
+      "lucky_item_ko": "콘플레이크"
+    },
+    "염소자리": {
+      "rank": 3,
+      "sign_kr": "염소자리",
+      "sign_ja": "やぎ座",
+      "sign_key": "capricorn",
+      "content_ja": "新しい恋が始まる予感♥ にぎやかな場所に出かけると◎",
+      "lucky_item_ja": "香水",
+      "content_ko": "새로운 사랑이 시작될 것 같은 예감♥ 활기찬 곳으로 나가면 ◎",
+      "lucky_item_ko": "향수"
+    },
+    "처녀자리": {
+      "rank": 4,
+      "sign_kr": "처녀자리",
+      "sign_ja": "おとめ座",
+      "sign_key": "virgo",
+      "content_ja": "今後の目標が見つかる日 自分の可能性を信じて進もう",
+      "lucky_item_ja": "茶色",
+      "content_ko": "앞으로의 목표를 발견하는 날, 자신의 가능성을 믿고 나아가자",
+      "lucky_item_ko": "갈색"
+    },
+    "양자리": {
+      "rank": 5,
+      "sign_kr": "양자리",
+      "sign_ja": "おひつじ座",
+      "sign_key": "aries",
+      "content_ja": "悩みが解決しスッキリ 仲間がサポートしてくれるよ",
+      "lucky_item_ja": "ぬいぐるみ",
+      "content_ko": "고민이 해결되어 속이 후련해져요. 친구들이 도와줄 거예요.",
+      "lucky_item_ko": "봉제인형"
+    },
+    "쌍둥이자리": {
+      "rank": 6,
+      "sign_kr": "쌍둥이자리",
+      "sign_ja": "ふたご座",
+      "sign_key": "gemini",
+      "content_ja": "良い買い物ができる時 バーゲンセールに行くならきょう！",
+      "lucky_item_ja": "しば漬け",
+      "content_ko": "알뜰하게 쇼핑할 수 있는 날, 세일 행사에 가려면 오늘이 딱!",
+      "lucky_item_ko": "시바즈케"
+    },
+    "게자리": {
+      "rank": 7,
+      "sign_kr": "게자리",
+      "sign_ja": "かに座",
+      "sign_key": "cancer",
+      "content_ja": "役に立つ情報が手に入るかも 周囲との会話にヒントあり",
+      "lucky_item_ja": "キーホルダー",
+      "content_ko": "유용한 정보를 얻을 수 있을지도 모른다. 주변 사람들과의 대화에서 힌트를 얻을 수 있다.",
+      "lucky_item_ko": "열쇠고리"
+    },
+    "황소자리": {
+      "rank": 8,
+      "sign_kr": "황소자리",
+      "sign_ja": "おうし座",
+      "sign_key": "taurus",
+      "content_ja": "周りからの評価ダウン… 普段の言動を振り返ってみてね",
+      "lucky_item_ja": "金色",
+      "content_ko": "주변의 평가가 떨어지고 있다… 평소 말과 행동을 되돌아보세요",
+      "lucky_item_ko": "금색"
+    },
+    "천칭자리": {
+      "rank": 9,
+      "sign_kr": "천칭자리",
+      "sign_ja": "てんびん座",
+      "sign_key": "libra",
+      "content_ja": "不満を感じてイライラ まずは冷静さを取り戻して",
+      "lucky_item_ja": "ミキサー",
+      "content_ko": "불만을 느껴 짜증이 난다면, 우선 침착함을 되찾으세요.",
+      "lucky_item_ko": "믹서기"
+    },
+    "물병자리": {
+      "rank": 10,
+      "sign_kr": "물병자리",
+      "sign_ja": "みずがめ座",
+      "sign_key": "aquarius",
+      "content_ja": "迷いが出てきてしまいそう 結論は急がなくても大丈夫",
+      "lucky_item_ja": "ハンカチ",
+      "content_ko": "망설임이 생길 것 같아. 결론을 서두르지 않아도 괜찮아.",
+      "lucky_item_ko": "손수건"
+    },
+    "사자자리": {
+      "rank": 11,
+      "sign_kr": "사자자리",
+      "sign_ja": "しし座",
+      "sign_key": "leo",
+      "content_ja": "うまい話に注意が必要 よく内容を確認してから判断を",
+      "lucky_item_ja": "ミルクティー",
+      "content_ko": "너무 좋은 제안에는 주의가 필요합니다. 내용을 꼼꼼히 확인한 후 판단하십시오.",
+      "lucky_item_ko": "밀크티"
+    },
+    "사수자리": {
+      "rank": 12,
+      "sign_kr": "사수자리",
+      "sign_ja": "いて座",
+      "sign_key": "sagittarius",
+      "content_ja": "コミュニケーションが不器用に 誤解を招いてしまうかも 言葉遣いに気をつけて",
+      "lucky_item_ja": "マンガ",
+      "content_ko": "서툰 의사소통이 오해를 불러일으킬 수도 있으니, 말투에 주의하세요.",
+      "lucky_item_ko": "만화"
+    }
+  }
+}
